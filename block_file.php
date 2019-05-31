@@ -35,9 +35,11 @@ class block_file extends block_base
 
     public function get_content()
     {
-        if ($this->content !== null) {
+        if ($this->content !== null) 
+        {
             return $this->content;
         }
+
         $this->content = new stdClass;
 
         $height = isset($this->config->height) && $this->config->height !== '' ? $this->config->height : null;
@@ -46,25 +48,22 @@ class block_file extends block_base
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
 
         $content = null;
-        //echo "<script>console.log('FILE: ".sizeof($files)."');</script>";
-	//echo "<script>console.log('FILE: ".$files[0]."');</script>";
-	//echo "<script>console.log('FILE: ".$files[0]->get_filename()."');</script>";
-        //echo "<script>console.log('FILE: ".$files[1]->get_filename()."');</script>";
-	$count = 0;
-        foreach ($files as $file) {
-            //echo "<script> console.log('PHP: ".$count."-".$file->get_filename()."');</script>";
-            if ($count == 0)
-	    {
-		$count += 1;
-		continue;
-	    }
-	    else
-	    {
-		$count += 1;
-	    }
-	    //echo "<script> console.log('PHP: ".$count."-".$file->get_filename()."');</script>";
 
-	    if ($file->is_directory()) {
+	    $count = 0;
+        foreach ($files as $file) 
+        {
+            if ($count == 0)    
+            {
+                $count += 1;
+                continue;
+            }
+            else
+            {
+                $count += 1;
+            }
+
+    	    if ($file->is_directory()) 
+            {
                 continue;
             }
 
@@ -76,28 +75,22 @@ class block_file extends block_base
 
             if ($mimeType === 'application/pdf') {
                 //$content = $this->get_content_text_pdf($file, $height);
-		$content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
+		        $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
                 //$content = format_text($content, FORMAT_HTML, $filterOptions);
-
-               // $content = '{%: RCS }'.$content.'{%}'.'{%: RCS }'.'LALALA'. '{%}';
-
                 continue;
-            }
-
-            if (substr($mimeType, 0, 5) === 'video') {
-                //$content = $this->get_content_text_video($file, $height);
-		$content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
-                //$content = format_text($content, FORMAT_HTML, $filterOptions);
-		continue;
                 //break;
             }
 
-            if (substr($mimeType, 0, 5) === 'audio') {
-                //$content = $this->get_content_text_audio($file, $height);
+            if (substr($mimeType, 0, 5) === 'video') 
+            {
+                $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
+		        continue;
+            }
+
+            if (substr($mimeType, 0, 5) === 'audio') 
+            {
                 $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
-                //$content = format_text($content, FORMAT_HTML, $filterOptions);
-		continue;
-                //break;
+                continue;
             }
 
             if (in_array($mimeType, [
@@ -105,19 +98,18 @@ class block_file extends block_base
                 'image/png',
                 'image/jpeg',
                 'image/svg+xml',
-            ])) {
-                //$content = $this->get_content_text_image($file, $height);
+            ])) 
+            {
                 $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
-
-                //$content = format_text($content, FORMAT_HTML, $filterOptions);
-		continue;
-                //break;
+                continue;
             }
+
             $content = $this->get_content_text_default($file, $height);
             $content = format_text($content, FORMAT_HTML, $filterOptions);
             break;
         }
-	$content = format_text($content, FORMAT_HTML, $filterOptions);
+
+        $content = format_text($content, FORMAT_HTML, $filterOptions);
         $this->content->text = $content ?? get_string('nofileselected', 'block_file');
         return $this->content;
     }
