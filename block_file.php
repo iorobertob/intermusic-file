@@ -76,7 +76,11 @@ class block_file extends block_base
 
             if ($mimeType === 'application/pdf') {
                 //$content = $this->get_content_text_pdf($file, $height);
-		        $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
+                $splitname = explode("_", $file->get_filename() );
+                $shortname = $splitname[1];
+
+		        // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
+                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
                 //$content = format_text($content, FORMAT_HTML, $filterOptions);
                 continue;
                 //break;
