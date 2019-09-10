@@ -78,9 +78,10 @@ class block_file extends block_base
                 //$content = $this->get_content_text_pdf($file, $height);
                 $splitname = explode("_", $file->get_filename() );
                 $shortname = $splitname[1];
+                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
 
 		        // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
-                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
+                
                 //$content = format_text($content, FORMAT_HTML, $filterOptions);
                 continue;
                 //break;
@@ -88,13 +89,19 @@ class block_file extends block_base
 
             if (substr($mimeType, 0, 5) === 'video') 
             {
-                $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
+                $splitname = explode("_", $file->get_filename() );
+                $shortname = $splitname[1];
+                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
+                // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
 		        continue;
             }
 
             if (substr($mimeType, 0, 5) === 'audio') 
             {
-                $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
+                $splitname = explode("_", $file->get_filename() );
+                $shortname = $splitname[1];
+                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
+                // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
                 continue;
             }
 
@@ -105,7 +112,10 @@ class block_file extends block_base
                 'image/svg+xml',
             ])) 
             {
-                $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
+                $splitname = explode("_", $file->get_filename() );
+                $shortname = $splitname[1];
+                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
+                // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
                 continue;
             }
 
