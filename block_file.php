@@ -91,7 +91,7 @@ class block_file extends block_base
             {
                 $splitname = explode("_", $file->get_filename() );
                 $shortname = $splitname[1];
-                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
+                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
 		        continue;
             }
@@ -100,7 +100,7 @@ class block_file extends block_base
             {
                 $splitname = explode("_", $file->get_filename() );
                 $shortname = $splitname[1];
-                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
+                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
                 continue;
             }
@@ -114,7 +114,7 @@ class block_file extends block_base
             {
                 $splitname = explode("_", $file->get_filename() );
                 $shortname = $splitname[1];
-                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
+                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
                 continue;
             }
