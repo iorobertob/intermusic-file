@@ -112,8 +112,8 @@ class block_file extends block_base
         $content = null;
 
         $count = 0;
-        foreach ($files as $file) 
-        // foreach ($filesSorted as $file)
+        // foreach ($files as $file) 
+        foreach ($filesSorted as $file)
         {
             if ($count == 0)    
             {
