@@ -88,7 +88,7 @@ class block_file extends block_base
             "CLC");
         $filesSorted = [];
 
-        // $newNames = []
+        $newNames = [];
 
         // foreach($files as $file)
         for($x = 0; $x <= sizeof($sortingArray); $x++)
