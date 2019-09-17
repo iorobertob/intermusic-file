@@ -137,7 +137,7 @@ class block_file extends block_base
             }
             else
             {
-                $count += 1;
+                // $count += 1;
             }
 
     	    if ($file->is_directory()) 
