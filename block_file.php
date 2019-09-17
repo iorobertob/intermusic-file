@@ -52,38 +52,38 @@ class block_file extends block_base
 	    $count = 0;
 
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
-        $sortingArray =array(
-            "SCR+IPA.pdf", 
-            "TXT+LYR.pdf",
-            "IPA+TXT+W2W.pdf",
-            "VID-HR.mp4",
-            "AUD.wav",
-            "RCN.wav",
-            "RCS.wav",
-            "RCP.wav",
-            "SCR",
-            "VID",
-            "HR",
-            "LC",
-            "CLC"
-        );
-        $filesSorted = [];
+        // $sortingArray =array(
+        //     "SCR+IPA.pdf", 
+        //     "TXT+LYR.pdf",
+        //     "IPA+TXT+W2W.pdf",
+        //     "VID-HR.mp4",
+        //     "AUD.wav",
+        //     "RCN.wav",
+        //     "RCS.wav",
+        //     "RCP.wav",
+        //     "SCR",
+        //     "VID",
+        //     "HR",
+        //     "LC",
+        //     "CLC"
+        // );
+        // $filesSorted = [];
 
 
-        foreach($files as $file)
-        {
-            $sortString = explode( "_", $file -> get_filename() );
+        // foreach($files as $file)
+        // {
+        //     $sortString = explode( "_", $file -> get_filename() );
             
-            for($x = 0; $x <= sizeof($sortingArray); $x++)
-            {
-               if ($sortString == $sortingArray[$x])
-               {
-                    array_push($filesSorted, $file) ;
-                    break;
-               }
-            }
+        //     for($x = 0; $x <= sizeof($sortingArray); $x++)
+        //     {
+        //        if ($sortString == $sortingArray[$x])
+        //        {
+        //             array_push($filesSorted, $file) ;
+        //             break;
+        //        }
+        //     }
             
-        }
+        // }
 
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
 
