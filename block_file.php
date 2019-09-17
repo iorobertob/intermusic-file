@@ -132,7 +132,7 @@ class block_file extends block_base
         {
             if ($count == 0)    
             {
-                // $count += 1;
+                $count += 1;
                 // continue;
             }
             else
