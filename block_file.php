@@ -47,11 +47,16 @@ class block_file extends block_base
         $fs = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
 
-        $content = null;
-
-	    $count = 0;
+        
 
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
+        foreach($files as $file)
+        {
+            $mimeType = $file->get_mimetype();
+            echo "<script>console.log('MIME: ".$mimeType."');</script>";
+        }
+        echo "////////////////";
+        
         $sortingArray =array(
             "SCR+IPA.pdf", 
             "TXT+LYR.pdf",
@@ -85,9 +90,12 @@ class block_file extends block_base
             }
             
         }
-        var_dump($filesSorted);
+        // var_dump($filesSorted);
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
 
+        $content = null;
+
+        $count = 0;
         // foreach ($files as $file) 
         foreach ($filesSorted as $file)
         {
