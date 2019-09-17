@@ -55,7 +55,7 @@ class block_file extends block_base
             $mimeType = $file->get_mimetype();
             echo "<script>console.log('MIME::: ".$mimeType."');</script>";
         }
-        echo "////////////////";
+        echo "<script>console.log('//////////////////');</script>";
 
         $sortingArray =array(
             "SCR+IPA.pdf", 
@@ -90,7 +90,12 @@ class block_file extends block_base
             }
             
         }
-        // var_dump($filesSorted);
+        foreach($filesSorted as $file)
+        {
+            $mimeType = $file->get_mimetype();
+            echo "<script>console.log('MIME::: ".$mimeType."');</script>";
+        }
+        echo "<script>console.log('//////////////////');</script>";
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
 
         $content = null;
