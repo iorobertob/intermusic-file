@@ -75,12 +75,16 @@ class block_file extends block_base
         $filesSorted = [];
         // $newNames = []
 
-        foreach($files as $file)
+        // foreach($files as $file)
+        for($x = 0; $x <= sizeof($sortingArray); $x++)
         {
-            $sortString = explode( "_", $file -> get_filename() );
             
-            for($x = 0; $x <= sizeof($sortingArray); $x++)
+            // for($x = 0; $x <= sizeof($sortingArray); $x++)
+            foreach($files as $file)
             {
+
+                $sortString = explode( "_", $file -> get_filename() );
+
                if ($sortString[1] == $sortingArray[$x])
                {
                     echo "<script>console.log('NAME: ".$sortString[1]."');</script>";
