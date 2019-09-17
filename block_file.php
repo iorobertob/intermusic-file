@@ -52,7 +52,7 @@ class block_file extends block_base
 	    $count = 0;
 
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
-        $sortingArray = {
+        $sortingArray =array(
             "AUD", 
             "IPA",
             "TXT",
@@ -66,7 +66,7 @@ class block_file extends block_base
             "HR",
             "LC",
             "CLC"
-        }
+        )
 
         $filesSorted = []
 
