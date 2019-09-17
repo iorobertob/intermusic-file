@@ -50,7 +50,45 @@ class block_file extends block_base
         $content = null;
 
 	    $count = 0;
-        foreach ($files as $file) 
+
+//////////////////////////// SORTING TABS ALGORITHM /////////////////////////
+        $sortingArray = {
+            "AUD", 
+            "IPA",
+            "TXT",
+            "W2W",
+            "LYR",
+            "RCN",
+            "RCP",
+            "RCS",
+            "SCR",
+            "VID",
+            "HR",
+            "LC",
+            "CLC"
+        }
+
+        $filesSorted = []
+
+
+        foreach($files as $file)
+        {
+            $sortString = explode( "_", $file -> get_filename() )
+            
+            for($x = 0; $x <= sizeof($sortingArray); $x++)
+            {
+               if ($sortString == $sortingArray[$x])
+               {
+                    array_push($filesSorted, $file) ;
+                    break;
+               }
+            }
+            
+        }
+
+////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
+        foreach ($filesSorted as $file)
+        // foreach ($files as $file) 
         {
             if ($count == 0)    
             {
