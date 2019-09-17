@@ -67,8 +67,8 @@ class block_file extends block_base
             "LC",
             "CLC"
         );
-        $filesSorted = []
-        $newNames = []
+        $filesSorted = [];
+        // $newNames = []
 
         foreach($files as $file)
         {
