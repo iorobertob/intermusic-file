@@ -83,6 +83,7 @@ class block_file extends block_base
             {
                if ($sortString[1] == $sortingArray[$x])
                {
+                    echo "<script>console.log('NAME: ".$sortString[1]."');</script>";
                     array_push($filesSorted, $file) ;
                     // array_push($newNames, $sortString)
                     break;
