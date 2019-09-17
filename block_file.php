@@ -53,7 +53,7 @@ class block_file extends block_base
         foreach($files as $file)
         {
             $mimeType = $file->get_mimetype();
-            echo "<script>console.log('MIME::: ".$mimeType."');</script>";
+            echo "<script>console.log('ORIGINAL: ".$mimeType."');</script>";
         }
         echo "<script>console.log('//////////////////');</script>";
 
@@ -93,7 +93,7 @@ class block_file extends block_base
         foreach($filesSorted as $file)
         {
             $mimeType = $file->get_mimetype();
-            echo "<script>console.log('MIME::: ".$mimeType."');</script>";
+            echo "<script>console.log('SORTED: ".$mimeType."');</script>";
         }
         echo "<script>console.log('//////////////////');</script>";
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
