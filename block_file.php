@@ -106,7 +106,7 @@ class block_file extends block_base
                     echo "<script>console.log('INDEX: ".$x."');</script>";
 
                     array_push($filesSorted, $file) ;
-                    array_push($newNames, $sortingArrayStrings[$x])
+                    array_push($newNames, $sortingArrayStrings[$x]);
                     break;
                }
             }
