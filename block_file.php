@@ -143,6 +143,7 @@ class block_file extends block_base
     	    if ($file->is_directory()) 
             {
                 continue;
+                $count += 1;
             }
 
             $filterOptions = new stdClass;
@@ -162,6 +163,7 @@ class block_file extends block_base
 		        // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
                 
                 //$content = format_text($content, FORMAT_HTML, $filterOptions);
+                $count += 1;
                 continue;
                 //break;
             }
@@ -173,6 +175,7 @@ class block_file extends block_base
                 $shortname = $newNames[$count];
                 $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
+                $count += 1;
 		        continue;
             }
 
@@ -183,6 +186,7 @@ class block_file extends block_base
                 $shortname = $newNames[$count];
                 $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
+                $count += 1;
                 continue;
             }
 
@@ -198,6 +202,7 @@ class block_file extends block_base
                 $shortname = $newNames[$count];
                 $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
+                $count += 1;
                 continue;
             }
 
