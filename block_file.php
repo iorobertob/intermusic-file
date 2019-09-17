@@ -87,8 +87,8 @@ class block_file extends block_base
 
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
 
-        // foreach ($files as $file) 
-        foreach ($filesSorted as $file)
+        foreach ($files as $file) 
+        // foreach ($filesSorted as $file)
         {
             if ($count == 0)    
             {
