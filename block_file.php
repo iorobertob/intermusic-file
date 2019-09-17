@@ -71,6 +71,21 @@ class block_file extends block_base
             "HR",
             "LC",
             "CLC");
+
+        $sortingArrayStrings =array(
+            "SCORE", 
+            "TRANSLATION",
+            "WORD-2-WORD",
+            "VIDEO",
+            "AUDIO",
+            "RECITATION",
+            "RECITATION SLOW",
+            "RECITATION PAUSED",
+            "SCR",
+            "VID",
+            "HR",
+            "LC",
+            "CLC");
         $filesSorted = [];
 
         // $newNames = []
@@ -89,8 +104,9 @@ class block_file extends block_base
                {
                     echo "<script>console.log('NAME: ".$sortString[1]."');</script>";
                     echo "<script>console.log('INDEX: ".$x."');</script>";
+
                     array_push($filesSorted, $file) ;
-                    // array_push($newNames, $sortString)
+                    array_push($newNames, $sortingArrayStrings[$x])
                     break;
                }
             }
@@ -140,6 +156,7 @@ class block_file extends block_base
                 //$content = $this->get_content_text_pdf($file, $height);
                 $splitname = explode("_", $file->get_filename() );
                 $shortname = $splitname[1];
+                $shortname = $newNames[$count];
                 $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
 
 		        // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
@@ -153,6 +170,7 @@ class block_file extends block_base
             {
                 $splitname = explode("_", $file->get_filename() );
                 $shortname = $splitname[1];
+                $shortname = $newNames[$count];
                 $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
 		        continue;
@@ -162,6 +180,7 @@ class block_file extends block_base
             {
                 $splitname = explode("_", $file->get_filename() );
                 $shortname = $splitname[1];
+                $shortname = $newNames[$count];
                 $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
                 continue;
@@ -176,6 +195,7 @@ class block_file extends block_base
             {
                 $splitname = explode("_", $file->get_filename() );
                 $shortname = $splitname[1];
+                $shortname = $newNames[$count];
                 $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
                 continue;
