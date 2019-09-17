@@ -70,8 +70,7 @@ class block_file extends block_base
             "VID",
             "HR",
             "LC",
-            "CLC"
-        );
+            "CLC");
         $filesSorted = [];
 
         // $newNames = []
@@ -117,8 +116,8 @@ class block_file extends block_base
         {
             if ($count == 0)    
             {
-                $count += 1;
-                continue;
+                // $count += 1;
+                // continue;
             }
             else
             {
