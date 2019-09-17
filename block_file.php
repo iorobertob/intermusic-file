@@ -132,7 +132,7 @@ class block_file extends block_base
         {
             if ($count == 0)    
             {
-                $count += 1;
+                // $count += 1;
                 // continue;
             }
             else
@@ -203,6 +203,7 @@ class block_file extends block_base
 
             $content = $this->get_content_text_default($file, $height);
             $content = format_text($content, FORMAT_HTML, $filterOptions);
+            $count += 1;
             break;
         }
 
