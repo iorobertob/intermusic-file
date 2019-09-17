@@ -67,7 +67,7 @@ class block_file extends block_base
             "LC",
             "CLC"
         )
-
+        $filesfiels = []
         $filesSorted = []
 
 
