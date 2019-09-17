@@ -67,8 +67,8 @@ class block_file extends block_base
             "LC",
             "CLC"
         );
-        $filesSorted = [];
-
+        $filesSorted = []
+        $newNames = []
 
         foreach($files as $file)
         {
@@ -76,9 +76,10 @@ class block_file extends block_base
             
             for($x = 0; $x <= sizeof($sortingArray); $x++)
             {
-               if ($sortString == $sortingArray[$x])
+               if ($sortString[1] == $sortingArray[$x])
                {
                     array_push($filesSorted, $file) ;
+                    // array_push($newNames, $sortString)
                     break;
                }
             }
