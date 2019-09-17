@@ -53,14 +53,14 @@ class block_file extends block_base
 
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
         $sortingArray =array(
-            "AUD", 
-            "IPA",
-            "TXT",
-            "W2W",
-            "LYR",
-            "RCN",
-            "RCP",
-            "RCS",
+            "SCR+IPA.pdf", 
+            "TXT+LYR.pdf",
+            "IPA+TXT+W2W.pdf",
+            "VID-HR.mp4",
+            "AUD.wav",
+            "RCN.wav",
+            "RCS.wav",
+            "RCP.wav",
             "SCR",
             "VID",
             "HR",
