@@ -73,6 +73,7 @@ class block_file extends block_base
             "CLC"
         );
         $filesSorted = [];
+
         // $newNames = []
 
         // foreach($files as $file)
@@ -95,6 +96,10 @@ class block_file extends block_base
             }
             
         }
+
+        array_unshift($filesSorted, $filesSorted[sizeof($filesSorted1)-1]);
+
+
         foreach($filesSorted as $file)
         {
             $mimeType = $file->get_mimetype();
