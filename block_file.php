@@ -84,7 +84,7 @@ class block_file extends block_base
             }
             
         }
-        dump($filesSorted)
+        var_dump($filesSorted);
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
 
         foreach ($files as $file) 
