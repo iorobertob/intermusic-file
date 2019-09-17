@@ -53,10 +53,10 @@ class block_file extends block_base
         foreach($files as $file)
         {
             $mimeType = $file->get_mimetype();
-            echo "<script>console.log('MIME: ".$mimeType."');</script>";
+            echo "<script>console.log('MIME::: ".$mimeType."');</script>";
         }
         echo "////////////////";
-        
+
         $sortingArray =array(
             "SCR+IPA.pdf", 
             "TXT+LYR.pdf",
