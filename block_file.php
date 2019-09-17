@@ -66,14 +66,13 @@ class block_file extends block_base
             "HR",
             "LC",
             "CLC"
-        )
-        $filesfiels = []
-        $filesSorted = []
+        );
+        $filesSorted = [];
 
 
         foreach($files as $file)
         {
-            $sortString = explode( "_", $file -> get_filename() )
+            $sortString = explode( "_", $file -> get_filename() );
             
             for($x = 0; $x <= sizeof($sortingArray); $x++)
             {
