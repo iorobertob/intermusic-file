@@ -50,13 +50,6 @@ class block_file extends block_base
         
 
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
-        foreach($files as $file)
-        {
-            $mimeType = $file->get_mimetype();
-            echo "<script>console.log('ORIGINAL: ".$mimeType."');</script>";
-        }
-        echo "<script>console.log('//////////////////');</script>";
-
         $sortingArray =array(
             "SCR+IPA.pdf", 
             "TXT+LYR.pdf",
@@ -86,15 +79,13 @@ class block_file extends block_base
             "HR",
             "LC",
             "CLC");
+
         $filesSorted = [];
+        $newNames    = [];
 
-        $newNames = [];
-
-        // foreach($files as $file)
         for($x = 0; $x <= sizeof($sortingArray); $x++)
         {
             
-            // for($x = 0; $x <= sizeof($sortingArray); $x++)
             foreach($files as $file)
             {
 
@@ -102,26 +93,13 @@ class block_file extends block_base
 
                if ($sortString[1] == $sortingArray[$x])
                {
-                    echo "<script>console.log('NAME: ".$sortString[1]."');</script>";
-                    echo "<script>console.log('INDEX: ".$x."');</script>";
-
                     array_push($filesSorted, $file) ;
                     array_push($newNames, $sortingArrayStrings[$x]);
                     break;
                }
             }
-            
         }
 
-        // array_unshift($filesSorted, $filesSorted[sizeof($filesSorted1)-1]);
-
-
-        foreach($filesSorted as $file)
-        {
-            $mimeType = $file->get_mimetype();
-            echo "<script>console.log('SORTED: ".$mimeType."');</script>";
-        }
-        echo "<script>console.log('//////////////////');</script>";
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
 
         $content = null;
@@ -184,7 +162,7 @@ class block_file extends block_base
                 $splitname = explode("_", $file->get_filename() );
                 $shortname = $splitname[1];
                 $shortname = $newNames[$count];
-                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
+                $content .= '{%:'.'<button onclick="stopAllOthers()"> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
                 $count += 1;
                 continue;
@@ -212,6 +190,10 @@ class block_file extends block_base
             break;
         }
 
+        $content .= "<script>
+                        var sounds = document.getElementsByTagName('audio');
+                        for(i=0; i<sounds.length; i++) sounds[i].pause();
+                    </script";
         $content = format_text($content, FORMAT_HTML, $filterOptions);
         $this->content->text = $content ?? get_string('nofileselected', 'block_file');
         return $this->content;
