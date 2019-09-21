@@ -190,10 +190,10 @@ class block_file extends block_base
             break;
         }
 
-        $content .= "<script>
-                        var sounds = document.getElementsByTagName('audio');
-                        for(i=0; i<sounds.length; i++) sounds[i].pause();
-                    </script";
+        // $content .= "<script>
+        //                 var sounds = document.getElementsByTagName('audio');
+        //                 for(i=0; i<sounds.length; i++) sounds[i].pause();
+        //             </script";
         $content = format_text($content, FORMAT_HTML, $filterOptions);
         $this->content->text = $content ?? get_string('nofileselected', 'block_file');
         return $this->content;
