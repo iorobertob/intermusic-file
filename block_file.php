@@ -162,9 +162,7 @@ class block_file extends block_base
                 $splitname = explode("_", $file->get_filename() );
                 $shortname = $splitname[1];
                 $shortname = $newNames[$count];
-                $content .= '{%:'.'<button onclick="function stopAllOthers(){
-                    var sounds = document.getElementsByTagName(\'audio\');
-                    for(i=0; i<sounds.length; i++) sounds[i].pause();}; stopAllOthers()"> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
+                $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause();"> '.'  '.$shortname. '</button>'.'}'.$this->get_content_text_audio($file, $height).'{%}';
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
                 $count += 1;
                 continue;
