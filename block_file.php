@@ -100,6 +100,11 @@ class block_file extends block_base
             }
         }
 
+        foreach($newNames as $name)
+        {
+            echo "<script>console.log('ARRAY i : '+'".$name."');</script>";
+        }
+
         // Add at the end those files that did not match the sorting array
         foreach($files as $file)
         {
@@ -112,10 +117,7 @@ class block_file extends block_base
             }
         }
 
-        foreach($newNames as $name)
-        {
-            echo "<script>console.log('ARRAY : '+'".$name."');</script>";
-        }
+
         
 
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
