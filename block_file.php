@@ -117,7 +117,8 @@ class block_file extends block_base
         foreach($files as $file)
         {
             echo "<script>console.log('FILENAME ' + '".$file->get_filename()."');</script>";
-            echo "<script>console.log('CONDITION ' + '".array_search($file->get_filename(), $sortedOriginalNames)."');</script>";
+            echo "<script>console.log('CONDITION ' + '".array_search($file->get_filename(), $sortedOriginalNames) +1."');</script>";
+
             if((array_search($file->get_filename(), $sortedOriginalNames) == "") && ($file->get_filename()!=".") )
             {
 
