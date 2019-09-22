@@ -144,8 +144,6 @@ class block_file extends block_base
             $filterOptions->noclean = true;
 
             $mimeType = $file->get_mimetype();
-            echo "<script>console.log('MIME: ".$mimeType."');</script>";
-
 
             if ($mimeType === 'application/pdf') {
                 //$content = $this->get_content_text_pdf($file, $height);
