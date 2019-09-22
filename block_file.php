@@ -119,7 +119,7 @@ class block_file extends block_base
             echo "<script>console.log('FILENAME ' + '".$file->get_filename()."');</script>";
             echo "<script>console.log('CONDITION ' + '".array_search($file->get_filename(), $sortedOriginalNames)."');</script>";
 
-            if((array_search($file->get_filename(), $sortedOriginalNames) == "") && ($file->get_filename()!=".") && ($simon != 0)
+            if( (array_search($file->get_filename(), $sortedOriginalNames) == "") && ($file->get_filename()!=".") && ($simon != 0) )
             {
 
                 echo "<script>console.log('INSERTE  NAME ' + '".$file->get_filename()."');</script>";
