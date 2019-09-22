@@ -84,10 +84,6 @@ class block_file extends block_base
         $newNames              = [];
         $sortedOriginalNames   = [];
 
-        foreach($files as $file)
-        {
-            echo "<script>console.log('FILENAMES i : '+'".$file->get_filename()."');</script>";
-        }
 
         for($x = 0; $x <= sizeof($sortingArray); $x++)
         {
@@ -98,9 +94,6 @@ class block_file extends block_base
 
                if ( ($sortString[1] == $sortingArray[$x]) && ($sortString[1] != "") )
                {
-                    echo "<script>console.log('SORT STRING i : '+'".$sortString[1]."');</script>";
-                    echo "<script>console.log('SORTING ARRRAY i : '+'".$sortingArray[$x]."');</script>";
-                    echo "<script>console.log('FILENAME i : '+'".$file -> get_filename()."');</script>";
                     array_push($filesSorted, $file);
                     array_push($newNames, $sortingArrayStrings[$x]);
                     array_push($sortedOriginalNames, $file->get_filename());
@@ -109,28 +102,16 @@ class block_file extends block_base
             }
         }
 
-        foreach($newNames as $name)
-        {
-            echo "<script>console.log('ARRAY i : '+'".$name."');</script>";
-        }
 
         // Add at the end those files that did not match the sorting array
         foreach($files as $file)
         {
-            echo "<script>console.log('ORIGINAL: '+'".$file->get_filename()."');</script>";
             if((!array_search($file->get_filename(), $sortedOriginalNames)) && ($file->get_filename()!=".") )
             {
                 array_push($filesSorted, $file);
                 array_push($newNames, $file->get_filename());
-                echo "<script>console.log('SORTED FILENAME: '+'".$file->get_filename()."');</script>";
             }
         }
-
-        foreach($newNames as $name)
-        {
-            echo "<script>console.log('ARRAY 2 i : '+'".$name."');</script>";
-        }
-        
 
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
 
