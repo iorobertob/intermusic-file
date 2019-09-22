@@ -117,7 +117,10 @@ class block_file extends block_base
             }
         }
 
-
+        foreach($newNames as $name)
+        {
+            echo "<script>console.log('ARRAY 2 i : '+'".$name."');</script>";
+        }
         
 
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
