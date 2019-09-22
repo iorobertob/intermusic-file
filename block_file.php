@@ -83,6 +83,7 @@ class block_file extends block_base
         $filesSorted           = [];
         $newNames              = [];
         $sortedOriginalNames   = [];
+
         for($x = 0; $x <= sizeof($sortingArray); $x++)
         {
             foreach($files as $file)
@@ -92,6 +93,7 @@ class block_file extends block_base
 
                if ($sortString[1] == $sortingArray[$x])
                {
+                    echo "<script>console.log('NAMES i : '+'".$sortString[1]."');</script>";
                     array_push($filesSorted, $file);
                     array_push($newNames, $sortingArrayStrings[$x]);
                     array_push($sortedOriginalNames, $file->get_filename());
