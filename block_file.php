@@ -197,10 +197,10 @@ class block_file extends block_base
                 continue;
             }
 
-            $content = $this->get_content_text_default($file, $height);
-            $content = format_text($content, FORMAT_HTML, $filterOptions);
-            $count += 1;
-            break;
+            // $content = $this->get_content_text_default($file, $height);
+            // $content = format_text($content, FORMAT_HTML, $filterOptions);
+            // $count += 1;
+            // break;
         }
 
         
