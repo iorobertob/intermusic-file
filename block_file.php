@@ -107,6 +107,7 @@ class block_file extends block_base
         // Add at the end those files that did not match the sorting array
         foreach($files as $file)
         {
+            echo "<script>console.log('SORTED ORIGINAL NAME ' + '".$file->get_filename()."');</script>";
             if((!array_search($file->get_filename(), $sortedOriginalNames)) && ($file->get_filename()!=".") )
             {
                 array_push($filesSorted, $file);
@@ -116,7 +117,7 @@ class block_file extends block_base
 
         foreach($newNames as $name)
         {
-            echo "<script>console.log('SORTED ORIGINAL NAME ' + '".$name."');</script>";
+            //
         }
 
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
