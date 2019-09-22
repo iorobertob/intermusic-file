@@ -103,23 +103,26 @@ class block_file extends block_base
         }
 
 
+        foreach($sortedOriginalNames as $name)
+        {
+            echo "<script>console.log('SORTED ORIGINAL NAME ' + '".$name."');</script>";
+        }
+
 
         // Add at the end those files that did not match the sorting array
         foreach($files as $file)
         {
+            echo "<script>console.log('$FILENAME ' + '".$file->get_filename()."');</script>";
 
             if((!array_search($file->get_filename(), $sortedOriginalNames)) && ($file->get_filename()!=".") )
             {
-                echo "<script>console.log('SORTED ORIGINAL NAME ' + '".$file->get_filename()."');</script>";
+                echo "<script>console.log('INSERTE  NAME ' + '".$file->get_filename()."');</script>";
                 array_push($filesSorted, $file);
                 array_push($newNames, $file->get_filename());
             }
         }
 
-        foreach($newNames as $name)
-        {
-            //
-        }
+        
 
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
 
