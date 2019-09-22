@@ -96,7 +96,7 @@ class block_file extends block_base
                 // Splitting the name by "_" 
                 $sortString = explode( "_", $file -> get_filename() );
 
-               if ($sortString[1] == $sortingArray[$x])
+               if ( ($sortString[1] == $sortingArray[$x]) && !is_dir($file) )
                {
                     echo "<script>console.log('NAMES i : '+'".$sortString[1]."');</script>";
                     array_push($filesSorted, $file);
