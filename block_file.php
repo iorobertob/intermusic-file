@@ -112,6 +112,8 @@ class block_file extends block_base
             }
         }
 
+        echo "<script>console.log('ARRAY : '+'".$newNames."');</script>";
+
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
 
         $content = null;
