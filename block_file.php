@@ -102,28 +102,12 @@ class block_file extends block_base
             }
         }
 
-
-        foreach($sortedOriginalNames as $name)
-        {
-            echo "<script>console.log('SORTED ORIGINAL NAME ' + '".$name."');</script>";
-        }
-
-        foreach($newNames as $name)
-        {
-            echo "<script>console.log('NEW NAMES ' + '".$name."');</script>";
-        }
-
         // Add at the end those files that did not match the sorting array
         foreach($files as $file)
         {
-            echo "<script>console.log('FILENAME ' + '".$file->get_filename()."');</script>";
-            echo "<script>console.log('CONDITION ' + '".array_search($file->get_filename(), $sortedOriginalNames)."');</script>";
 
             if( (gettype(array_search($file->get_filename(), $sortedOriginalNames)) != "integer") && ($file->get_filename()!=".") )
             {
-
-                echo "<script>console.log('INSERTE  NAME ' + '".$file->get_filename()."');</script>";
-                echo "<script>console.log('INSERTE  OTHER ' + '".$sortedOriginalNames."');</script>";
                 array_push($filesSorted, $file);
                 array_push($newNames, $file->get_filename());
             }
