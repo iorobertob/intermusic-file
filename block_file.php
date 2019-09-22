@@ -98,7 +98,9 @@ class block_file extends block_base
 
                if ( ($sortString[1] == $sortingArray[$x]) && !is_dir($file) )
                {
-                    echo "<script>console.log('NAMES i : '+'".$sortString[1]."');</script>";
+                    echo "<script>console.log('SORT STRING i : '+'".$sortString[1]."');</script>";
+                    echo "<script>console.log('SORTING ARRRAY i : '+'".$sortingArray[$x]."');</script>";
+                    echo "<script>console.log('FILENAME i : '+'".$file -> get_filename()."');</script>";
                     array_push($filesSorted, $file);
                     array_push($newNames, $sortingArrayStrings[$x]);
                     array_push($sortedOriginalNames, $file->get_filename());
