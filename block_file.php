@@ -108,6 +108,10 @@ class block_file extends block_base
             echo "<script>console.log('SORTED ORIGINAL NAME ' + '".$name."');</script>";
         }
 
+        foreach($newNames as $name)
+        {
+            echo "<script>console.log('NEW NAMES ' + '".$name."');</script>";
+        }
 
         // Add at the end those files that did not match the sorting array
         foreach($files as $file)
