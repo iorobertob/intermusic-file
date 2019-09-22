@@ -84,6 +84,11 @@ class block_file extends block_base
         $newNames              = [];
         $sortedOriginalNames   = [];
 
+        foreach($files as $file)
+        {
+            echo "<script>console.log('FILENAMES i : '+'".$file->get_filename()."');</script>";
+        }
+
         for($x = 0; $x <= sizeof($sortingArray); $x++)
         {
             foreach($files as $file)
