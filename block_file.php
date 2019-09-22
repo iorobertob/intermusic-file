@@ -133,7 +133,7 @@ class block_file extends block_base
     	    if ($file->is_directory()) 
             {
                 continue;
-                $count += 1;
+                // $count += 1;
             }
 
             $filterOptions = new stdClass;
