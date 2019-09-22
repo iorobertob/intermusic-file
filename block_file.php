@@ -104,7 +104,7 @@ class block_file extends block_base
         foreach($files as $file)
         {
             echo "<script>console.log('ORIGINAL: '+'".$file->get_filename()."');</script>";
-            if(!array_search($file->get_filename(), $sortedOriginalNames))
+            if((!array_search($file->get_filename(), $sortedOriginalNames)) && !is_dir($file) )
             {
                 array_push($filesSorted, $file);
                 array_push($newNames, $file->get_filename());
