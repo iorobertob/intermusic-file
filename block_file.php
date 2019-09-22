@@ -87,6 +87,7 @@ class block_file extends block_base
         {
             foreach($files as $file)
             {
+                // Splitting the name by "_" 
                 $sortString = explode( "_", $file -> get_filename() );
 
                if ($sortString[1] == $sortingArray[$x])
@@ -106,6 +107,7 @@ class block_file extends block_base
             if(!array_search($file->get_filename(), $sortedOriginalNames))
             {
                 array_push($filesSorted, $file);
+                array_push($newNames, $file->get_filename());
                 echo "<script>console.log('SORTED FILENAME: '+'".$file->get_filename()."');</script>";
             }
         }
