@@ -44,7 +44,7 @@ class block_file extends block_base
 
         $height = isset($this->config->height) && $this->config->height !== '' ? $this->config->height : null;
 
-        $fs = get_file_storage();
+        $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
 
         
@@ -80,23 +80,31 @@ class block_file extends block_base
             "LC",
             "CLC");
 
-        $filesSorted = [];
-        $newNames    = [];
-
+        $filesSorted           = [];
+        $newNames              = [];
+        $sortedOriginalNames   = [];
         for($x = 0; $x <= sizeof($sortingArray); $x++)
         {
-            
             foreach($files as $file)
             {
-
                 $sortString = explode( "_", $file -> get_filename() );
 
                if ($sortString[1] == $sortingArray[$x])
                {
-                    array_push($filesSorted, $file) ;
+                    array_push($filesSorted, $file);
                     array_push($newNames, $sortingArrayStrings[$x]);
+                    array_push($sortedOriginalNames, $file->get_filename());
                     break;
                }
+            }
+        }
+
+        // Add at the end those files that did not match the sorting array
+        foreach($files as $file)
+        {
+            if(!array_search($file->get_filename(), $sortedOriginalNames))
+            {
+                array_push($filesSorted, $file);
             }
         }
 
