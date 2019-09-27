@@ -15,6 +15,7 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     $parentcontext = $context->get_parent_context();
     echo "<string>console.log('PARENT CONTEXT ');</string>";
     echo "<string>console.log('".$parentcontext->instanceid." ');</string>";
+    $parentcontext->instancename = "POPO";
     // If block is in course context, then check if user has capability to access course.
     if ($context->get_course_context(false)) {
         require_course_login($course);
