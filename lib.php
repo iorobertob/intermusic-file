@@ -17,6 +17,9 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     } else {
         // Get parent context and see if user have proper permission.
         $parentcontext = $context->get_parent_context();
+        echo "<string>console.log('PARENT CONTEXT ');</string>";
+        echo "<string>console.log('".$parentcontext->instanceid." ');</string>";
+
         if ($parentcontext->contextlevel === CONTEXT_COURSECAT) {
             // Check if category is visible and user can view this category.
             $category = $DB->get_record('course_categories', array('id' => $parentcontext->instanceid), '*', MUST_EXIST);
