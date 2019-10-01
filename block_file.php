@@ -273,6 +273,7 @@ class block_file extends block_base
             'controls' => '',
             'style' => $this->build_style_attribute($styles),
             'src' => $this->get_file_url($file),
+            'type'=>"audio/wav",
         ];
         $tag = html_writer::tag('audio', '', $attributes);
         echo "<script>console.log('".$tag."');</script>";
