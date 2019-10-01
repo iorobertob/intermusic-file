@@ -5,17 +5,10 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
 {
     global $DB, $CFG, $USER;
 
-    // echo "<string>console.log('PARENT CONTEXT ');</string>";
-    // echo "<string>console.log('".$parentcontext->instanceid." ');</string>"; 
-    // die;
     if ($context->contextlevel != CONTEXT_BLOCK) {
         send_file_not_found();
     }
 
-    // $parentcontext = $context->get_parent_context();
-    // echo "<string>console.log('PARENT CONTEXT ');</string>";
-    // echo "<string>console.log('".$parentcontext->instanceid." ');</string>";
-    // $parentcontext->instancename = "POPO";
     // If block is in course context, then check if user has capability to access course.
     if ($context->get_course_context(false)) {
         require_course_login($course);
@@ -24,8 +17,6 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     } else {
         // Get parent context and see if user have proper permission.
         $parentcontext = $context->get_parent_context();
-        // echo "<string>console.log('PARENT CONTEXT ');</string>";
-        // echo "<string>console.log('".$parentcontext->instanceid." ');</string>";
 
         if ($parentcontext->contextlevel === CONTEXT_COURSECAT) {
             // Check if category is visible and user can view this category.
