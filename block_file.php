@@ -274,8 +274,9 @@ class block_file extends block_base
             'style' => $this->build_style_attribute($styles),
             'src' => $this->get_file_url($file),
         ];
-
-        return html_writer::tag('audio', '', $attributes);
+        $tag = html_writer::tag('audio', '', $attributes);
+        echo "<script>console.log('".$tag."');</script>";
+        return $tag;
     }
 
     protected function get_content_text_image($file, $height = null)
