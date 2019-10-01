@@ -165,7 +165,11 @@ class block_file extends block_base
                 // $splitname = explode("_", $file->get_filename() );
                 // $shortname = $splitname[1];
                 $shortname = $newNames[$count];
-                $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause();for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause()"> '.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
+
+                $content .= '{%:'.'<button>'.'  '.$shortname.'</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
+
+                // $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause();for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause()"> '.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
+
                 // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
                 $count += 1;
 		        continue;
