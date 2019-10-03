@@ -5,6 +5,18 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
 {
     global $DB, $CFG, $USER;
 
+    $parentcontext = $context->get_parent_context();
+
+    $myfile = fopen("log.txt", "w") or die("Unable to open file!");
+    $txt = "pohui";
+    fwrite($myfile, $txt);
+    $txt = $parentcontext->instanceid;
+    fwrite($myfile, $txt);
+    $txt = $context->instanceid;
+    fwrite($myfile, $txt);
+    fclose($myfile);
+
+
     if ($context->contextlevel != CONTEXT_BLOCK) {
         send_file_not_found();
     }
