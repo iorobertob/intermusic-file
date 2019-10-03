@@ -9,7 +9,7 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
 
     $myfile = fopen("/var/www/intermusic.lmta.lt/blocks/file/log.txt", "w") or die("Unable to open file!");
 
-    $activity_modules = $DB->get_record('modules',array('id' =>$moduleid));
+    $activity_modules = $DB->get_record('course_modules',array('id' =>$moduleid));
     $name = $DB->get_record($activity_modules->name,array('id' =>$instanceid));
 
     $txt = $parentcontext->instanceid;
