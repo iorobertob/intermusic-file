@@ -11,9 +11,9 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
 
     $txt = $parentcontext->instanceid;
     fwrite($myfile, $txt."\n") or die('fwrite failed');
-    $txt = $context->instanceid;
+    $txt = $context->id;
     fwrite($myfile, $txt."\n") or die('fwrite failed');
-    $txt = $birecord_or_cm->instanceid;
+    $txt = $birecord_or_cm->id;
     fwrite($myfile, $txt."\n") or die('fwrite failed');
     fclose($myfile);
 
