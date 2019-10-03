@@ -20,7 +20,7 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     $txt = $birecord_or_cm->id;
     fwrite($myfile, $txt."\n") or die('fwrite failed');
     $txt = $birecord_or_cm->id;
-    fwrite($myfile, strval($instance)."\n") or die('fwrite failed');
+    fwrite($myfile, $instance."\n") or die('fwrite failed');
     fclose($myfile);
 
 
