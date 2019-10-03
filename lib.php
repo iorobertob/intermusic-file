@@ -8,12 +8,11 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     $parentcontext = $context->get_parent_context();
 
     $myfile = fopen("/var/www/intermusic.lmta.lt/blocks/file/log.txt", "w") or die("Unable to open file!");
-    $txt = "pohui";
-    fwrite($myfile, $txt) or die('fwrite failed');
+
     $txt = $parentcontext->instanceid;
-    fwrite($myfile, $txt) or die('fwrite failed');
+    fwrite($myfile, $txt."\n") or die('fwrite failed');
     $txt = $context->instanceid;
-    fwrite($myfile, $txt) or die('fwrite failed');
+    fwrite($myfile, $txt."\n") or die('fwrite failed');
     fclose($myfile);
 
 
