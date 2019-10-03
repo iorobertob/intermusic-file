@@ -9,12 +9,9 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
 
     $myfile = fopen("/var/www/intermusic.lmta.lt/blocks/file/log.txt", "w") or die("Unable to open file!");
 
-    $activity_modules = $DB->get_record('course_modules',array('id' =>$moduleid));
-    // $name = $DB->get_record($activity_modules->name,array('id' =>$instanceid));
-    print_r($activity_modules);
-    $instance = $activity_modules->instance;
-
-    $name = $birecord_or_cm->name;
+    $activity_modules = $DB->get_record('course_modules',array('id' =>$parentcontext->instanceid));
+    $names = $DB->get_record('poster',array('id' =>$activity_modules->instance));
+    $nameinstance = $names->name;
 
     $txt = $parentcontext->instanceid;
     fwrite($myfile, $txt."\n") or die('fwrite failed');
@@ -22,7 +19,7 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     fwrite($myfile, $txt."\n") or die('fwrite failed');
     $txt = $birecord_or_cm->id;
     fwrite($myfile, $txt."\n") or die('fwrite failed');
-    $txt = $name;
+    $txt = $nameinstance;
     fwrite($myfile, $txt."\n") or die('fwrite failed');
     fclose($myfile);
 
