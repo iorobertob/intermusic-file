@@ -8,7 +8,7 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     $parentcontext = $context->get_parent_context();
         echo "<string>console.log('PARENT CONTEXT ');</string>";
         echo "<string>console.log('".$parentcontext->instanceid." ');</string>";
-        die;
+        // die;
 
     if ($context->contextlevel != CONTEXT_BLOCK) {
         send_file_not_found();
