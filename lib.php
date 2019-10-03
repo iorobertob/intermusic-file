@@ -14,14 +14,16 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     print_r($activity_modules);
     $instance = $activity_modules->instance;
 
+    $name = $birecord_or_cm->name;
+
     $txt = $parentcontext->instanceid;
     fwrite($myfile, $txt."\n") or die('fwrite failed');
     $txt = $context->id;
     fwrite($myfile, $txt."\n") or die('fwrite failed');
     $txt = $birecord_or_cm->id;
     fwrite($myfile, $txt."\n") or die('fwrite failed');
-    $txt = $birecord_or_cm->id;
-    fwrite($myfile, $instance."\n") or die('fwrite failed');
+    $txt = $name;
+    fwrite($myfile, $txt."\n") or die('fwrite failed');
     fclose($myfile);
 
 
