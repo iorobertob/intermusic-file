@@ -11,6 +11,7 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
 
     $activity_modules = $DB->get_record('course_modules',array('id' =>$moduleid));
     // $name = $DB->get_record($activity_modules->name,array('id' =>$instanceid));
+    print_r($activity_modules);
     $instance = $activity_modules->instance;
 
     $txt = $parentcontext->instanceid;
