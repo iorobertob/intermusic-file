@@ -47,8 +47,6 @@ class block_file extends block_base
         $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
 
-        
-
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
         $sortingArray =array(
             "SCR+IPA.pdf", 
@@ -83,7 +81,6 @@ class block_file extends block_base
         $filesSorted           = [];
         $newNames              = [];
         $sortedOriginalNames   = [];
-
 
         for($x = 0; $x <= sizeof($sortingArray); $x++)
         {
