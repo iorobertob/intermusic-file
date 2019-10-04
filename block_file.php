@@ -62,21 +62,6 @@ class block_file extends block_base
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
 
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
-        // $sortingArray =array(
-        //     "SCR+IPA.pdf", 
-        //     "TXT+LYR.pdf",
-        //     "IPA+TXT+W2W.pdf",
-        //     "VID-HR.mp4",
-        //     "AUD.wav",
-        //     "RCN.wav",
-        //     "RCS.wav",
-        //     "RCP.wav",
-        //     "SCR",
-        //     "VID",
-        //     "HR",
-        //     "LC",
-        //     "CLC");
-        
         $sortingArray =array(
             "WORD2",
             "RECIT",
@@ -84,21 +69,6 @@ class block_file extends block_base
             "TRANS",
             "AUDIO",
             "VIDEO");
-
-        // $sortingArrayStrings =array(
-        //     "SCORE", 
-        //     "TRANSLATION",
-        //     "WORD-2-WORD",
-        //     "VIDEO",
-        //     "AUDIO",
-        //     "RECITATION",
-        //     "RECITATION SLOW",
-        //     "RECITATION PAUSED",
-        //     "SCR",
-        //     "VID",
-        //     "HR",
-        //     "LC",
-        //     "CLC");
 
         $filesSorted           = [];
         $newNames              = [];
@@ -131,9 +101,6 @@ class block_file extends block_base
                 array_push($newNames, $file->get_filename());
             }
         }
-
-        
-
 ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
 
         $content = null;
@@ -163,43 +130,27 @@ class block_file extends block_base
             $filterOptions->noclean = true;
 
             $mimeType = $file->get_mimetype();
-            if ($mimeType === 'application/pdf') {
-                //$content = $this->get_content_text_pdf($file, $height);
-                // $splitname = explode("_", $file->get_filename() );
-                // $shortname = $splitname[1];
+            if ($mimeType === 'application/pdf') 
+            {
                 $shortname = $newNames[$count];
                 $content .= '{%:'.'<button>'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_pdf($file, $height).'{%}';
-
-		        // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_pdf($file, $height).'{%}';
-                
-                //$content = format_text($content, FORMAT_HTML, $filterOptions);
                 $count += 1;
                 continue;
-                //break;
             }
 
             if (substr($mimeType, 0, 5) === 'video') 
             {
-                // $splitname = explode("_", $file->get_filename() );
-                // $shortname = $splitname[1];
                 $shortname = $newNames[$count];
-
-                $content .= '{%:'.'<button>'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
-
-                // $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause();for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause()"> '.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
-
-                // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_video($file, $height).'{%}';
+                // $content .= '{%:'.'<button>'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
+                $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause();for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause()">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
                 $count += 1;
 		        continue;
             }
 
             if (substr($mimeType, 0, 5) === 'audio') 
             {
-                // $splitname = explode("_", $file->get_filename() );
-                // $shortname = $splitname[1];
                 $shortname = $newNames[$count];
                 $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause();for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause()">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_audio($file, $height).'{%}';
-                // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_audio($file, $height).'{%}';
                 $count += 1;
                 continue;
             }
@@ -211,29 +162,14 @@ class block_file extends block_base
                 'image/svg+xml',
             ])) 
             {
-                // $splitname = explode("_", $file->get_filename() );
-                // $shortname = $splitname[1];
                 $shortname = $newNames[$count];
                 $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
-                // $content .= '{%:'.'<button> '.'  '.$file->get_filename(). '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
                 $count += 1;
                 continue;
             }
-
-            // $content = $this->get_content_text_default($file, $height);
-            // $content = format_text($content, FORMAT_HTML, $filterOptions);
-            // $count += 1;
-            // break;
         }
 
-        
         $content = format_text($content, FORMAT_HTML, $filterOptions);
-        // $content .= "<script>
-        //                 function stopAllOthers() {
-        //                     var sounds = document.getElementsByTagName('audio');
-        //                     for(i=0; i<sounds.length; i++) sounds[i].pause();
-        //                 }
-        //             </script";
         $this->content->text = $content ?? get_string('nofileselected', 'block_file');
         return $this->content;
     }
