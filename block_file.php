@@ -30,6 +30,8 @@ class block_file extends block_base
     {
         $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
 
+        // TODO: here to implement the autopopulation of metadata, from files' metadata
+        
         return parent::instance_config_save($data, $nolongerused);
     }
 
@@ -64,9 +66,7 @@ class block_file extends block_base
         //     "CLC");
         
         $sortingArray =array(
-            "WORD-",
-            "RECIT",
-            "RECIT",
+            "WORD2",
             "RECIT",
             "SCORE",
             "TRANS",
@@ -105,7 +105,7 @@ class block_file extends block_base
                     array_push($filesSorted, $file);
                     array_push($newNames, explode( ".", $sortString[2])[0] ); // Getting rid of the extension 
                     array_push($sortedOriginalNames, $file->get_filename());
-                    break;
+                    // break;
                }
             }
         }
