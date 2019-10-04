@@ -48,35 +48,45 @@ class block_file extends block_base
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
 
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
+        // $sortingArray =array(
+        //     "SCR+IPA.pdf", 
+        //     "TXT+LYR.pdf",
+        //     "IPA+TXT+W2W.pdf",
+        //     "VID-HR.mp4",
+        //     "AUD.wav",
+        //     "RCN.wav",
+        //     "RCS.wav",
+        //     "RCP.wav",
+        //     "SCR",
+        //     "VID",
+        //     "HR",
+        //     "LC",
+        //     "CLC");
+        
         $sortingArray =array(
-            "SCR+IPA.pdf", 
-            "TXT+LYR.pdf",
-            "IPA+TXT+W2W.pdf",
-            "VID-HR.mp4",
-            "AUD.wav",
-            "RCN.wav",
-            "RCS.wav",
-            "RCP.wav",
-            "SCR",
-            "VID",
-            "HR",
-            "LC",
-            "CLC");
-
-        $sortingArrayStrings =array(
-            "SCORE", 
-            "TRANSLATION",
-            "WORD-2-WORD",
-            "VIDEO",
+            "WORD-",
+            "RECIT",
+            "RECIT",
+            "RECIT",
+            "SCORE",
+            "TRANS",
             "AUDIO",
-            "RECITATION",
-            "RECITATION SLOW",
-            "RECITATION PAUSED",
-            "SCR",
-            "VID",
-            "HR",
-            "LC",
-            "CLC");
+            "VIDEO");
+
+        // $sortingArrayStrings =array(
+        //     "SCORE", 
+        //     "TRANSLATION",
+        //     "WORD-2-WORD",
+        //     "VIDEO",
+        //     "AUDIO",
+        //     "RECITATION",
+        //     "RECITATION SLOW",
+        //     "RECITATION PAUSED",
+        //     "SCR",
+        //     "VID",
+        //     "HR",
+        //     "LC",
+        //     "CLC");
 
         $filesSorted           = [];
         $newNames              = [];
@@ -87,12 +97,13 @@ class block_file extends block_base
             foreach($files as $file)
             {
                 // Splitting the name by "_" 
-                $sortString = explode( "_", $file -> get_filename() );
+                $sortString      = explode( "_", $file -> get_filename() );
+                $stringToCompare = substr($sortString[2], 0, 5);
 
-               if ( ($sortString[1] == $sortingArray[$x]) && ($sortString[1] != "") )
+               if ( ($stringToCompare == $sortingArray[$x]) && ($stringToCompare != "") )
                {
                     array_push($filesSorted, $file);
-                    array_push($newNames, $sortingArrayStrings[$x]);
+                    array_push($newNames, explode( ".", $sortString[2])[0] ); // Getting rid of the extension 
                     array_push($sortedOriginalNames, $file->get_filename());
                     break;
                }
