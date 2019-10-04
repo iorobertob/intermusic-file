@@ -37,6 +37,7 @@ class block_file extends block_base
             // Add at the end those files that did not match the sorting array
             foreach($files as $file)
             {
+                echo "<script>console.log('".$file -> get_filename()."');</script>";
                 echo $file -> get_filename();
             }
 
