@@ -52,7 +52,7 @@ class block_file extends block_base
         $i = 0;
         foreach ($data as $item)
         {
-            file_print($item);
+            file_print($i);
             $i = $i + 1;
         }
             // Add at the end those files that did not match the sorting array
