@@ -53,7 +53,7 @@ class block_file extends block_base
             {
                 echo "<script>console.log('".$file -> get_filename()."');</script>";
                 echo $file -> get_filename();
-                // file_print($file -> get_filename());
+                file_print($file -> get_filename());
             }
 
         
