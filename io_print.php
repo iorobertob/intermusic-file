@@ -1,6 +1,6 @@
 <?php
 
-function block_print($text)
+function file_print($text)
 {
     global $CFG, $DB;
 
