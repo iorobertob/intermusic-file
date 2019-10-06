@@ -1,6 +1,6 @@
 <?php
 
-include 'io_print.php';
+// include 'io_print.php';
 
 // This function is copied and adapted from block_html and should be reviewed.
 // Although it works, it might be better to adapt the one from https://docs.moodle.org/dev/File_API#Serving_files_to_users.
@@ -27,8 +27,8 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     // $txt = $nameinstance;
     // fwrite($myfile, $txt."\n") or die('fwrite failed');
     // fclose($myfile);
-    // file_print('NEW WAY OF PRINTING: \n');
-    // file_print($nameinstance);
+    file_print('NEW WAY OF PRINTING: \n');
+    file_print($nameinstance);
 
 
     if ($context->contextlevel != CONTEXT_BLOCK) {
