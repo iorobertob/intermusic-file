@@ -8,6 +8,8 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
 {
     global $DB, $CFG, $USER;
 
+    require_once("$CFG->dirroot/moblocksd/intfileer/io_print.php");
+
     $parentcontext = $context->get_parent_context();
 
     // $myfile = fopen("/var/www/intermusic.lmta.lt/blocks/file/log.txt", "w") or die("Unable to open file!");
@@ -25,8 +27,8 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     // $txt = $nameinstance;
     // fwrite($myfile, $txt."\n") or die('fwrite failed');
     // fclose($myfile);
-    // file_print('NEW WAY OF PRINTING: \n');
-    // file_print($nameinstance);
+    file_print('NEW WAY OF PRINTING: \n');
+    file_print($nameinstance);
 
 
     if ($context->contextlevel != CONTEXT_BLOCK) {
