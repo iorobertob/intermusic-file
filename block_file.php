@@ -49,10 +49,11 @@ class block_file extends block_base
         // file_print("LOLOLOLO");
         // file_print($data->select_file);
         $files    = $data->select_file;
-
+        $i = 0;
         foreach ($data as $item)
         {
             file_print($item);
+            $i = $i + 1;
         }
             // Add at the end those files that did not match the sorting array
             foreach($files as $file)
