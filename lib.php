@@ -31,8 +31,8 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     // $txt = $nameinstance;
     // fwrite($myfile, $txt."\n") or die('fwrite failed');
     // fclose($myfile);
-    file_print('NEW WAY OF PRINTING: \n');
-    file_print($nameinstance);
+    // file_print('NEW WAY OF PRINTING: \n');
+    // file_print($nameinstance);
 
 
     if ($context->contextlevel != CONTEXT_BLOCK) {
