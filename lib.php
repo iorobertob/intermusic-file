@@ -1,4 +1,7 @@
 <?php
+
+include 'io_print.php';
+
 // This function is copied and adapted from block_html and should be reviewed.
 // Although it works, it might be better to adapt the one from https://docs.moodle.org/dev/File_API#Serving_files_to_users.
 function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $args, $forcedownload, array $options = array())
@@ -9,9 +12,9 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
 
     // $myfile = fopen("/var/www/intermusic.lmta.lt/blocks/file/log.txt", "w") or die("Unable to open file!");
 
-    // $activity_modules = $DB->get_record('course_modules',array('id' =>$parentcontext->instanceid));
-    // $names = $DB->get_record('poster',array('id' =>$activity_modules->instance));
-    // $nameinstance = $names->name;
+    $activity_modules = $DB->get_record('course_modules',array('id' =>$parentcontext->instanceid));
+    $names = $DB->get_record('poster',array('id' =>$activity_modules->instance));
+    $nameinstance = $names->name;
 
     // $txt = $parentcontext->instanceid;
     // fwrite($myfile, $txt."\n") or die('fwrite failed');
@@ -22,6 +25,8 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     // $txt = $nameinstance;
     // fwrite($myfile, $txt."\n") or die('fwrite failed');
     // fclose($myfile);
+    file_print('NEW WAY OF PRINTING: \n');
+    file_print($nameinstance);
 
 
     if ($context->contextlevel != CONTEXT_BLOCK) {
