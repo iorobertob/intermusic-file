@@ -10,7 +10,9 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     global $DB, $CFG, $USER;
 
     // require_once($CFG->dirroot."/blocks/file/io_print.php");
-    require_once "io_print.php";
+    // require_once "io_print.php";
+
+    require_once("$CFG->dirroot/blocks/file/io_print.php");
     
     $parentcontext = $context->get_parent_context();
 
