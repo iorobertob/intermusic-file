@@ -1,7 +1,7 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-include 'io_print.php';
+// include 'io_print.php';
 
 class block_file extends block_base
 {
