@@ -8,7 +8,7 @@ function file_print($txt, $overwrite = false)
 
     if ($overwrite)
     {
-        $myfile = fopen($CFG->wwwroot."/blocks/file/log.txt", "w") or die("Unable to open file!"); 
+        $myfile = fopen("$CFG->dirroot/blocks/file/log.txt", "w") or die("Unable to open file!"); 
     }
     else
     {
