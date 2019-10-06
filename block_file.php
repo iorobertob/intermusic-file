@@ -40,9 +40,7 @@ class block_file extends block_base
                 echo "<script>console.log('".$file -> get_filename()."');</script>";
                 echo $file -> get_filename();
             }
-
         }
-        
         
         return parent::instance_config_save($data, $nolongerused);
     }
@@ -63,12 +61,12 @@ class block_file extends block_base
 
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
         $sortingArray =array(
-            "WORD2",
-            "RECIT",
             "SCORE",
             "TRANS",
+            "WORD2",
+            "VIDEO",
             "AUDIO",
-            "VIDEO");
+            "RECIT");
 
         $filesSorted           = [];
         $newNames              = [];
@@ -141,7 +139,6 @@ class block_file extends block_base
             if (substr($mimeType, 0, 5) === 'video') 
             {
                 $shortname = $newNames[$count];
-                // $content .= '{%:'.'<button>'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
                 $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause();for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause()">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
                 $count += 1;
 		        continue;
