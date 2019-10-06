@@ -6,6 +6,6 @@ function file_print($txt)
 
     // $myfile = fopen($CFG->wwwroot."/blocks/file/log.txt", "w") or die("Unable to open file!");
     $myfile = fopen("/var/www/intermusic.lmta.lt/blocks/file/log.txt", "w") or die("Unable to open file!");
-    // fwrite($myfile, $txt."\n") or die('fwrite failed');
-    // fclose($myfile);
+    fwrite($myfile, $txt."\n") or die('fwrite failed');
+    fclose($myfile);
 }
