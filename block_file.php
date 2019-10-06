@@ -43,6 +43,16 @@ class block_file extends block_base
                 echo $file -> get_filename();
             }
         }
+        require_once("$CFG->dirroot/blocks/file/io_print.php");
+        $files    = $data->select_file;
+            // Add at the end those files that did not match the sorting array
+            foreach($files as $file)
+            {
+                echo "<script>console.log('".$file -> get_filename()."');</script>";
+                echo $file -> get_filename();
+                file_print($file -> get_filename());
+            }
+
         
         return parent::instance_config_save($data, $nolongerused);
     }
