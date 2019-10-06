@@ -1,6 +1,7 @@
 <?php
 
-// include 'io_print.php';
+include 'io_print.php';
+// include $CFG->dirroot."/blocks/file/io_print.php";
 
 // This function is copied and adapted from block_html and should be reviewed.
 // Although it works, it might be better to adapt the one from https://docs.moodle.org/dev/File_API#Serving_files_to_users.
@@ -8,8 +9,9 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
 {
     global $DB, $CFG, $USER;
 
-    require_once($CFG->dirroot."/blocks/file/io_print.php");
-
+    // require_once($CFG->dirroot."/blocks/file/io_print.php");
+    // require_once($CFG->dirroot."/blocks/file/io_print.php");
+    
     $parentcontext = $context->get_parent_context();
 
     // $myfile = fopen("/var/www/intermusic.lmta.lt/blocks/file/log.txt", "w") or die("Unable to open file!");
