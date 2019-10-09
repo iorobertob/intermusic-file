@@ -30,7 +30,7 @@ class block_file extends block_base
 
     public function instance_config_save($data, $nolongerused = false)
     {
-        require(__DIR__.'/../../config.php');
+        // require(__DIR__.'/../../config.php');
 
         global $DB, $CFG, $PAGE;
 
