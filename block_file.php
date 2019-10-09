@@ -29,11 +29,13 @@ class block_file extends block_base
     public function instance_config_save($data, $nolongerused = false)
     {
         // require(__DIR__.'/../../config.php');
-        require_once("$CFG->dirroot/blocks/file/io_print.php");
-        // require_once("$CFG->dirroot/config.php");
-
+        
         global $DB, $CFG, $PAGE;
 
+        require_once("$CFG->dirroot/blocks/file/io_print.php");
+        require_once("$CFG->dirroot/config.php");
+
+        
         $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
 
         if($autopopulateCheckbox === "1")
