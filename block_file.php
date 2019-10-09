@@ -51,6 +51,7 @@ class block_file extends block_base
 
         // $contextid = context_course::instance($courseid);
         $courseid = $PAGE->course->id;
+        $courseid  = optional_param('course', null, PARAM_INT);
         file_print("\n CONTEXT: \n", true);
         file_print($contextid);
 
