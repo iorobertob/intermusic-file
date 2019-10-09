@@ -9,17 +9,13 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
 {
     global $DB, $CFG, $USER;
 
-    // require_once($CFG->dirroot."/blocks/file/io_print.php");
-    // require_once "io_print.php";
-
     require_once("$CFG->dirroot/blocks/file/io_print.php");
     
     $parentcontext = $context->get_parent_context();
-
-    // $myfile = fopen("/var/www/intermusic.lmta.lt/blocks/file/log.txt", "w") or die("Unable to open file!");
-
-    $activity_modules = $DB->get_record('course_modules',array('id' =>$parentcontext->instanceid));
-    $names = $DB->get_record('poster',array('id' =>$activity_modules->instance));
+    file_print('COURSE ID:', true);
+    file_print($parentcontext->instanceid);
+    $activity_modules = $DB->get_record('course_modules',array('id' =>$parentcontext->instanceid));// get all modules where the course is the current course
+    $names = $DB->get_record('poster',array('id' =>$activity_modules->instance)); // get the name of the module instance 
     $nameinstance = $names->name;
 
     if ($context->contextlevel != CONTEXT_BLOCK) {
@@ -64,7 +60,7 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     if ($parentcontext = context::instance_by_id($birecord_or_cm->parentcontextid, IGNORE_MISSING)) {
         if ($parentcontext->contextlevel == CONTEXT_USER) {
             // force download on all personal pages including /my/
-            //because we do not have reliable way to find out from where this is used
+            // because we do not have reliable way to find out from where this is used
             $forcedownload = true;
         }
     } else {
