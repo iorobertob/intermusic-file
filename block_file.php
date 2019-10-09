@@ -47,7 +47,8 @@ class block_file extends block_base
         file_print(gettype($files));
         file_print(sizeof($files));
         file_print("NEXT: \n");
-        // file_print(var_dump($files));
+        $keys = array_keys($files);
+        file_print($files[$keys[1]] -> get_filename());
         // die;
         foreach($files as $file)
         {
