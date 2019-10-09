@@ -47,9 +47,9 @@ class block_file extends block_base
         $keys = array_keys($files);
         file_print($files[$keys[1]] -> get_filename());
 
-        $contextid = context_course::instance($courseid);
-        file_print("\n CONTEXT: \n");
-        file_print($contextid);
+        // $contextid = context_course::instance($courseid);
+        // file_print("\n CONTEXT: \n");
+        // file_print($contextid);
         
 
         return parent::instance_config_save($data, $nolongerused);
