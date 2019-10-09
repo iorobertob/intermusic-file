@@ -35,7 +35,7 @@ class block_file extends block_base
         require_once("$CFG->dirroot/blocks/file/io_print.php");
         require_once("$CFG->dirroot/config.php");
 
-        
+
         $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
 
         if($autopopulateCheckbox === "1")
@@ -52,9 +52,12 @@ class block_file extends block_base
 
         // $contextid = context_course::instance($courseid);
         $courseid = $PAGE->course->id;
+        $context = $PAGE->context;
         // $courseid  = optional_param('course', null, PARAM_INT);
         file_print("\n CONTEXT: \n", true);
-        file_print($contextid);
+        file_print($context->id);
+        file_print("\n EMPTY LINE \n");
+        file_print($context->instanceid);
 
         return parent::instance_config_save($data, $nolongerused);
     }
