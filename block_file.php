@@ -50,7 +50,7 @@ class block_file extends block_base
             // echo $file -> get_filename();
             file_print($file -> get_filename());
         }
-        file_print($files[1]->get_filename());
+        // file_print($files[1]->get_filename());
 
         return parent::instance_config_save($data, $nolongerused);
     }
