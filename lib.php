@@ -18,7 +18,7 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     $names = $DB->get_record('poster',array('id' =>$activity_modules->instance)); // get the name of the module instance 
     $nameinstance = $names->name;
 
-    $DB->set_field('poster', 'author', 'Roberto LMTA', array('name' => $nameinstance ));
+    // $DB->set_field('poster', 'author', 'Roberto LMTA', array('name' => $nameinstance ));
 
     if ($context->contextlevel != CONTEXT_BLOCK) {
         send_file_not_found();

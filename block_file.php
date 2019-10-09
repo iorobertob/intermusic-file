@@ -40,22 +40,16 @@ class block_file extends block_base
         }
 
         require_once("$CFG->dirroot/blocks/file/io_print.php");
-        file_print("DEBUG: \n", true);
         $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
+
         // Add at the end those files that did not match the sorting array
-        file_print(gettype($files));
-        file_print(sizeof($files));
-        file_print("NEXT: \n");
         $keys = array_keys($files);
         file_print($files[$keys[1]] -> get_filename());
-        // die;
-        foreach($files as $file)
-        {
-            // echo "<script>console.log('".$file -> get_filename()."');</script>";
-            // echo $file -> get_filename();
-            file_print($file -> get_filename());
-        }
+
+        $contextid = context_course::instance($courseid);
+        file_print("\n CONTEXT: \n");
+        file_print($contextid);
         
 
         return parent::instance_config_save($data, $nolongerused);
