@@ -37,32 +37,20 @@ class block_file extends block_base
         if($autopopulateCheckbox === "1")
         {
             // TODO: here to implement the autopopulation of metadata, from files' metadata
-            $files    = $data->select_file;
-            // Add at the end those files that did not match the sorting array
-            foreach($files as $file)
-            {
-                echo "<script>console.log('".$file -> get_filename()."');</script>";
-                echo $file -> get_filename();
-            }
         }
+
         require_once("$CFG->dirroot/blocks/file/io_print.php");
         file_print("DEBUG: \n", true);
-        // file_print($data->select_file);
         $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
-            // Add at the end those files that did not match the sorting array
+        // Add at the end those files that did not match the sorting array
         foreach($files as $file)
         {
             // echo "<script>console.log('".$file -> get_filename()."');</script>";
             // echo $file -> get_filename();
             file_print($file -> get_filename());
         }
-
-
-
-
-
-
+        file_print($files[sizeof($files)-1]->get_filename());
 
         return parent::instance_config_save($data, $nolongerused);
     }

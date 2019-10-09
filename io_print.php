@@ -12,7 +12,7 @@ function file_print($txt, $overwrite = false)
     }
     else
     {
-        $myfile = fopen("/var/www/intermusic.lmta.lt/blocks/file/log.txt", "a+") or die("Unable to open file!");
+        $myfile = fopen("$CFG->dirroot/blocks/file/log.txt", "a+") or die("Unable to open file!");
     }
 
     fwrite($myfile, $txt."\n") or die('fwrite failed');

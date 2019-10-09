@@ -22,19 +22,6 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     $names = $DB->get_record('poster',array('id' =>$activity_modules->instance));
     $nameinstance = $names->name;
 
-    // $txt = $parentcontext->instanceid;
-    // fwrite($myfile, $txt."\n") or die('fwrite failed');
-    // $txt = $context->id;
-    // fwrite($myfile, $txt."\n") or die('fwrite failed');
-    // $txt = $birecord_or_cm->id;
-    // fwrite($myfile, $txt."\n") or die('fwrite failed');
-    // $txt = $nameinstance;
-    // fwrite($myfile, $txt."\n") or die('fwrite failed');
-    // fclose($myfile);
-    // file_print('NEW WAY OF PRINTING: \n');
-    // file_print($nameinstance);
-
-
     if ($context->contextlevel != CONTEXT_BLOCK) {
         send_file_not_found();
     }
