@@ -1,7 +1,7 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-// include 'io_print.php';
+require(__DIR__.'/../../config.php');
 
 class block_file extends block_base
 {
@@ -51,7 +51,7 @@ class block_file extends block_base
 
         // $contextid = context_course::instance($courseid);
         $courseid = $PAGE->course->id;
-        $courseid  = optional_param('course', null, PARAM_INT);
+        // $courseid  = optional_param('course', null, PARAM_INT);
         file_print("\n CONTEXT: \n", true);
         file_print($contextid);
 
