@@ -1,8 +1,6 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-require(__DIR__.'/../../config.php');
-
 class block_file extends block_base
 {
 
@@ -31,6 +29,8 @@ class block_file extends block_base
     public function instance_config_save($data, $nolongerused = false)
     {
         // require(__DIR__.'/../../config.php');
+        require_once("$CFG->dirroot/blocks/file/io_print.php");
+        require_once("$CFG->dirroot/config.php");
 
         global $DB, $CFG, $PAGE;
 
@@ -41,7 +41,6 @@ class block_file extends block_base
             // TODO: here to implement the autopopulation of metadata, from files' metadata
         }
 
-        require_once("$CFG->dirroot/blocks/file/io_print.php");
         $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
 
