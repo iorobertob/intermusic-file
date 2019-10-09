@@ -47,6 +47,7 @@ class block_file extends block_base
         file_print(gettype($files));
         file_print(sizeof($files));
         file_print("NEXT: \n");
+        file_print($files{1} -> get_filename());
         foreach($files as $file)
         {
             // echo "<script>console.log('".$file -> get_filename()."');</script>";
