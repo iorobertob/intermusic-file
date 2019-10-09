@@ -30,7 +30,9 @@ class block_file extends block_base
 
     public function instance_config_save($data, $nolongerused = false)
     {
-        global $DB, $CFG;
+        require(__DIR__.'/../../config.php');
+
+        global $DB, $CFG, $PAGE;
 
         $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
 
