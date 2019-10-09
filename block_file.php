@@ -44,13 +44,15 @@ class block_file extends block_base
         $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
         // Add at the end those files that did not match the sorting array
+        file_print($files[1]->get_filename());
+        file_print('NEXT:\n');
         foreach($files as $file)
         {
             // echo "<script>console.log('".$file -> get_filename()."');</script>";
             // echo $file -> get_filename();
             file_print($file -> get_filename());
         }
-        // file_print($files[1]->get_filename());
+        
 
         return parent::instance_config_save($data, $nolongerused);
     }
