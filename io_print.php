@@ -6,9 +6,7 @@ function file_print($txt, $overwrite = false)
 
     $path = "$CFG->dirroot/blocks/file/log.txt";
 
-
     $f = ((file_exists($path))? fopen($path, "a+") : fopen($path, "w+"));
-
 
     if ($overwrite)
     {
