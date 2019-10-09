@@ -11,8 +11,8 @@ function block_file_pluginfile($course, $birecord_or_cm, $context, $filearea, $a
     // require(__DIR__.'/../../config.php');
     
     $parentcontext = $context->get_parent_context();
-    file_print('COURSE ID:', true);
-    file_print($parentcontext->instanceid);
+    // file_print('COURSE ID:', true);
+    // file_print($parentcontext->instanceid);
     $activity_modules = $DB->get_record('course_modules',array('id' =>$parentcontext->instanceid));// get all modules where the course is the current course
     $names = $DB->get_record('poster',array('id' =>$activity_modules->instance)); // get the name of the module instance 
     $nameinstance = $names->name;

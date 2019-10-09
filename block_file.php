@@ -51,7 +51,7 @@ class block_file extends block_base
 
         // $contextid = context_course::instance($courseid);
         $courseid = $PAGE->course->id;
-        file_print("\n CONTEXT: \n");
+        file_print("\n CONTEXT: \n", true);
         file_print($contextid);
 
         return parent::instance_config_save($data, $nolongerused);
