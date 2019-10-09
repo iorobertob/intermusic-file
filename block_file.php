@@ -30,7 +30,7 @@ class block_file extends block_base
     {
         // require(__DIR__.'/../../config.php');
         require_once("$CFG->dirroot/blocks/file/io_print.php");
-        require_once("$CFG->dirroot/config.php");
+        // require_once("$CFG->dirroot/config.php");
 
         global $DB, $CFG, $PAGE;
 
