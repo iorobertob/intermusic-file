@@ -28,20 +28,21 @@ class block_file extends block_base
 
     public function instance_config_save($data, $nolongerused = false)
     {
-        // require(__DIR__.'/../../config.php');
-        
         global $DB, $CFG, $PAGE;
-
-        require_once("$CFG->dirroot/blocks/file/io_print.php");
-        // require_once("$CFG->dirroot/config.php");
-
 
         $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
 
-        if($autopopulateCheckbox === "1")
-        {
+        /////////////////////////////////////  WHEN SAVING ALTER PARENT ACTIVITY METADATA ///////////////////////
+        require_once("$CFG->dirroot/blocks/file/io_print.php");
+
+        // if($autopopulateCheckbox === "1")
+        // {
             // TODO: here to implement the autopopulation of metadata, from files' metadata
-        }
+            $activity_modules = $DB->get_record('course_modules',array('id' =>$parentcontext   ->instanceid)); // get all modules where the course is the current course
+            $names            = $DB->get_record('poster',        array('id' =>$activity_modules->instance  )); // get the name of the module instance 
+            $nameinstance     = $names->numbering;
+            file_print($nameinstance, true);
+        // }
 
         $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
@@ -50,14 +51,10 @@ class block_file extends block_base
         $keys = array_keys($files);
         file_print($files[$keys[1]] -> get_filename());
 
-        // $contextid = context_course::instance($courseid);
-        $courseid = $PAGE->course->id;
         $context = $PAGE->context;
-        // $courseid  = optional_param('course', null, PARAM_INT);
-        file_print("\n CONTEXTO: \n", true);
-        file_print($context->id);
-        file_print("\n EMPTY LINE \n");
+        file_print("\n COURSE ID: \n");
         file_print($context->instanceid);
+        ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
 
         return parent::instance_config_save($data, $nolongerused);
     }
