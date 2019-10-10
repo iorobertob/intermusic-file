@@ -35,10 +35,13 @@ class block_file extends block_base
         /////////////////////////////////////  WHEN SAVING ALTER PARENT ACTIVITY METADATA ///////////////////////
         require_once("$CFG->dirroot/blocks/file/io_print.php");
 
+        // The context of the module
+        $context = $PAGE->context;
+
         // if($autopopulateCheckbox === "1")
         // {
             // TODO: here to implement the autopopulation of metadata, from files' metadata
-            $activity_modules = $DB->get_record('course_modules',array('id' =>$parentcontext   ->instanceid)); // get all modules where the course is the current course
+            $activity_modules = $DB->get_record('course_modules',array('id' =>$context         ->instanceid)); // get all modules where the course is the current course
             $names            = $DB->get_record('poster',        array('id' =>$activity_modules->instance  )); // get the name of the module instance 
             $nameinstance     = $names->numbering;
             file_print($nameinstance, true);
@@ -51,8 +54,8 @@ class block_file extends block_base
         $keys = array_keys($files);
         file_print($files[$keys[1]] -> get_filename());
 
-        $context = $PAGE->context;
-        file_print("\n COURSE ID: \n");
+        
+        file_print("\n POSTER ID: \n");
         file_print($context->instanceid);
         ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
 
