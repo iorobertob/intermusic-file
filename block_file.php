@@ -62,7 +62,7 @@ class block_file extends block_base
             // $author_piece = explode
 
             file_print($filename);
-            $DB->set_field('poster', 'collection', $collection, array('name' => $poster_name ));
+            $DB->set_field('poster', 'rs_collection', $collection, array('name' => $poster_name ));
             // $DB->set_field('poster', 'name',      'Roberto LMTA', array('name' => $poster_name ));
             // $DB->set_field('poster', 'surtitle',  'Roberto LMTA', array('name' => $poster_name ));
             // $DB->set_field('poster', 'author',    'Roberto LMTA', array('name' => $poster_name ));
