@@ -38,21 +38,39 @@ class block_file extends block_base
         // The context of the module
         $context = $PAGE->context;
 
+            // TODO: here to implement the autopopulation of metadata, from files' metadata
+            $activity_module      = $DB->get_record('course_modules',array('id' =>$context         ->instanceid)); // get the module where the course is the current course
+            $poster_instance      = $DB->get_record('poster',        array('id' =>$activity_module ->instance  )); // get the name of the module instance 
+            $poster_name          = $poster_instance->name;
+            $autopopulateCheckbox = $poster_instance->autopopulate;
+            file_print($poster_name, true);
+            file_print($autopopulateCheckbox);
+
         // if($autopopulateCheckbox === "1")
         // {
-            // TODO: here to implement the autopopulation of metadata, from files' metadata
-            $activity_modules = $DB->get_record('course_modules',array('id' =>$context         ->instanceid)); // get all modules where the course is the current course
-            $names            = $DB->get_record('poster',        array('id' =>$activity_modules->instance  )); // get the name of the module instance 
-            $nameinstance     = $names->numbering;
-            file_print($nameinstance, true);
+            $fs    = get_file_storage();
+            $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
+
+            // Add at the end those files that did not match the sorting array
+            $keys     = array_keys($files);
+            $filename = $files[$keys[1]] -> get_filename();
+            $filename_parts = explode("_", $filename);
+            $collection = $filename_parts[0];
+            $characteristics = $filename_parts[2];
+
+            // TODO : INSTEAD OF RELYING ON THE NAME GET METADATA FROM RESOURCESPACE OVER API CALL
+            // $author_piece = explode
+
+            file_print($filename);
+            $DB->set_field('poster', 'collection', $collection, array('name' => $poster_name ));
+            // $DB->set_field('poster', 'name',      'Roberto LMTA', array('name' => $poster_name ));
+            // $DB->set_field('poster', 'surtitle',  'Roberto LMTA', array('name' => $poster_name ));
+            // $DB->set_field('poster', 'author',    'Roberto LMTA', array('name' => $poster_name ));
+            // $DB->set_field('poster', 'numbering', 'Roberto LMTA', array('name' => $poster_name ));
+            // $DB->set_field('poster', 'language',  'Roberto LMTA', array('name' => $poster_name ));
         // }
 
-        $fs    = get_file_storage();
-        $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
-
-        // Add at the end those files that did not match the sorting array
-        $keys = array_keys($files);
-        file_print($files[$keys[1]] -> get_filename());
+        
 
         
         file_print("\n POSTER ID: \n");

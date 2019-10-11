@@ -8,3 +8,6 @@ The block currently supports embedding audio, video, image and PDF files. For fi
 PDF preview is implemented via Mozilla's PDF.js viewer, a full build of which is supplied in the pdfjs subdirectory. Please note that PDF.js is licensed under the terms of Apache license, a copy of which is supplied in the pdfjs/LICENSE file.
 
 This is part of a mini library of intermusic plugins to manage content specific to this platform solution. 
+
+
+# TOODO : Add condition to insert the name of the collection in to the poster metadata only if it complies with characteristics of intermusic's collection names. 
