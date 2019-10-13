@@ -108,7 +108,8 @@ class block_file extends block_base
         // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
         $collection_index = 0;
 
-        $collection = $this->get_item_from_filename($context, $collection_index);
+        // $collection = $this->get_item_from_filename($context, $collection_index);
+        $collection = "COLLECTION";
 
         $DB->set_field('poster', 'rs_collection', $collection, array('name' => $poster_name ));
 
