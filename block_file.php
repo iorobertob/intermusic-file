@@ -92,6 +92,10 @@ class block_file extends block_base
         $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign));
         // print_r($results);
         
+        $result = [];
+        $result[0] = "https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign;
+        $result[1] = $results;
+
         return $result;
     }
 
@@ -118,10 +122,8 @@ class block_file extends block_base
         $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
 
         $request_json = $this->get_file_fields_metadata($collection[0]);
-        echo $request_json;
-        // die;
-        $request_json = "lala";
-        file_print($request_json);
+        file_print($request_json[0], true);
+        file_print($request_json[1], true);
 
         ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
 
