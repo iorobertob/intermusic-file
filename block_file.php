@@ -121,7 +121,7 @@ class block_file extends block_base
         echo $request_json;
         // die;
         $request_json = "lala";
-        // print_file($request_json);
+        print_file($request_json);
 
         ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
 
