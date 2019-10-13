@@ -58,7 +58,10 @@ class block_file extends block_base
 
         // file_print($filename);
 
-        return $item;
+        $items = [];
+        $items[0] = $item;
+        $items[1] = $poster_name;
+        return $items;
     }
 
     /**
@@ -108,10 +111,11 @@ class block_file extends block_base
         // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
         $collection_index = 0;
 
-        // $collection = $this->get_item_from_filename($context, $collection_index);
-        $collection = "COLLECTION";
+        $collection = [];
+        $collection = $this->get_item_from_filename($context, $collection_index);
+        $collection[0] = "COLLECTION";
 
-        $DB->set_field('poster', 'rs_collection', $collection, array('name' => $poster_name ));
+        $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
 
         $request_json = $this->get_file_fields_metadata($collection);
 
