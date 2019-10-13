@@ -26,13 +26,14 @@ class block_file extends block_base
         }
     }
 
-        /** 
+    /** 
     * If filenames of files uploaded to this poster contain information separated by _ (undesrcore), this 
     * function retreives one of those elements from the first of the files to upload. 
+    * @param Context  $context the context of the current course
     * @param String   $item_number is the position number of the filename to get
     * @return String  $item is the piece of string from the filename of the first file in the upload. 
     **/
-    function get_item_from_uploaded_filename($context, $item_number = 0)
+    function get_item_from_filename($context, $item_number)
     {
         global $DB, $CFG, $PAGE;
 
@@ -107,7 +108,7 @@ class block_file extends block_base
         // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
         $collection_index = 0;
 
-        $collection = get_item_from_uploaded_filename($context, $collection_index);
+        $collection = get_item_from_filename($context, $collection_index);
 
         $DB->set_field('poster', 'rs_collection', $collection, array('name' => $poster_name ));
 
