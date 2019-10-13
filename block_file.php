@@ -90,8 +90,8 @@ class block_file extends block_base
 
         // Make the request and output the JSON results.
         $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign));
-        $results=file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign);
-        $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign), TRUE);
+        // $results=file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign);
+        // $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign), TRUE);
         // print_r($results);
         
         $result = [];
@@ -125,7 +125,7 @@ class block_file extends block_base
 
         $request_json = $this->get_file_fields_metadata($collection[0]);
         file_print($request_json[0], true);
-        file_print($request_json[1][0]);
+        file_print($request_json[1][0]['ref']);
 
         ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
 
