@@ -91,6 +91,7 @@ class block_file extends block_base
         // Make the request and output the JSON results.
         $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign));
         $results=file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign);
+        $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign), TRUE);
         // print_r($results);
         
         $result = [];
