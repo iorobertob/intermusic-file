@@ -32,7 +32,7 @@ class block_file extends block_base
     * @param String   $item_number is the position number of the filename to get
     * @return String  $item is the piece of string from the filename of the first file in the upload. 
     **/
-    public function get_item_from_uploaded_filename($context, $item_number = 0)
+    function get_item_from_uploaded_filename($context, $item_number = 0)
     {
         global $DB, $CFG, $PAGE;
 
@@ -63,7 +63,7 @@ class block_file extends block_base
     /**
      * Get the fields from the Resourcespae metadata
      */
-    public function get_file_fields_metadata($string)
+    function get_file_fields_metadata($string)
     {
         $api_result = do_api_search($string);
         return($api_result);
@@ -72,7 +72,7 @@ class block_file extends block_base
     /**
      * Do an API requeuest with 
      */
-    public function do_api_search($string)
+    function do_api_search($string)
     {
         // Set the private API key for the user (from the user account page) and the user we're accessing the system as.
         $private_key="9885aec8ea7eb2fb8ee45ff110773a5041030a7bdf7abb761c9e682de7f03045";
@@ -90,7 +90,7 @@ class block_file extends block_base
         
         return $result;
     }
-    
+
     public function instance_config_save($data, $nolongerused = false)
     {
         global $DB, $CFG, $PAGE;
