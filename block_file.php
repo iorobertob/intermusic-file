@@ -26,36 +26,7 @@ class block_file extends block_base
         }
     }
 
-    public function instance_config_save($data, $nolongerused = false)
-    {
-        global $DB, $CFG, $PAGE;
-
-        $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
-
-        /////////////////////////////////////  WHEN SAVING ALTER PARENT ACTIVITY METADATA ///////////////////////
-        require_once("$CFG->dirroot/blocks/file/io_print.php");
-
-        // The context of the module
-        $context = $PAGE->context;
-
-        // In the Intermusic documentation collection code is the first element in the encoded filename 
-        // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
-        $collection_index = 0;
-
-        $collection = get_item_from_uploaded_filename($context, $collection_index);
-
-        $DB->set_field('poster', 'rs_collection', $collection, array('name' => $poster_name ));
-
-        $request_json = get_file_fields_metadata($collection);
-
-        print_file($request_json);
-
-        ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
-
-        return parent::instance_config_save($data, $nolongerused);
-    }
-
-    /** 
+        /** 
     * If filenames of files uploaded to this poster contain information separated by _ (undesrcore), this 
     * function retreives one of those elements from the first of the files to upload. 
     * @param String   $item_number is the position number of the filename to get
@@ -119,6 +90,37 @@ class block_file extends block_base
         
         return $result;
     }
+    
+    public function instance_config_save($data, $nolongerused = false)
+    {
+        global $DB, $CFG, $PAGE;
+
+        $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
+
+        /////////////////////////////////////  WHEN SAVING ALTER PARENT ACTIVITY METADATA ///////////////////////
+        require_once("$CFG->dirroot/blocks/file/io_print.php");
+
+        // The context of the module
+        $context = $PAGE->context;
+
+        // In the Intermusic documentation collection code is the first element in the encoded filename 
+        // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
+        $collection_index = 0;
+
+        $collection = get_item_from_uploaded_filename($context, $collection_index);
+
+        $DB->set_field('poster', 'rs_collection', $collection, array('name' => $poster_name ));
+
+        $request_json = get_file_fields_metadata($collection);
+
+        print_file($request_json);
+
+        ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
+
+        return parent::instance_config_save($data, $nolongerused);
+    }
+
+
      
     public function get_content()
     {
