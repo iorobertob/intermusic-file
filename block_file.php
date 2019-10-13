@@ -38,48 +38,88 @@ class block_file extends block_base
         // The context of the module
         $context = $PAGE->context;
 
-            // TODO: here to implement the autopopulation of metadata, from files' metadata
-            $activity_module      = $DB->get_record('course_modules',array('id' =>$context         ->instanceid)); // get the module where the course is the current course
-            $poster_instance      = $DB->get_record('poster',        array('id' =>$activity_module ->instance  )); // get the name of the module instance 
-            $poster_name          = $poster_instance->name;
-            $autopopulateCheckbox = $poster_instance->autopopulate;
-            file_print($poster_name, true);
-            file_print($autopopulateCheckbox);
+        // In the Intermusic documentation collection code is the first element in the encoded filename 
+        // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
+        $collection_index = 0;
 
-        // if($autopopulateCheckbox === "1")
-        // {
-            $fs    = get_file_storage();
-            $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
+        $collection = get_item_from_uploaded_filename($context, $collection_index);
 
-            // Add at the end those files that did not match the sorting array
-            $keys     = array_keys($files);
-            $filename = $files[$keys[1]] -> get_filename();
-            $filename_parts = explode("_", $filename);
-            $collection = $filename_parts[0];
-            $characteristics = $filename_parts[2];
+        $DB->set_field('poster', 'rs_collection', $collection, array('name' => $poster_name ));
 
-            // TODO : INSTEAD OF RELYING ON THE NAME GET METADATA FROM RESOURCESPACE OVER API CALL
-            // $author_piece = explode
+        $request_json = get_file_fields_metadata($collection);
 
-            file_print($filename);
-            $DB->set_field('poster', 'rs_collection', $collection, array('name' => $poster_name ));
-            // $DB->set_field('poster', 'name',      'Roberto LMTA', array('name' => $poster_name ));
-            // $DB->set_field('poster', 'surtitle',  'Roberto LMTA', array('name' => $poster_name ));
-            // $DB->set_field('poster', 'author',    'Roberto LMTA', array('name' => $poster_name ));
-            // $DB->set_field('poster', 'numbering', 'Roberto LMTA', array('name' => $poster_name ));
-            // $DB->set_field('poster', 'language',  'Roberto LMTA', array('name' => $poster_name ));
-        // }
+        print_file($request_json);
 
-        
-
-        
-        file_print("\n POSTER ID: \n");
-        file_print($context->instanceid);
         ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
 
         return parent::instance_config_save($data, $nolongerused);
     }
 
+    /** 
+    * If filenames of files uploaded to this poster contain information separated by _ (undesrcore), this 
+    * function retreives one of those elements from the first of the files to upload. 
+    * @param String   $item_number is the position number of the filename to get
+    * @return String  $item is the piece of string from the filename of the first file in the upload. 
+    **/
+    private function get_item_from_uploaded_filename($context, $item_number = 0)
+    {
+        global $DB, $CFG, $PAGE;
+
+        // TODO: here to implement the autopopulation of metadata, from files' metadata
+        $activity_module      = $DB->get_record('course_modules',array('id' =>$context         ->instanceid)); // get the module where the course is the current course
+        $poster_instance      = $DB->get_record('poster',        array('id' =>$activity_module ->instance  )); // get the name of the module instance 
+        $poster_name          = $poster_instance->name;
+        $autopopulateCheckbox = $poster_instance->autopopulate;
+        
+        file_print($poster_name, true);
+        file_print($autopopulateCheckbox);
+
+        $fs    = get_file_storage();
+        $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
+
+        // Add at the end those files that did not match the sorting array
+        $keys     = array_keys($files);
+        $filename = $files[$keys[1]] -> get_filename();
+        $filename_parts = explode("_", $filename);
+        $item = $filename_parts[$item_number];
+        $characteristics = $filename_parts[2];
+
+        file_print($filename);
+
+        return $item;
+    }
+
+    /**
+     * Get the fields from the Resourcespae metadata
+     */
+    private function get_file_fields_metadata($string)
+    {
+        $api_result = do_api_search($string);
+        return($api_result);
+    }
+
+    /**
+     * Do an API requeuest with 
+     */
+    private function do_api_search($string)
+    {
+        // Set the private API key for the user (from the user account page) and the user we're accessing the system as.
+        $private_key="9885aec8ea7eb2fb8ee45ff110773a5041030a7bdf7abb761c9e682de7f03045";
+        $user="admin";
+
+        // Formulate the query
+        $query="user=" . $user . "&function=do_search&param1=".$string."&param2=&param3=&param4=&param5=&param6=";
+
+        // Sign the query using the private key
+        $sign=hash("sha256",$private_key . $query);
+
+        // Make the request and output the JSON results.
+        $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign));
+        // print_r($results);
+        
+        return $result;
+    }
+     
     public function get_content()
     {
         if ($this->content !== null) 
