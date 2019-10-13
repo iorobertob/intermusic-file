@@ -66,7 +66,7 @@ class block_file extends block_base
      */
     function get_file_fields_metadata($string)
     {
-        $api_result = do_api_search($string);
+        $api_result = $this->do_api_search($string);
         return($api_result);
     }
 
@@ -112,7 +112,7 @@ class block_file extends block_base
 
         $DB->set_field('poster', 'rs_collection', $collection, array('name' => $poster_name ));
 
-        $request_json = get_file_fields_metadata($collection);
+        $request_json = $this->get_file_fields_metadata($collection);
 
         print_file($request_json);
 
