@@ -78,7 +78,7 @@ class block_file extends block_base
      */
     function do_api_search($string)
     {
-        init_resourcespace();
+        $this->init_resourcespace();
         // Set the private API key for the user (from the user account page) and the user we're accessing the system as.
         $private_key="9885aec8ea7eb2fb8ee45ff110773a5041030a7bdf7abb761c9e682de7f03045";
         $private_key = $this->api_key;
