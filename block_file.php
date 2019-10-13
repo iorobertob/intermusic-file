@@ -80,8 +80,12 @@ class block_file extends block_base
     {
         // Set the private API key for the user (from the user account page) and the user we're accessing the system as.
         $private_key="9885aec8ea7eb2fb8ee45ff110773a5041030a7bdf7abb761c9e682de7f03045";
-        $user="admin";
+        $private_key = $this->api_key;
 
+        $user="admin";
+        $user = $this->api_user;
+
+        $url = $this->resourcespace_api_url ;
         // Formulate the query
         $query="user=" . $user . "&function=do_search&param1=".$string."&param2=&param3=&param4=&param5=&param6=";
 
@@ -89,9 +93,10 @@ class block_file extends block_base
         $sign=hash("sha256",$private_key . $query);
 
         // Make the request and output the JSON results.
-        $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign));
-        $results=file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign);
-        $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign), TRUE);
+        // $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign));
+        $results=json_decode(file_get_contents($url . $query . "&sign=" . $sign));
+        $results=file_get_contents($url . $query . "&sign=" . $sign);
+        $results=json_decode(file_get_contents($url . $query . "&sign=" . $sign), TRUE);
         // print_r($results);
         
         $result = [];
@@ -100,6 +105,38 @@ class block_file extends block_base
 
         return $result;
     }
+
+    /**
+     * Initialise Resourcespace API variables
+     */
+    private function init_resourcespace()
+    {
+        $this->config = get_config('resourcespace');
+        $this->resourcespace_api_url = get_config('resourcespace', 'resourcespace_api_url');
+	    echo "<script>console.log('API URL: " . $this->resourcespace_api_url . "' );</script>";
+        $this->api_key = get_config('resourcespace', 'api_key');
+	    echo "<script>console.log('API KEY: " . $this->api_key . "' );</script>";
+        $this->api_user = get_config('resourcespace', 'api_user');
+	    echo "<script>console.log('API USER: " . $this->api_user . "' );</script>";
+        $this->enable_help = get_config('resourcespace', 'enable_help');
+        $this->enable_help_url = get_config('resourcespace', 'enable_help_url');
+    }
+
+    /**
+     * Make a generic API request to ResourceSpace
+     */
+    // protected function make_api_request($method, $queryData) {
+    //     $queryData['user'] = $this->api_user;
+    //     $queryData['function'] = $method;
+    //     $query = http_build_query($queryData, '', '&');
+	//     echo "<script>console.log('QUERY: " . $query . "' );</script>";
+    //     // Sign the request with the private key.
+    //     $sign = hash("sha256", $this->api_key . $query);
+    //     $requestUrl = "$this->resourcespace_api_url" . $query . "&sign=" . $sign;
+	//     echo "<script>console.log('REQUEST URL: " . $requestUrl . "' );</script>";
+    //     $response = file_get_contents($requestUrl);
+    //     return json_decode($response);
+    // }
 
     public function instance_config_save($data, $nolongerused = false)
     {
