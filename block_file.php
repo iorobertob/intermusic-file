@@ -113,13 +113,13 @@ class block_file extends block_base
 
         $collection = [];
         $collection = $this->get_item_from_filename($context, $collection_index);
-        $collection[0] = "COLLECTION";
+        // $collection[0] = "COLLECTION";
 
         $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
 
         $request_json = $this->get_file_fields_metadata($collection[0]);
 
-        print_file($request_json);
+        // print_file($request_json);
 
         ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
 
