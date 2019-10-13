@@ -125,7 +125,7 @@ class block_file extends block_base
 
         $request_json = $this->get_file_fields_metadata($collection[0]);
         file_print($request_json[0], true);
-        file_print($request_json[1][0]);
+        file_print($request_json[1][0][1]);
         file_print(implode( ", ", $request_json[1][0] ));
 
         ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
