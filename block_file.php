@@ -67,7 +67,7 @@ class block_file extends block_base
     function get_file_fields_metadata($string)
     {
         $api_result = $this->do_api_search($string);
-        return($api_result);
+        return $api_result;
     }
 
     /**
@@ -114,7 +114,7 @@ class block_file extends block_base
 
         $request_json = $this->get_file_fields_metadata($collection);
 
-        print_file($request_json);
+        $this->print_file($request_json);
 
         ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
 
