@@ -43,8 +43,8 @@ class block_file extends block_base
         $poster_name          = $poster_instance->name;
         $autopopulateCheckbox = $poster_instance->autopopulate;
         
-        file_print($poster_name, true);
-        file_print($autopopulateCheckbox);
+        // file_print($poster_name, true);
+        // file_print($autopopulateCheckbox);
 
         $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
@@ -56,7 +56,7 @@ class block_file extends block_base
         $item = $filename_parts[$item_number];
         $characteristics = $filename_parts[2];
 
-        file_print($filename);
+        // file_print($filename);
 
         return $item;
     }
