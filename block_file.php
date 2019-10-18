@@ -123,56 +123,39 @@ class block_file extends block_base
         $this->enable_help_url = get_config('resourcespace', 'enable_help_url');
     }
 
-    /**
-     * Make a generic API request to ResourceSpace
-     */
-    // protected function make_api_request($method, $queryData) {
-    //     $queryData['user'] = $this->api_user;
-    //     $queryData['function'] = $method;
-    //     $query = http_build_query($queryData, '', '&');
-	//     echo "<script>console.log('QUERY: " . $query . "' );</script>";
-    //     // Sign the request with the private key.
-    //     $sign = hash("sha256", $this->api_key . $query);
-    //     $requestUrl = "$this->resourcespace_api_url" . $query . "&sign=" . $sign;
-	//     echo "<script>console.log('REQUEST URL: " . $requestUrl . "' );</script>";
-    //     $response = file_get_contents($requestUrl);
-    //     return json_decode($response);
-    // }
 
     public function instance_config_save($data, $nolongerused = false)
     {
         global $DB, $CFG, $PAGE;
 
-        $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
-
-        /////////////////////////////////////  WHEN SAVING ALTER PARENT ACTIVITY METADATA ///////////////////////
         require_once("$CFG->dirroot/blocks/file/io_print.php");
+
+        $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
 
         // The context of the module
         $context = $PAGE->context;
 
         // In the Intermusic documentation collection code is the first element in the encoded filename 
         // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
+        // 0 is for the collection string
         $collection_index = 0;
-
         $collection = [];
         $collection = $this->get_item_from_filename($context, $collection_index);
-        // $collection[0] = "COLLECTION";
 
+        // TODO: filter for the case when names do not contain this format
+        // Commit to database the collection that the first part of the name indicates
         $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
-
+        
+        // Findout which ID corresponds to this file in RS
         $request_json = $this->get_file_fields_metadata($collection[0]);
-        file_print($request_json[0], true);
-        file_print($request_json[1][1]["ref"]);
-        file_print(implode( ", ", $request_json[1][0] ));
-
-        ///////////////////////////////////// \ WHEN SAVING ALTER PARENT A] CTIVITY METADATA ///////////////////////
+        $DB->set_field('poster', 'rs_id', $request_json[1][1]["ref"], array('name' => $collection[1]));
 
         return parent::instance_config_save($data, $nolongerused);
     }
 
-
-     
+    /**
+     * Default function.
+     */
     public function get_content()
     {
         if ($this->content !== null) 
