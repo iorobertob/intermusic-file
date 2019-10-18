@@ -148,7 +148,14 @@ class block_file extends block_base
         
         // Findout which ID corresponds to this file in RS
         $request_json = $this->get_file_fields_metadata($collection[0]);
+
         // $DB->set_field('poster', 'rs_id', $request_json[1][1]["ref"], array('name' => $collection[1]));
+
+        file_print("RS ID:", true);
+        file_print($request_json[0]);
+        file_print($request_json[1][1]["ref"]);
+        file_print($collection[1]);
+
 
         return parent::instance_config_save($data, $nolongerused);
     }
