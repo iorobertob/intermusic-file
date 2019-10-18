@@ -153,7 +153,7 @@ class block_file extends block_base
 
         file_print("RS ID:", true);
         file_print($request_json[0]);
-        file_print($request_json[1][1]["ref"]);
+        file_print($request_json[1][0]["ref"]);
         file_print($collection[1]);
 
 
