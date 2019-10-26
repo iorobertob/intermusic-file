@@ -114,11 +114,8 @@ class block_file extends block_base
     {
         $this->config = get_config('resourcespace');
         $this->resourcespace_api_url = get_config('resourcespace', 'resourcespace_api_url');
-	    echo "<script>console.log('API URL: " . $this->resourcespace_api_url . "' );</script>";
         $this->api_key = get_config('resourcespace', 'api_key');
-	    echo "<script>console.log('API KEY: " . $this->api_key . "' );</script>";
         $this->api_user = get_config('resourcespace', 'api_user');
-	    echo "<script>console.log('API USER: " . $this->api_user . "' );</script>";
         $this->enable_help = get_config('resourcespace', 'enable_help');
         $this->enable_help_url = get_config('resourcespace', 'enable_help_url');
     }
@@ -150,18 +147,10 @@ class block_file extends block_base
         $request_json = $this->get_file_fields_metadata($collection[0]);
 
         try {
-            $DB->set_field('poster', 'rs_id', $request_json[1][1]["ref"], array('name' => $collection[1]));
+            $DB->set_field('poster', 'rs_id', $request_json[1][0]["ref"], array('name' => $collection[1]));
         } catch (Exception $e) {
             file_print("Exception in Commit to DB:", true);
         }
-        // $DB->set_field('poster', 'rs_id', $request_json[1][0]["ref"], array('name' => $collection[1]));
-
-        // file_print("RS ID:", true);
-        // file_print($request_json[0]);
-        // file_print($request_json[1][0]["ref"]);
-        // file_print($collection[1]);
-
-
         return parent::instance_config_save($data, $nolongerused);
     }
 
