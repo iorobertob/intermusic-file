@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/blocks/file/backup/moodle2/backup_file_stepslib.php');
+require_once($CFG->dirroot.'/blocks/file/backup/moodle2/backup_file_block_stepslib.php');
 
 
 /**

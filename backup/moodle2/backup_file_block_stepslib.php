@@ -24,7 +24,7 @@
  * @modified    by Roberto 
  */
 
-defined('MOODLE_INTERNAL') || die();
+// defined('MOODLE_INTERNAL') || die();
 
 /**
  * Provides the definition of the backup structure
