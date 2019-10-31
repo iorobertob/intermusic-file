@@ -58,6 +58,6 @@ class backup_file_block_structure_step extends backup_block_structure_step {
         $file->annotate_files('block_file', 'intro', null);
 
 
-        return $this->prepare_activity_structure($file);
+        return $this->prepare_block_structure($file);
     }
 }
