@@ -57,7 +57,7 @@ class backup_file_block_structure_step extends backup_block_structure_step {
             SELECT *
               FROM {block_instances}
              WHERE id = ?',
-            array(backup::VAR_PARENTID));
+            array(backup::VAR_BLOCKID));
 
         // Define file annotations.
         $file->annotate_files('block_file', 'intro', null);
