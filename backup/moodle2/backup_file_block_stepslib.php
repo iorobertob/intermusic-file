@@ -45,7 +45,7 @@ class backup_file_block_structure_step extends backup_block_structure_step {
     protected function define_structure() {
 
         // To know if we are including userinfo
-        $userinfo = $this->get_setting_value('userinfo');
+        // $userinfo = $this->get_setting_value('userinfo');
         
         // Define the file root element.
         $file = new backup_nested_element('file', array('id'), array(
