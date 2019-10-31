@@ -22,6 +22,12 @@
  * @modified   2019 Oct - Roberto 
  */
 
+
+defined('MOODLE_INTERNAL') || die();
+
+require_once($CFG->dirroot.'/blocks/file/backup/moodle2/backup_file_stepslib.php');
+
+
 /**
  * Specialised backup task for the file block
  * (requires encode_content_links in some configdata attrs)
@@ -34,6 +40,7 @@ class backup_file_block_task extends backup_block_task {
     }
 
     protected function define_my_steps() {
+        $this->add_step(new backup_file_block_structure_step('file_structure', 'file.xml'));
     }
 
     public function get_fileareas() {
