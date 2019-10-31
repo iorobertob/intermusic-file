@@ -53,7 +53,7 @@ class backup_file_block_structure_step extends backup_block_structure_step {
 
         // Define the data source.
         // $file->set_source_table('block_instances', array('id' => backup::VAR_BLOCKID));
-        $file->->set_source_sql('
+        $file->set_source_sql('
             SELECT *
               FROM {block_instances}
              WHERE id = ?',
