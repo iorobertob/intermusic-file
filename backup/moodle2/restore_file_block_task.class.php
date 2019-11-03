@@ -34,8 +34,8 @@ class restore_file_block_task extends restore_block_task {
     }
 
     protected function define_my_steps() {
-        require_once("$CFG->dirroot/blocks/file/io_print.php");
-        file_print(" TEST :", true);
+        // require_once("$CFG->dirroot/blocks/file/io_print.php");
+        // file_print(" TEST :", true);
         // file_print(serialize($config));
         $this->add_step(new restore_file_block_structure_step('file_structure', 'file.xml'));
     }
