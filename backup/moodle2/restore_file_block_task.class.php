@@ -22,7 +22,7 @@
  * @modified   2019 Oct - Roberto 
  */
 
-defined('MOODLE_INTERNAL') || die();
+// defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/blocks/file/backup/moodle2/restore_file_stepslib.php'); // Because it exists (must)
 /**
