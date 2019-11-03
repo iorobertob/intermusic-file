@@ -22,6 +22,9 @@
  * @modified   2019 Oct - Roberto 
  */
 
+defined('MOODLE_INTERNAL') || die();
+
+require_once($CFG->dirroot . '/blocks/file/backup/moodle2/restore_file_stepslib.php'); // Because it exists (must)
 /**
  * Specialised restore task for the file block
  * (requires encode_content_links in some configdata attrs)
@@ -35,7 +38,7 @@ class restore_file_block_task extends restore_block_task {
 
     protected function define_my_steps() {
         // require_once("$CFG->dirroot/blocks/file/io_print.php");
-        // file_print(" TEST :", true);
+        // file_print(" TESTA :", true);
         // file_print(serialize($config));
         $this->add_step(new restore_file_block_structure_step('file_structure', 'file.xml'));
     }
