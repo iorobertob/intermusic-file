@@ -40,7 +40,7 @@ class restore_file_block_task extends restore_block_task {
         // require_once("$CFG->dirroot/blocks/file/io_print.php");
         // file_print(" TESTA :", true);
         // file_print(serialize($config));
-        // $this->add_step(new restore_file_block_structure_step('file_structure', 'file.xml'));
+        $this->add_step(new restore_file_block_structure_step('file_structure', 'file.xml'));
     }
 
     public function get_fileareas() {
