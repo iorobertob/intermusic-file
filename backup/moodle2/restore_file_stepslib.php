@@ -86,8 +86,9 @@ class restore_file_block_structure_step extends restore_structure_step {
         // $config->rssid = $feedsarr;
         // Serialize back the configdata
         require_once("$CFG->dirroot/blocks/file/io_print.php");
+        file_print(serialize(" TEST :", true);
         file_print(serialize($config));
-        
+
         $configdata = base64_encode(serialize($config));
         // Set the configdata back
         $DB->set_field('block_instances', 'configdata', $configdata, array('id' => $this->task->get_blockid()));
