@@ -55,6 +55,8 @@ class restore_file_block_task extends restore_block_task {
 
         $contents[] = new restore_file_block_decode_content('block_instances', 'configdata', 'block_instance');
 
+        file_print('SERIALIZE');
+        file_print(serialize($contents));
         return $contents;
     }
 
