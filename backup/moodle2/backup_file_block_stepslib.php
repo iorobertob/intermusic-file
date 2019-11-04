@@ -25,6 +25,7 @@
  */
 
 // defined('MOODLE_INTERNAL') || die();
+require_once("$CFG->dirroot/blocks/file/io_print.php");
 
 /**
  * Provides the definition of the backup structure
@@ -49,7 +50,7 @@ class backup_file_block_structure_step extends backup_block_structure_step {
         
         // Define the file root element.
         $file = new backup_nested_element('file', array('id'), array(
-            'id', 'blockname', 'parentcontextid', 'configdata', 'timecreated', 'timemodified'));
+            'id', 'blockname', 'parentcontextid', 'timecreated', 'timemodified'));
 
         // Define the data source.
         // $file->set_source_table('block_instances', array('id' => backup::VAR_BLOCKID));
