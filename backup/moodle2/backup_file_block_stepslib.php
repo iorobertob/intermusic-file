@@ -50,12 +50,12 @@ class backup_file_block_structure_step extends backup_block_structure_step {
         
         // Define the file root element.
         $file = new backup_nested_element('file', array('id'), array(
-            'id', 'blockname', 'parentcontextid', 'timecreated', 'timemodified'));
+            'id', 'blockname', 'parentcontextid', 'configdata', 'timecreated', 'timemodified'));
 
         // Define the data source.
         // $file->set_source_table('block_instances', array('id' => backup::VAR_BLOCKID));
         $file->set_source_sql('
-            SELECT *
+            SELECT id, blockname, parentcontextid, configdata, timecreated, timemodified 
               FROM {block_instances}
              WHERE id = ?',
             array(backup::VAR_BLOCKID));
