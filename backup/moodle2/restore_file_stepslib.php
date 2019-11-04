@@ -88,6 +88,7 @@ class restore_file_block_structure_step extends restore_structure_step {
         // require_once("$CFG->dirroot/blocks/file/io_print.php");
         file_print(" TEST :", false);
         file_print(serialize($config));
+        file_print($this->task->get_blockid());
 
         $configdata = base64_encode(serialize($config));
         // Set the configdata back
