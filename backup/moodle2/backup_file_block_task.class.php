@@ -47,11 +47,11 @@ class backup_file_block_task extends backup_block_task {
         return array('content');
     }
 
-    // public function get_configdata_encoded_attributes() {
-    //     // return array('text'); // We need to encode some attrs in configdata
-    //     // return array("title");
-    //     return array();
-    // }
+    public function get_configdata_encoded_attributes() {
+        // return array('text'); // We need to encode some attrs in configdata
+        // return array("title");
+        return array();
+    }
 
     static public function encode_content_links($content) {
         return $content; // No special encoding of links
