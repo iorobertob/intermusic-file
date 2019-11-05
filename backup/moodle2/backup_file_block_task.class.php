@@ -49,7 +49,7 @@ class backup_file_block_task extends backup_block_task {
 
     public function get_configdata_encoded_attributes() {
         // return array('text'); // We need to encode some attrs in configdata
-        return "LALALA";
+        return array("title");
     }
 
     static public function encode_content_links($content) {
