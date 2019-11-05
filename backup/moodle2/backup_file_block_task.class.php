@@ -43,14 +43,14 @@ class backup_file_block_task extends backup_block_task {
         $this->add_step(new backup_file_block_structure_step('file_structure', 'file.xml'));
     }
 
-    public function get_fileareas() {
-        return array('content');
-    }
+    // public function get_fileareas() {
+    //     return array('content');
+    // }
 
-    public function get_configdata_encoded_attributes() {
-        // return array('text'); // We need to encode some attrs in configdata
-        return array("title");
-    }
+    // public function get_configdata_encoded_attributes() {
+    //     // return array('text'); // We need to encode some attrs in configdata
+    //     return array("title");
+    // }
 
     static public function encode_content_links($content) {
         return $content; // No special encoding of links
