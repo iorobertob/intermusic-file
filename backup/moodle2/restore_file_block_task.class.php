@@ -86,6 +86,8 @@ class restore_file_block_decode_content extends restore_decode_content {
                    AND b.itemname = ?
                    AND t.blockname = 'file'";
         $params = array($this->restoreid, $this->mapping);
+        file_print('PARAMS');
+        file_print(serialize($params));
         return ($DB->get_recordset_sql($sql, $params));
     }
 

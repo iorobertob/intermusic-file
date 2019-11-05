@@ -52,6 +52,8 @@ class backup_file_block_structure_step extends backup_block_structure_step {
         $file = new backup_nested_element('file', array('id'), array(
             'id', 'blockname', 'parentcontextid', 'configdata', 'timecreated', 'timemodified'));
 
+        $file_data = new backup_nested_element('file_data', array('id'));
+
         // Define the data source.
         // $file->set_source_table('block_instances', array('id' => backup::VAR_BLOCKID));
         $file->set_source_sql('
@@ -60,8 +62,6 @@ class backup_file_block_structure_step extends backup_block_structure_step {
              WHERE id = ?',
             array(backup::VAR_BLOCKID));
 
-        file_print(var_dump($file), true);
-        die;
         // Define file annotations.
         $file->annotate_files('block_file', 'intro', null);
 
