@@ -88,7 +88,10 @@ class restore_file_block_decode_content extends restore_decode_content {
         $params = array($this->restoreid, $this->mapping);
         file_print('PARAMS');
         file_print($this->tablename);
-        return ($DB->get_recordset_sql($sql, $params));
+        $result = $DB->get_recordset_sql($sql, $params);
+        file_print(serialize($result));
+        // return ($DB->get_recordset_sql($sql, $params));
+        return $result;
     }
 
     protected function preprocess_field($field) {
