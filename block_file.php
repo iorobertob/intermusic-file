@@ -1,21 +1,57 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
+require_once("$CFG->dirroot/blocks/file/io_print.php");
+
 class block_file extends block_base
 {
 
+    public function instance_config_save($data, $nolongerused = false)
+    {
+        global $DB, $CFG, $PAGE;
+
+        $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
+
+        // The context of the module
+        $context = $PAGE->context;
+
+        // In the Intermusic documentation collection code is the first element in the encoded filename 
+        // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
+        // 0 is for the collection string
+        $collection_index = 0;
+        $collection = [];
+        $collection = $this->get_item_from_filename($context, $collection_index);
+
+        // TODO: filter for the case when names do not contain this format
+        // Commit to database the collection that the first part of the name indicates
+        $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
+        
+        // Findout which ID corresponds to this file in RS
+        $request_json = $this->get_file_fields_metadata($collection[0]);
+
+        try {
+            $DB->set_field('poster', 'rs_id', $request_json[1][0]["ref"], array('name' => $collection[1]));
+        } catch (Exception $e) {
+            file_print("Exception in Commit to DB:", true);
+        }
+        return parent::instance_config_save($data, $nolongerused);
+    }
+
     public function init()
     {
+
         $this->title = get_string('file', 'block_file');
     }
 
     public function applicable_formats()
     {
+
         return array('all' => true);
     }
 
     public function instance_allow_multiple()
     {
+
         return true;
     }
 
@@ -27,11 +63,12 @@ class block_file extends block_base
     }
 
     /** 
-    * If filenames of files uploaded to this poster contain information separated by _ (undesrcore), this 
-    * function retreives one of those elements from the first of the files to upload. 
-    * @param Context  $context the context of the current course
-    * @param String   $item_number is the position number of the filename to get
-    * @return String  $item is the piece of string from the filename of the first file in the upload. 
+     * Item is each one of the parts in a file name like: item_item_item.extension
+     * If filenames of files uploaded to this poster contain information separated by _ (undesrcore), this 
+     * function retreives one of those elements from the first of the files to upload. 
+     * @param Context  $context the context of the current course
+     * @param String   $item_number is the position number of the filename to get
+     * @return String  $item is the piece of string from the filename of the first file in the upload. 
     **/
     function get_item_from_filename($context, $item_number)
     {
@@ -43,22 +80,16 @@ class block_file extends block_base
         $poster_name          = $poster_instance->name;
         $autopopulateCheckbox = $poster_instance->autopopulate;
         
-        // file_print($poster_name, true);
-        // file_print($autopopulateCheckbox);
-
-        $fs    = get_file_storage();
-        $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
-
-        // Add at the end those files that did not match the sorting array
-        $keys     = array_keys($files);
-        $filename = $files[$keys[1]] -> get_filename();
-        $filename_parts = explode("_", $filename);
-        $item = $filename_parts[$item_number];
+        // Get files array and their names, split them by '_' and return the first of those divisions. 
+        $fs              = get_file_storage();
+        $files           = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
+        $keys            = array_keys($files);
+        $filename        = $files[$keys[1]] -> get_filename();
+        $filename_parts  = explode("_", $filename);
+        $item            = $filename_parts[$item_number];
         $characteristics = $filename_parts[2];
 
-        // file_print($filename);
-
-        $items = [];
+        $items    = [];
         $items[0] = $item;
         $items[1] = $poster_name;
         return $items;
@@ -80,7 +111,7 @@ class block_file extends block_base
     {
         $this->init_resourcespace();
         // Set the private API key for the user (from the user account page) and the user we're accessing the system as.
-        $private_key="9885aec8ea7eb2fb8ee45ff110773a5041030a7bdf7abb761c9e682de7f03045";
+        // $private_key="9885aec8ea7eb2fb8ee45ff110773a5041030a7bdf7abb761c9e682de7f03045";
         $private_key = $this->api_key;
 
         $user="admin";
@@ -121,38 +152,7 @@ class block_file extends block_base
     }
 
 
-    public function instance_config_save($data, $nolongerused = false)
-    {
-        global $DB, $CFG, $PAGE;
 
-        require_once("$CFG->dirroot/blocks/file/io_print.php");
-
-        $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
-
-        // The context of the module
-        $context = $PAGE->context;
-
-        // In the Intermusic documentation collection code is the first element in the encoded filename 
-        // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
-        // 0 is for the collection string
-        $collection_index = 0;
-        $collection = [];
-        $collection = $this->get_item_from_filename($context, $collection_index);
-
-        // TODO: filter for the case when names do not contain this format
-        // Commit to database the collection that the first part of the name indicates
-        $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
-        
-        // Findout which ID corresponds to this file in RS
-        $request_json = $this->get_file_fields_metadata($collection[0]);
-
-        try {
-            $DB->set_field('poster', 'rs_id', $request_json[1][0]["ref"], array('name' => $collection[1]));
-        } catch (Exception $e) {
-            file_print("Exception in Commit to DB:", true);
-        }
-        return parent::instance_config_save($data, $nolongerused);
-    }
 
     /**
      * Default function.
@@ -161,9 +161,13 @@ class block_file extends block_base
     {
         if ($this->content !== null) 
         {
+            file_print("content is not null", true);
+            die;
             return $this->content;
         }
 
+        file_print("content is  null", true);
+            die;
         $this->content = new stdClass;
 
         $height = isset($this->config->height) && $this->config->height !== '' ? $this->config->height : null;
@@ -285,6 +289,7 @@ class block_file extends block_base
 
     protected function get_content_text_default($file, $height = null)
     {
+
         return html_writer::tag('a', $file->get_filename(), ['href' => $this->get_file_url($file)]);
     }
 
@@ -361,6 +366,7 @@ class block_file extends block_base
 
     protected function get_file_url($file)
     {
+
         return moodle_url::make_pluginfile_url($file->get_contextid(), $file->get_component(), $file->get_filearea(), ($file->get_itemid() !== '0' ? $file->get_itemid() : null), $file->get_filepath(), $file->get_filename());
     }
 

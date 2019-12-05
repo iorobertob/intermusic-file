@@ -49,10 +49,22 @@ class backup_file_block_structure_step extends backup_block_structure_step {
         // $userinfo = $this->get_setting_value('userinfo');
         
         // Define the file root element.
-        $file = new backup_nested_element('file', array('id'), array(
-            'id', 'blockname', 'parentcontextid', 'configdata', 'timecreated', 'timemodified'));
+        $file = new backup_nested_element(  'file', 
+                                            array('id'), 
+                                            array(
+                                                'id', 
+                                                'blockname', 
+                                                'parentcontextid', 
+                                                'configdata', 
+                                                'timecreated', 
+                                                'timemodified'));
 
-        $file_data = new backup_nested_element('file_data', array('id'));
+        $file_data = new backup_nested_element('file_data', 
+                                                array('id'),
+                                                array('configdata'));
+
+        
+        $array = array("configdata" => $config_data);
 
         // Define the data source.
         // $file->set_source_table('block_instances', array('id' => backup::VAR_BLOCKID));
