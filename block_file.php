@@ -161,13 +161,9 @@ class block_file extends block_base
     {
         if ($this->content !== null) 
         {
-            file_print("content is not null", true);
-            // die;
             return $this->content;
         }
 
-        file_print("content is  null", true);
-            // die;
         $this->content = new stdClass;
 
         $height = isset($this->config->height) && $this->config->height !== '' ? $this->config->height : null;
