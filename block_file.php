@@ -175,6 +175,9 @@ class block_file extends block_base
         $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
 
+
+        file_print("LENGTH: ". count($files));
+
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
         $sortingArray =array(
             "SCORE",
