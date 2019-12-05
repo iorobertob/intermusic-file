@@ -76,6 +76,7 @@ class backup_file_block_structure_step extends backup_block_structure_step {
 
         // Define file annotations.
         $file->annotate_files('block_file', 'intro', null);
+        $file->annotate_files('block_file', 'file', null);
 
 
         return $this->prepare_block_structure($file);

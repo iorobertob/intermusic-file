@@ -98,5 +98,6 @@ class restore_file_block_structure_step extends restore_structure_step {
     protected function after_execute() {
         // Add choice related files, no need to match by itemname (just internally handled context)
         $this->add_related_files('block_file', 'intro', null);
+        $this->add_related_files('block_file', 'file', null);
     }
 }
