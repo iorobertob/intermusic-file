@@ -10,7 +10,7 @@ class block_file_edit_form extends block_edit_form
         $mform->setDefault('config_title', get_string('file', 'block_file'));
         $mform->setType('config_title', PARAM_TEXT);
 
-        $mform->addElement('filemanager', 'config_select_file', get_string('configfile', 'block_file'), null, array('subdirs' => false, 'maxfiles' =>-1, 'accepted_types'=>'*','return_types'=> FILE_EXTERNAL));
+        $mform->addElement('filemanager', 'config_select_file', get_string('configfile', 'block_file'), null, array('subdirs' => false, 'maxfiles' =>-1, 'accepted_types'=>'*','return_types'=> FILE_INTERNAL | FILE_EXTERNAL | FILE_REFERENCE | FILE_CONTROLLED_LINK));
         $mform->setType('config_select_file', PARAM_RAW);
         $mform->addElement('text', 'config_height', get_string('configheight', 'block_file'));
         $mform->setType('config_height', PARAM_TEXT);
