@@ -1556,17 +1556,18 @@ var validateFileURL = void 0;
     if (file === undefined) {
       return;
     }
-    alert('alksdf;ajd');
+
     try {
       var viewerOrigin = new _pdfjsLib.URL(window.location.href).origin || 'null';
       if (HOSTED_VIEWER_ORIGINS.includes(viewerOrigin)) {
+        alert('return');
         return;
       }
 
       var _ref14 = new _pdfjsLib.URL(file, window.location.href),
           origin = _ref14.origin,
           protocol = _ref14.protocol;
-
+      alert('alksdf;ajd');
       if (origin !== viewerOrigin && protocol !== 'blob:') {
         alert('alksdf;ajd');
         console.log(';dalkfjd;alkfjd;lkasfjsd;lk');
