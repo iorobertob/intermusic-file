@@ -89,8 +89,8 @@ class block_file extends block_base
         $files           = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
         $keys            = array_keys($files);
         file_print("count:".count($files), true);
-        file_print("KEYS:".serialize($keys), true);
-        file_print("FILES:".serialize($files), true);
+        file_print("KEYS:".serialize($keys), false);
+        file_print("FILES:".serialize($files), false);
         if (count($files) > 0 ){
             $filename        = $files[$keys[1]] -> get_filename();
             $filename_parts  = explode("_", $filename);
