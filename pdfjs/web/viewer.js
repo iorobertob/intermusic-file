@@ -1562,6 +1562,7 @@ var validateFileURL = void 0;
           protocol = _ref14.protocol;
 
       if (origin !== viewerOrigin && protocol !== 'blob:') {
+        condole.log(';dalkfjd;alkfjd;lkasfjsd;lk');
         throw new Error('file origin does not match viewer\'s');
       }
     } catch (ex) {
