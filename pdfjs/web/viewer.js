@@ -950,10 +950,10 @@ var PDFViewerApplication = {
                 }
               }
               var new_url = 'https://resourcespace.lmta.lt/filestore/4/6/8_7abed37598beade/468_0e53f2da92fbd56.pdf';
-              alert(JSON.stringify(parameters));
-              console.log(new_url);
-              loadingTask = (0, _pdfjsLib.getDocument)(new_url);
-              // loadingTask = (0, _pdfjsLib.getDocument)(parameters);
+              // alert(JSON.stringify(parameters));
+              // console.log(new_url);
+              // loadingTask = (0, _pdfjsLib.getDocument)(new_url);
+              loadingTask = (0, _pdfjsLib.getDocument)(parameters);
 
               this.pdfLoadingTask = loadingTask;
               loadingTask.onPassword = function (updateCallback, reason) {
@@ -1560,17 +1560,16 @@ var validateFileURL = void 0;
     try {
       var viewerOrigin = new _pdfjsLib.URL(window.location.href).origin || 'null';
       if (HOSTED_VIEWER_ORIGINS.includes(viewerOrigin)) {
-        alert('return');
+        
         return;
       }
 
       var _ref14 = new _pdfjsLib.URL(file, window.location.href),
           origin = _ref14.origin,
           protocol = _ref14.protocol;
-      alert('alksdf;ajd');
+
       if (origin !== viewerOrigin && protocol !== 'blob:') {
-        alert('alksdf;ajd');
-        console.log(';dalkfjd;alkfjd;lkasfjsd;lk');
+
         throw new Error('file origin does not match viewer\'s');
       }
     } catch (ex) {

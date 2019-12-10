@@ -322,7 +322,17 @@ class block_file extends block_base
             'style' => $this->build_style_attribute($styles),
         ];
 
-        return html_writer::tag('iframe', $this->get_content_text_default($file, $height), $attributes);
+
+        $attributes1 = [
+            'controls' => '',
+            'style' => $this->build_style_attribute($styles),
+            'src' => $this->get_file_url($file),
+            'alt' => "pdf",
+            'pluginspage'=>"http://www.adobe.com/products/acrobat/readstep2.html"
+        ];
+        return html_witter::tag('embed','',$attributes1);
+// <embed src="pdfFiles/interfaces.pdf" width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+        // return html_writer::tag('iframe', $this->get_content_text_default($file, $height), $attributes);
     }
 
     protected function get_content_text_video($file, $height = null)
@@ -354,7 +364,7 @@ class block_file extends block_base
             'type'=>"audio/wav",
         ];
         $tag = html_writer::tag('audio', '', $attributes);
-        echo "<script>console.log('".$tag."');</script>";
+        // echo "<script>console.log('".$tag."');</script>";
         return $tag;
     }
 
