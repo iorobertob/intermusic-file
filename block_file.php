@@ -22,18 +22,22 @@ class block_file extends block_base
         $collection = [];
         $collection = $this->get_item_from_filename($context, $collection_index);
 
-        // TODO: filter for the case when names do not contain this format
-        // Commit to database the collection that the first part of the name indicates
-        $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
-        
-        // Findout which ID corresponds to this file in RS
-        $request_json = $this->get_file_fields_metadata($collection[0]);
 
-        try {
-            $DB->set_field('poster', 'rs_id', $request_json[1][0]["ref"], array('name' => $collection[1]));
-        } catch (Exception $e) {
-            file_print("Exception in Commit to DB:", true);
+        if($collection !== null){
+            // TODO: filter for the case when names do not contain this format
+            // Commit to database the collection that the first part of the name indicates
+            $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
+            
+            // Findout which ID corresponds to this file in RS
+            $request_json = $this->get_file_fields_metadata($collection[0]);
+
+            try {
+                $DB->set_field('poster', 'rs_id', $request_json[1][0]["ref"], array('name' => $collection[1]));
+            } catch (Exception $e) {
+                file_print("Exception in Commit to DB:", true);
+            }
         }
+
         return parent::instance_config_save($data, $nolongerused);
     }
 
@@ -84,15 +88,22 @@ class block_file extends block_base
         $fs              = get_file_storage();
         $files           = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
         $keys            = array_keys($files);
-        $filename        = $files[$keys[1]] -> get_filename();
-        $filename_parts  = explode("_", $filename);
-        $item            = $filename_parts[$item_number];
-        $characteristics = $filename_parts[2];
 
-        $items    = [];
-        $items[0] = $item;
-        $items[1] = $poster_name;
-        return $items;
+        if (count($files) > 0 ){
+            $filename        = $files[$keys[1]] -> get_filename();
+            $filename_parts  = explode("_", $filename);
+            $item            = $filename_parts[$item_number];
+            $characteristics = $filename_parts[2];
+
+            $items    = [];
+            $items[0] = $item;
+            $items[1] = $poster_name;
+            return $items;
+        }
+        else {
+            return null;
+        }
+        
     }
 
     /**
