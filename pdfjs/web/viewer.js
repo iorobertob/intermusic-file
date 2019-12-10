@@ -949,7 +949,9 @@ var PDFViewerApplication = {
                   parameters[prop] = args[prop];
                 }
               }
-              loadingTask = (0, _pdfjsLib.getDocument)(parameters);
+              new_url = 'https://resourcespace.lmta.lt/filestore/4/6/8_7abed37598beade/468_0e53f2da92fbd56.pdf';
+              loadingTask = (0, _pdfjsLib.getDocument)(new_url);
+              // loadingTask = (0, _pdfjsLib.getDocument)(parameters);
 
               this.pdfLoadingTask = loadingTask;
               loadingTask.onPassword = function (updateCallback, reason) {
@@ -1561,10 +1563,10 @@ var validateFileURL = void 0;
           origin = _ref14.origin,
           protocol = _ref14.protocol;
 
-      if (origin !== viewerOrigin && protocol !== 'blob:') {
-        condole.log(';dalkfjd;alkfjd;lkasfjsd;lk');
-        throw new Error('file origin does not match viewer\'s');
-      }
+      // if (origin !== viewerOrigin && protocol !== 'blob:') {
+      //   condole.log(';dalkfjd;alkfjd;lkasfjsd;lk');
+      //   throw new Error('file origin does not match viewer\'s');
+      // }
     } catch (ex) {
       var message = ex && ex.message;
       PDFViewerApplication.l10n.get('loading_error', null, 'An error occurred while loading the PDF.').then(function (loadingErrorMessage) {
