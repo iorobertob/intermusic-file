@@ -182,9 +182,6 @@ class block_file extends block_base
         $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
 
-
-        file_print("LENGTH: ". count($files));
-
 //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
         $sortingArray =array(
             "SCORE",
@@ -198,22 +195,25 @@ class block_file extends block_base
         $newNames              = [];
         $sortedOriginalNames   = [];
 
-        for($x = 0; $x <= sizeof($sortingArray); $x++)
+        for($x = 0; $x < sizeof($sortingArray); $x++)
         {
             foreach($files as $file)
             {
                 // Splitting the name by "_" 
                 $sortString      = explode( "_", $file -> get_filename() );
-                $stringToCompare = substr($sortString[2], 0, 5);
-                file_print("X: ".$x);
+
+                if (count($sortString) >= 3){
+                    $stringToCompare = substr($sortString[2], 0, 5);
  
-               if ( ($stringToCompare == $sortingArray[$x]) && ($stringToCompare != "") )
-               {
-                    array_push($filesSorted, $file);
-                    array_push($newNames, explode( ".", $sortString[2])[0] ); // Getting rid of the extension 
-                    array_push($sortedOriginalNames, $file->get_filename());
-                    // break;
-               }
+                    if ( ($stringToCompare == $sortingArray[$x]) && ($stringToCompare != "") )
+                    {
+                        array_push($filesSorted, $file);
+                        array_push($newNames, explode( ".", $sortString[2])[0] ); // Getting rid of the extension 
+                        array_push($sortedOriginalNames, $file->get_filename());
+                        // break;
+                    }
+                }
+                
             }
         }
 
