@@ -950,7 +950,7 @@ var PDFViewerApplication = {
                 }
               }
               var new_url = 'https://resourcespace.lmta.lt/filestore/4/6/8_7abed37598beade/468_0e53f2da92fbd56.pdf';
-              alert(parameters);
+              alert(String(parameters);
               console.log(new_url);
               loadingTask = (0, _pdfjsLib.getDocument)(new_url);
               // loadingTask = (0, _pdfjsLib.getDocument)(parameters);
