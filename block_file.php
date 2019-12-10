@@ -330,7 +330,7 @@ class block_file extends block_base
             'alt' => "pdf",
             'pluginspage'=>"http://www.adobe.com/products/acrobat/readstep2.html"
         ];
-        return html_witter::tag('embed','',$attributes1);
+        return html_writer::tag('embed','',$attributes1);
 // <embed src="pdfFiles/interfaces.pdf" width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
         // return html_writer::tag('iframe', $this->get_content_text_default($file, $height), $attributes);
     }
