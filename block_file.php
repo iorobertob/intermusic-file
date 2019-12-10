@@ -206,7 +206,7 @@ class block_file extends block_base
                 $sortString      = explode( "_", $file -> get_filename() );
                 $stringToCompare = substr($sortString[2], 0, 5);
                 file_print("X: ".$x);
-
+ 
                if ( ($stringToCompare == $sortingArray[$x]) && ($stringToCompare != "") )
                {
                     array_push($filesSorted, $file);
