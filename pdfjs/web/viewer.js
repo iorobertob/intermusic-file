@@ -1552,10 +1552,11 @@ var validateFileURL = void 0;
 {
   var HOSTED_VIEWER_ORIGINS = ['null', 'http://mozilla.github.io', 'https://mozilla.github.io'];
   validateFileURL = function validateFileURL(file) {
-    alert('alksdf;ajd');
+
     if (file === undefined) {
       return;
     }
+    alert('alksdf;ajd');
     try {
       var viewerOrigin = new _pdfjsLib.URL(window.location.href).origin || 'null';
       if (HOSTED_VIEWER_ORIGINS.includes(viewerOrigin)) {
