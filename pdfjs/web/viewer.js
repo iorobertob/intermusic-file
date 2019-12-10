@@ -982,7 +982,7 @@ var PDFViewerApplication = {
                 } else if (exception instanceof _pdfjsLib.UnexpectedResponseException) {
                   loadingErrorMessage = _this2.l10n.get('unexpected_response_error', null, 'Unexpected server response.');
                 } else {
-                  loadingErrorMessage = _this2.l10n.get('loading_error', null, 'An error occurred while loading the PDF.');
+                  loadingErrorMessage = _this2.l10n.get('loading_error', null, '1 - An error occurred while loading the PDF.');
                 }
                 return loadingErrorMessage.then(function (msg) {
                   _this2.error(msg, { message: message });
@@ -1575,7 +1575,7 @@ var validateFileURL = void 0;
       }
     } catch (ex) {
       var message = ex && ex.message;
-      PDFViewerApplication.l10n.get('loading_error', null, 'An error occurred while loading the PDF.').then(function (loadingErrorMessage) {
+      PDFViewerApplication.l10n.get('loading_error', null, '2- An error occurred while loading the PDF.').then(function (loadingErrorMessage) {
         PDFViewerApplication.error(loadingErrorMessage, { message: message });
       });
       throw ex;
@@ -1664,7 +1664,7 @@ function webViewerInitialized() {
   try {
     webViewerOpenFileViaURL(file);
   } catch (reason) {
-    PDFViewerApplication.l10n.get('loading_error', null, 'An error occurred while loading the PDF.').then(function (msg) {
+    PDFViewerApplication.l10n.get('loading_error', null, '3 - An error occurred while loading the PDF.').then(function (msg) {
       PDFViewerApplication.error(msg, reason);
     });
   }
@@ -1710,7 +1710,7 @@ function webViewerPageRendered(evt) {
     Stats.add(pageNumber, pageView.stats);
   }
   if (pageView.error) {
-    PDFViewerApplication.l10n.get('rendering_error', null, 'An error occurred while rendering the page.').then(function (msg) {
+    PDFViewerApplication.l10n.get('rendering_error', null, '4 - An error occurred while rendering the page.').then(function (msg) {
       PDFViewerApplication.error(msg, pageView.error);
     });
   }
