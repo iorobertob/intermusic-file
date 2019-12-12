@@ -272,9 +272,10 @@ class block_file extends block_base
             {
                 $shortname = $newNames[$count];
  
-                $content .= '{%:'.'<button  class="tabButtons" onclick="selectedTab(this)">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
+                $content .= '{%:'.'<button  class="tabButtons" onclick="selectedTabMedia(this)">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
 
                 // $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause();for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause()">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
+                
                 $count += 1;
 		        continue;
             }
@@ -282,7 +283,11 @@ class block_file extends block_base
             if (substr($mimeType, 0, 5) === 'audio') 
             {
                 $shortname = $newNames[$count];
-                $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause();for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause()">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_audio($file, $height).'{%}';
+
+                $content .= '{%:'.'<button  class="tabButtons" onclick="selectedTabMedia(this)">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_audio($file, $height).'{%}';
+
+                // $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause();for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause()">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_audio($file, $height).'{%}';
+
                 $count += 1;
                 continue;
             }
