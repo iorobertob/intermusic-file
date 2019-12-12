@@ -170,6 +170,11 @@ class block_file extends block_base
      */
     public function get_content()
     {
+        global $PAGE;
+
+        // Because we will use js functions in some of the rendered html 
+        $PAGE->requires->js('/block/file/file.js',true);
+
         if ($this->content !== null) 
         {
             return $this->content;
@@ -266,7 +271,10 @@ class block_file extends block_base
             if (substr($mimeType, 0, 5) === 'video') 
             {
                 $shortname = $newNames[$count];
-                $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause();for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause()">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
+ 
+                $content .= '{%:'.'<button  class="tabButtons" onclick="selectedTab(this)">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
+
+                // $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause();for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause()">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
                 $count += 1;
 		        continue;
             }
