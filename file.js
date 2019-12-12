@@ -6,7 +6,7 @@ function selectedTab(btn) {
 
  	var tabs =  document.getElementsByClassName('tabButtons');
 
- 	for(i=0; i<tabs.length; i++) style.fontWeight = '300';
+ 	for(i=0; i<tabs.length; i++) tabs[i].style.fontWeight = '300';
 
  	btn.style.fontWeight =  '700';
 }
