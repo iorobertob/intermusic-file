@@ -1,5 +1,6 @@
 function selectedTab(btn) {
 	alert("tests");
+	console.log("tests");
 	for(i=0; i<document.getElementsByTagName('video').length; i++) document.getElementsByTagName('video')[i].pause();
  	for(i=0; i<document.getElementsByTagName('audio').length; i++) document.getElementsByTagName('audio')[i].pause();
 
