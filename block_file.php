@@ -263,7 +263,11 @@ class block_file extends block_base
             if ($mimeType === 'application/pdf') 
             {
                 $shortname = $newNames[$count];
-                $content .= '{%:'.'<button>'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_pdf($file, $height).'{%}';
+
+                $content .= '{%:'.'<button  class="tabButtons" onclick="selectedTab(this)">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_pdf($file, $height).'{%}';
+
+                // $content .= '{%:'.'<button>'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_pdf($file, $height).'{%}';
+
                 $count += 1;
                 continue;
             }
@@ -300,7 +304,11 @@ class block_file extends block_base
             ])) 
             {
                 $shortname = $newNames[$count];
-                $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
+
+                $content .= '{%:'.'<button  class="tabButtons" onclick="selectedTab(this)">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_image($file, $height).'{%}';
+
+                // $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
+                
                 $count += 1;
                 continue;
             }

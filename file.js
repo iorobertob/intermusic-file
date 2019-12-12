@@ -5,7 +5,13 @@ function selectedTabMedia(btn) {
 
  	var tabs =  document.getElementsByClassName('tabButtons');
 
- 	for(i=0; i<tabs.length; i++) tabs[i].style.fontWeight = '300';
+ 	for(i=0; i<tabs.length; i++) {
+
+ 		if (btn.parentNode.parentNode.parentNode.id == tabs[i].parentNode.parentNode.parentNode.id){
+ 			tabs[i].style.fontWeight = '300';
+ 		}
+ 		
+ 	}
 
  	btn.style.fontWeight =  '700';
 }
@@ -14,7 +20,14 @@ function selectedTa(btn) {
 
  	var tabs =  document.getElementsByClassName('tabButtons');
 
- 	for(i=0; i<tabs.length; i++) tabs[i].style.fontWeight = '300';
+ 	for(i=0; i<tabs.length; i++) {
 
+ 		if (btn.parentNode.parentNode.parentNode.id == tabs[i].parentNode.parentNode.parentNode.id){
+ 			tabs[i].style.fontWeight = '300';
+ 		}
+ 		
+ 	}
+
+ 	
  	btn.style.fontWeight =  '700';
 }
