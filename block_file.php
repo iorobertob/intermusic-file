@@ -173,7 +173,7 @@ class block_file extends block_base
         global $PAGE;
 
         // Because we will use js functions in some of the rendered html 
-        $PAGE->requires->js('/block/file/file.js',true);
+        $PAGE->requires->js('/blocks/file/file.js',true);
 
         if ($this->content !== null) 
         {
