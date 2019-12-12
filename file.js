@@ -16,7 +16,7 @@ function selectedTabMedia(btn) {
  	btn.style.fontWeight =  '700';
 }
 
-function selectedTa(btn) {
+function selectedTab(btn) {
 
  	var tabs =  document.getElementsByClassName('tabButtons');
 
