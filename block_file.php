@@ -392,7 +392,7 @@ class block_file extends block_base
         file_print(serialize($styles));
         file_print($this->build_style_attribute($styles));
 
-        $tag = '<audio style="width: 100%" type="audio/wav" class="vjs-tech"  tabindex="-1" src="https://intermusic.lmta.lt/pluginfile.php/1964/block_file/file/MVL000004_GHEDINI%20Tu%20te%20ne%20vai_AUDIO-2%20%5Bc%23%5D.wav"></audio>';
+        $tag = '<audio style="width: 100%" class="vjs-tech"  tabindex="-1" src="'.$this->get_file_url($file).'"></audio>';
 
 
 
