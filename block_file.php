@@ -384,11 +384,12 @@ class block_file extends block_base
             'controls' => '',
             'style' => $this->build_style_attribute($styles),
             'src' => $this->get_file_url($file),
-            // 'type'=>"audio/wav",
-            'type'=>"audio/mpeg",
+            'type'=>"audio/wav",
+            'preload'="auto",
+            // 'type'=>"audio/mpeg",
         ];
-        // $tag = html_writer::tag('audio', '', $attributes);
-        $tag = $this->get_file_url($file);
+        $tag = html_writer::tag('audio', '', $attributes);
+        // $tag = $this->get_file_url($file);
 
         // file_print(serialize($styles));
         // file_print($this->build_style_attribute($styles));
