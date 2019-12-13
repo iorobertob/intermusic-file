@@ -387,6 +387,15 @@ class block_file extends block_base
             'type'=>"audio/wav",
         ];
         $tag = html_writer::tag('audio', '', $attributes);
+
+
+        block_print($styles);
+        block_print(build_style_attribute($styles));
+
+        $tag = '<audio style="width: 100%" type="audio/wav" data-setup-lazy="{&quot;language&quot;: &quot;en&quot;, &quot;fluid&quot;: true, &quot;controlBar&quot;: {&quot;fullscreenToggle&quot;: false}, &quot;aspectRatio&quot;: &quot;1:0&quot;}" id="id_videojs_5df25fd3a4027_4_html5_api" class="vjs-tech" title="MVL000004_GHEDINI%20Tu%20te%20ne%20vai_AUDIO-2%20%5Bc%23%5D.wav" tabindex="-1" src="https://intermusic.lmta.lt/pluginfile.php/1964/block_file/file/MVL000004_GHEDINI%20Tu%20te%20ne%20vai_AUDIO-2%20%5Bc%23%5D.wav"></audio>';
+
+
+
         // $tag = html_writer::empty_tag('audio', $attributes);
         // echo "<script>console.log('".$tag."');</script>";
         return $tag;
