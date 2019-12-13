@@ -387,7 +387,7 @@ class block_file extends block_base
             'type'=>"audio/wav",
         ];
         // $tag = html_writer::tag('audio', '', $attributes);
-        $tag = html_writer::nonempty_tag('audio', '', $attributes);
+        $tag = html_writer::empty_tag('audio', $attributes);
         // echo "<script>console.log('".$tag."');</script>";
         return $tag;
     }
