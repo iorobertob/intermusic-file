@@ -387,8 +387,8 @@ class block_file extends block_base
             // 'type'=>"audio/wav",
             'type'=>"audio/mpeg",
         ];
-        $tag = html_writer::tag('audio', '', $attributes);
-
+        // $tag = html_writer::tag('audio', '', $attributes);
+        $tag = $this->get_file_url($file);
 
         // file_print(serialize($styles));
         // file_print($this->build_style_attribute($styles));
