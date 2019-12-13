@@ -385,7 +385,7 @@ class block_file extends block_base
             'style' => $this->build_style_attribute($styles),
             'src' => $this->get_file_url($file),
             'type'=>"audio/wav",
-            'preload'="auto",
+            'preload'=>"auto",
             // 'type'=>"audio/mpeg",
         ];
         $tag = html_writer::tag('audio', '', $attributes);
