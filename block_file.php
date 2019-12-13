@@ -386,8 +386,8 @@ class block_file extends block_base
             'src' => $this->get_file_url($file),
             'type'=>"audio/wav",
         ];
-        // $tag = html_writer::tag('audio', '', $attributes);
-        $tag = html_writer::empty_tag('audio', $attributes);
+        $tag = html_writer::tag('audio', '', $attributes);
+        // $tag = html_writer::empty_tag('audio', $attributes);
         // echo "<script>console.log('".$tag."');</script>";
         return $tag;
     }
