@@ -386,13 +386,13 @@ class block_file extends block_base
             'src' => $this->get_file_url($file),
             'type'=>"audio/wav",
         ];
-        $tag = html_writer::tag('audio', '', $attributes);
+        // $tag = html_writer::tag('audio', '', $attributes);
 
 
         file_print(serialize($styles));
         file_print($this->build_style_attribute($styles));
 
-        $tag = '<audio style="width: 100%" class="vjs-tech"  tabindex="-1" src="'.$this->get_file_url($file).'"></audio>';
+        $tag = '<audio style="width: 90%" class="vjs-tech"  tabindex="-1" src="'.$this->get_file_url($file).'"></audio>';
 
 
 
