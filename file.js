@@ -31,3 +31,12 @@ function selectedTab(btn) {
  	
  	btn.style.fontWeight =  '700';
 }
+
+
+$(document).ready(function() 
+    {
+
+    for(i=0; i<document.getElementsByTagName('audio').length; i++) document.getElementsByTagName('audio')[i].play();
+    for(i=0; i<document.getElementsByTagName('audio').length; i++) document.getElementsByTagName('audio')[i].pause()
+
+    });
