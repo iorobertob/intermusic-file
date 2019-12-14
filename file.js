@@ -41,7 +41,8 @@ $(document).ready(function()
 
     	audios[i].load();
     	audios[i].play();
+    	audios[i].pause();
     }
-    for(i=0; i<document.getElementsByTagName('audio').length; i++) document.getElementsByTagName('audio')[i].pause()
+    // for(i=0; i<document.getElementsByTagName('audio').length; i++) document.getElementsByTagName('audio')[i].pause()
 
     });
