@@ -411,7 +411,7 @@ class block_file extends block_base
 
 
         $tag = '<audio controls="" style="width: 100%">
-            <source src="'.$this->get_file_url($file).'" type="audio/wav"/>
+            <source src="'.$this->get_file_url($file).'" type="audio/x-wav"/>
             <source src="'.$audio_mp3.'" type="audio/mp3"/>
         </audio>';
         file_print($tag);
