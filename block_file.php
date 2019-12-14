@@ -382,13 +382,14 @@ class block_file extends block_base
 
         $attributes = [
             'controls' => '',
-            'style' => $this->build_style_attribute($styles),
-            'src' => $this->get_file_url($file),
-            'type'=>"audio/wav",
+            'style'  => $this->build_style_attribute($styles),
+            'src'    => $this->get_file_url($file),
+            'type'   =>"audio/wav",
             'preload'=>"auto",
             // 'type'=>"audio/mpeg",
         ];
         $tag = html_writer::tag('audio', '', $attributes);
+        file_print("$tag");
         // $tag = $this->get_file_url($file);
 
         // file_print(serialize($styles));
