@@ -406,7 +406,7 @@ class block_file extends block_base
         // echo "<script>console.log('".$tag."');</script>";
         $audio_exploded = explode(".",$this->get_file_url($file));
         $audio_exploded = preg_split('~_(?=[^_]*$)~', $this->get_file_url($file)); 
-        $audio_mp3 = $audio_exploded[0].".mp3"
+        $audio_mp3 = $audio_exploded[0].".mp3";
 
 
 
