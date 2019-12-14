@@ -392,7 +392,7 @@ class block_file extends block_base
             // 'type'=>"audio/mpeg",
         ];
         $tag = html_writer::tag('audio', '', $attributes);
-        file_print($tag);
+        
         // $tag = $this->get_file_url($file);
 
         // file_print(serialize($styles));
@@ -409,7 +409,7 @@ class block_file extends block_base
             <source src="'.$this->get_file_url($file).'" type="audio/wav"/>
             <source src="'.$audio_mp3.'" type="audio/mp3"/>
         </audio>';
-
+        file_print($tag);
 
         return $tag;
     }
