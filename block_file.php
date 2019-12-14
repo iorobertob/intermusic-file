@@ -404,7 +404,12 @@ class block_file extends block_base
 
         // $tag = html_writer::empty_tag('audio', $attributes);
         // echo "<script>console.log('".$tag."');</script>";
-        $audio_mp3 = explode(".",$this->get_file_url($file))[0].".mp3"; 
+        $audio_exploded = explode(".",$this->get_file_url($file));
+        $audio_exploded = preg_split('~_(?=[^_]*$)~', $this->get_file_url($file)); 
+        $audio_mp3 = $audio_exploded[0].".mp3"
+
+
+
         $tag = '<audio controls="" style="width: 100%">
             <source src="'.$this->get_file_url($file).'" type="audio/wav"/>
             <source src="'.$audio_mp3.'" type="audio/mp3"/>
