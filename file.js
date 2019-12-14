@@ -40,8 +40,8 @@ $(document).ready(function()
     for(i=0; i < audios.length; i++){
 
     	audios[i].load();
-    	audios[i].play();
-    	audios[i].pause();
+    	// audios[i].play();
+    	// audios[i].pause();
     }
     // for(i=0; i<document.getElementsByTagName('audio').length; i++) document.getElementsByTagName('audio')[i].pause()
 
