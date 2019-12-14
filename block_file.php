@@ -383,7 +383,8 @@ class block_file extends block_base
         $attributes = [
             'controls' => '',
             'style'  => $this->build_style_attribute($styles),
-            'src'    => $this->get_file_url($file),
+            // 'src'    => $this->get_file_url($file),
+            'src'.   => "https://resourcespace.lmta.lt//filestore//1//4//6_211b356481be9bf//146_8caec9a9baf0554.mp3";
             // 'src'    => "https://resourcespace.lmta.lt//filestore//1//4//6_211b356481be9bf//146_8caec9a9baf0554.wav",
             // 'type'   =>"audio/wav, audio/mp3",
             'type'   =>"audio/mp3",
