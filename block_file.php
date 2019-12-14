@@ -389,7 +389,7 @@ class block_file extends block_base
             // 'type'=>"audio/mpeg",
         ];
         $tag = html_writer::tag('audio', '', $attributes);
-        file_print("$tag");
+        file_print($tag);
         // $tag = $this->get_file_url($file);
 
         // file_print(serialize($styles));
