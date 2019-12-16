@@ -347,7 +347,7 @@ class block_file extends block_base
 
         $attributes1 = [
             'controls' => '',
-            'style' => $this->build_style_attribute($styles),
+            'style' => $this->build_style_attribute($styles) . " padding-bottom: 25px;",
             'src' => $this->get_file_url($file)
             // 'alt' => "pdf"
             // 'pluginspage'=>"http://www.adobe.com/products/acrobat/readstep2.html"

@@ -33,16 +33,17 @@ function selectedTab(btn) {
 }
 
 
-$(document).ready(function() 
-    {
-    console.log("Page loaded");
-    var audios = document.getElementsByTagName('audio');
-    for(i=0; i < audios.length; i++){
+// $(document).ready(function() 
+//     {
+    // console.log("Page loaded");
+    // var audios = document.getElementsByTagName('audio');
+    // for(i=0; i < audios.length; i++){
 
-    	audios[i].load();
+    	// audios[i].preload = null;
+    	// audios[i].load();
     	// audios[i].play();
     	// audios[i].pause();
-    }
+    // }
     // for(i=0; i<document.getElementsByTagName('audio').length; i++) document.getElementsByTagName('audio')[i].pause()
 
-    });
+    // });
