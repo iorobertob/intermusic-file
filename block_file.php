@@ -302,9 +302,7 @@ class block_file extends block_base
     protected function get_content_text_pdf($file, $height = null)
     {
         $styles = [
-            'width' => '100%', 
-            'max-height'=> '200vh',
-            'overflow-y'=> 'scroll',
+            'width' => '100%',
         ];
 
         if ($height !== null) {
@@ -328,8 +326,10 @@ class block_file extends block_base
         ];
         $tag = html_writer::tag('iframe','',$attributes1);
         
-        return $tag;
-        
+        // return $tag;
+
+        $final_tag = "<p style='height=".$height.";'><p style='height=400vh overflow-y=scroll;'>".$tag."</p></p>";
+        return $final_tag;
         // return html_writer::tag('iframe', $this->get_content_text_default($file, $height), $attributes);
     }
 
