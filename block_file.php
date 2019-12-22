@@ -303,8 +303,8 @@ class block_file extends block_base
     {
         $styles = [
             'width' => '100%', 
-            'max-height'=> '200vh';
-            'overflow-y'=> 'scroll';
+            'max-height'=> '200vh',
+            'overflow-y'=> 'scroll',
         ];
 
         if ($height !== null) {
