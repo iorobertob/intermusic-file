@@ -122,13 +122,10 @@ class block_file extends block_base
     {
         $this->init_resourcespace();
         // Set the private API key for the user (from the user account page) and the user we're accessing the system as.
-        // $private_key="9885aec8ea7eb2fb8ee45ff110773a5041030a7bdf7abb761c9e682de7f03045";
         $private_key = $this->api_key;
+        $user        = $this->api_user;
+        $url         = $this->resourcespace_api_url ;
 
-        $user="admin";
-        $user = $this->api_user;
-
-        $url = $this->resourcespace_api_url ;
         // Formulate the query
         $query="user=" . $user . "&function=do_search&param1=".$string."&param2=&param3=&param4=&param5=&param6=";
 
@@ -140,7 +137,6 @@ class block_file extends block_base
         $results=json_decode(file_get_contents($url . $query . "&sign=" . $sign));
         $results=file_get_contents($url . $query . "&sign=" . $sign);
         $results=json_decode(file_get_contents($url . $query . "&sign=" . $sign), TRUE);
-        // print_r($results);
         
         $result = [];
         $result[0] = "https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign;
@@ -154,16 +150,13 @@ class block_file extends block_base
      */
     private function init_resourcespace()
     {
-        $this->config = get_config('resourcespace');
+        $this->config       = get_config('resourcespace');
         $this->resourcespace_api_url = get_config('resourcespace', 'resourcespace_api_url');
-        $this->api_key = get_config('resourcespace', 'api_key');
-        $this->api_user = get_config('resourcespace', 'api_user');
-        $this->enable_help = get_config('resourcespace', 'enable_help');
+        $this->api_key      = get_config('resourcespace', 'api_key');
+        $this->api_user     = get_config('resourcespace', 'api_user');
+        $this->enable_help  = get_config('resourcespace', 'enable_help');
         $this->enable_help_url = get_config('resourcespace', 'enable_help_url');
     }
-
-
-
 
     /**
      * Default function.
@@ -239,24 +232,13 @@ class block_file extends block_base
         // foreach ($files as $file) 
         foreach ($filesSorted as $file)
         {
-            if ($count == 0)    
-            {
-                // $count += 1;
-                // continue;
-            }
-            else
-            {
-                // $count += 1;
-            }
 
     	    if ($file->is_directory()) 
             {
                 continue;
-                // $count += 1;
             }
 
             $filterOptions = new stdClass;
-            // $filterOptions->overflowdiv = true;
             $filterOptions->noclean = true;
 
             $mimeType = $file->get_mimetype();
@@ -265,8 +247,6 @@ class block_file extends block_base
                 $shortname = $newNames[$count];
 
                 $content .= '{%:'.'<button  class="tabButtons" onclick="selectedTab(this)">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_pdf($file, $height).'{%}';
-
-                // $content .= '{%:'.'<button>'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_pdf($file, $height).'{%}';
 
                 $count += 1;
                 continue;
@@ -278,8 +258,6 @@ class block_file extends block_base
  
                 $content .= '{%:'.'<button  class="tabButtons" onclick="selectedTabMedia(this)">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
 
-                // $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause();for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause()">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_video($file, $height).'{%}';
-                
                 $count += 1;
 		        continue;
             }
@@ -289,8 +267,6 @@ class block_file extends block_base
                 $shortname = $newNames[$count];
 
                 $content .= '{%:'.'<button  class="tabButtons" onclick="selectedTabMedia(this)">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_audio($file, $height).'{%}';
-
-                // $content .= '{%:'.'<button onclick="for(i=0; i<document.getElementsByTagName(\'audio\').length; i++) document.getElementsByTagName(\'audio\')[i].pause();for(i=0; i<document.getElementsByTagName(\'video\').length; i++) document.getElementsByTagName(\'video\')[i].pause()">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_audio($file, $height).'{%}';
 
                 $count += 1;
                 continue;
@@ -307,8 +283,6 @@ class block_file extends block_base
 
                 $content .= '{%:'.'<button  class="tabButtons" onclick="selectedTab(this)">'.'  '.$shortname. '</button>'.' }'.$this->get_content_text_image($file, $height).'{%}';
 
-                // $content .= '{%:'.'<button> '.'  '.$shortname. '</button>'.'  }'.$this->get_content_text_image($file, $height).'{%}';
-                
                 $count += 1;
                 continue;
             }
@@ -328,35 +302,34 @@ class block_file extends block_base
     protected function get_content_text_pdf($file, $height = null)
     {
         $styles = [
-            'width' => '100%',
-            // 'height' => '100%',
+            'width' => '100%', 
+            'max-height'=> '200vh';
+            'overflow-y'=> 'scroll';
         ];
 
         if ($height !== null) {
             $styles['min-height'] = $height;
         }
 
-        $viewerUrl = new moodle_url('/blocks/file/pdfjs/web/viewer.html');
-        $viewerUrl->param('file', $this->get_file_url($file));
+        // TODO: This section used to render a PDFjs source, but it has CORS issues... current implementation 
+        // $viewerUrl = new moodle_url('/blocks/file/pdfjs/web/viewer.html');
+        // $viewerUrl->param('file', $this->get_file_url($file));
 
-        $attributes = [
-            'src' => $viewerUrl,
-            'style' => $this->build_style_attribute($styles),
-        ];
+        // $attributes = [
+        //     'src' => $viewerUrl,
+        //     'style' => $this->build_style_attribute($styles),
+        // ];
 
 
         $attributes1 = [
             'controls' => '',
             'style' => $this->build_style_attribute($styles),
             'src' => $this->get_file_url($file)
-            // 'alt' => "pdf"
-            // 'pluginspage'=>"http://www.adobe.com/products/acrobat/readstep2.html"
         ];
         $tag = html_writer::tag('iframe','',$attributes1);
-        file_print($tag);
+        
         return $tag;
-        // return html_writer::tag('embed','',$attributes1);
-// <embed src="pdfFiles/interfaces.pdf" width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+        
         // return html_writer::tag('iframe', $this->get_content_text_default($file, $height), $attributes);
     }
 
