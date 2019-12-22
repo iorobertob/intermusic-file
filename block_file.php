@@ -327,7 +327,7 @@ class block_file extends block_base
         $tag = html_writer::tag('iframe','',$attributes1);
         
         // return $tag;
-
+        file_print($tag, true);
         $final_tag = "<p style='height:".$height.";'><p style='height:400vh; overflow-y:scroll;'>".$tag."</p></p>";
         return $final_tag;
         // return html_writer::tag('iframe', $this->get_content_text_default($file, $height), $attributes);
