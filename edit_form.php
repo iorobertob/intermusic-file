@@ -18,5 +18,7 @@ class block_file_edit_form extends block_edit_form
         $mform->setType('config_select_file', PARAM_RAW);
         $mform->addElement('text', 'config_height', get_string('configheight', 'block_file'));
         $mform->setType('config_height', PARAM_TEXT);
+
+        $mform->set_data();
     }
 }
