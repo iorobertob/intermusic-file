@@ -33,8 +33,8 @@ class block_file_edit_form extends block_edit_form
 
         $defaults->files = $draftitemid;
 
-        // $this->block->config->attachments = $draftitemid;
-        unset($this->block->config->attachments); 
+        $this->block->config->attachments = $draftitemid;
+        // unset($this->block->config->attachments); 
 
         parent::set_data($defaults);
     }
