@@ -19,6 +19,22 @@ class block_file_edit_form extends block_edit_form
         $mform->addElement('text', 'config_height', get_string('configheight', 'block_file'));
         $mform->setType('config_height', PARAM_TEXT);
 
-        $this->set_data(null);
+
     }
+
+
+    function set_data($defaults) {
+      $itemid = 0;
+      $draftitemid = file_get_submitted_draft_itemid('config_select_file');
+      file_prepare_draft_area($draftitemid, $context->id, 'block_file', 'content', $itemid, array('subdirs'=>true));
+      $defaults->config_attachments = $draftitemid;
+
+      // $defaults['files'] = $draftitemid;
+
+      $this->block->config->attachments = $draftitemid;
+
+      parent::set_data($defaults);
+    }
+
 }
+
