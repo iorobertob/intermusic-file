@@ -31,7 +31,7 @@ class block_file_edit_form extends block_edit_form
         file_prepare_draft_area($draftitemid, $this->block->context->id, 'block_file', 'content', $itemid, array('subdirs'=>true));
         $defaults->config_attachments = $draftitemid;
 
-        $defaults['files'] = $draftitemid;
+        $defaults->files = $draftitemid;
 
         $this->block->config->attachments = $draftitemid;
 
