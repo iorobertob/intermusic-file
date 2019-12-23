@@ -24,16 +24,18 @@ class block_file_edit_form extends block_edit_form
 
 
     function set_data($defaults) {
-      $itemid = 0;
-      $draftitemid = file_get_submitted_draft_itemid('config_select_file');
-      file_prepare_draft_area($draftitemid, $context->id, 'block_file', 'content', $itemid, array('subdirs'=>true));
-      $defaults->config_attachments = $draftitemid;
+        file_print("SET DATA", TRUE);
 
-      // $defaults['files'] = $draftitemid;
+        $itemid = 0;
+        $draftitemid = file_get_submitted_draft_itemid('config_select_file');
+        file_prepare_draft_area($draftitemid, $context->id, 'block_file', 'content', $itemid, array('subdirs'=>true));
+        $defaults->config_attachments = $draftitemid;
 
-      $this->block->config->attachments = $draftitemid;
+        // $defaults['files'] = $draftitemid;
 
-      parent::set_data($defaults);
+        $this->block->config->attachments = $draftitemid;
+
+        parent::set_data($defaults);
     }
 
 }
