@@ -36,7 +36,7 @@ class block_file_edit_form extends block_edit_form
 
         $defaults->config_select_file = $draftitemid;
         $defaults->file = $draftitemid;
-        $this->block->config->select_file = $draftitemid;
+        // $this->block->config->select_file = $draftitemid;
         $this->block->config->height = '900px';
 
         $this->block->config->attachments = $draftitemid;
