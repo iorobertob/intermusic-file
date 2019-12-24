@@ -48,7 +48,7 @@ class block_file_edit_form extends block_edit_form
         
         // unset($this->block->config->attachments); 
 
-        // parent::set_data($defaults);
+        parent::set_data($defaults);
     }
 
 }
