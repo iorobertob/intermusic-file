@@ -40,6 +40,8 @@ class block_file_edit_form extends block_edit_form
         $this->block->config->config_select_file = $draftitemid;
 
         file_print(serialize($this->block->config));
+        file_print("CONFIG");
+        file_print(serialize($defaults));
 
         // $defaults->file = $draftitemid;
 
