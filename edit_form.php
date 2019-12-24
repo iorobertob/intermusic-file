@@ -32,15 +32,15 @@ class block_file_edit_form extends block_edit_form
         file_prepare_draft_area($draftitemid, $this->block->context->id, 'block_file', 'file', $itemid, array('subdirs'=>true));
 
 
-        $defaults->config_attachments = $draftitemid;
+        // $defaults->config_attachments = $draftitemid;
 
         $defaults->config_select_file = $draftitemid;
 
-        $defaults->file = $draftitemid;
+        // $defaults->file = $draftitemid;
 
-        $this->block->config->attachments = $draftitemid;
+        // $this->block->config->attachments = $draftitemid;
 
-        $this->block->config_select_file = $draftitemid;
+        // $this->block->config_select_file = $draftitemid;
         // unset($this->block->config->attachments); 
 
         parent::set_data($defaults);
