@@ -28,13 +28,15 @@ class block_file_edit_form extends block_edit_form
 
         $itemid = 0;
         $draftitemid = file_get_submitted_draft_itemid('config_select_file');
-        file_prepare_draft_area($draftitemid, $this->context->id, 'block_file', 'file', $itemid, array('subdirs'=>true));
-        // file_prepare_draft_area($draftitemid, $this->block->context->id, 'block_file', 'file', $itemid, array('subdirs'=>true));
+
+        file_prepare_draft_area($draftitemid, $this->block->context->id, 'block_file', 'file', $itemid, array('subdirs'=>true));
 
 
         $defaults->config_attachments = $draftitemid;
 
         $defaults->config_select_file = $draftitemid;
+
+        $defaults->file = $draftitemid;
 
         $this->block->config->attachments = $draftitemid;
 
