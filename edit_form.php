@@ -36,11 +36,13 @@ class block_file_edit_form extends block_edit_form
 
         $defaults->config_select_file = $draftitemid;
 
+        $this->block->config->attachments = $draftitemid;
+
         file_print(serialize($this->block->config));
 
         // $defaults->file = $draftitemid;
 
-        // $this->block->config->attachments = $draftitemid;
+        
 
         // $this->block->config_select_file = $draftitemid;
         // unset($this->block->config->attachments); 
