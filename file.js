@@ -30,3 +30,17 @@ function selectedTab(btn) {
  	}
  	btn.style.fontWeight =  '700';
 }
+
+
+$(document).ready(function() 
+{
+    var videos = document.getElementsByTagName('video');
+    var audios = document.getElementsByTagName('aucio')
+    for(i=0; i<videos.length; i++) {
+    	videos[i].bind('contextmenu',function() { return false; });
+    }
+
+    for(i=0; i<daudios.length; i++){
+    	audios[i].bind('contextmenu',function() { return false; });
+    } 
+});	
