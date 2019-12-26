@@ -32,7 +32,8 @@ function selectedTab(btn) {
 }
 
 
-(document).ready(function() {
+// (document).ready(function() {
+document.addEventListener("DOMContentLoaded", function(event) { 
 	alert("loaded");
     var videos = document.getElementsByTagName('video');
     var audios = document.getElementsByTagName('aucio')
