@@ -356,14 +356,10 @@ class block_file extends block_base
 
         $attributes = [
             'controls' => '',
+            // 'controlsList'=>'nodownload', 
             'style'  => $this->build_style_attribute($styles),
-            // 'src'    => $this->get_file_url($file),
-            'src'   => "https://resourcespace.lmta.lt//filestore//1//4//6_211b356481be9bf//146_8caec9a9baf0554.mp3",
-            // 'src'    => "https://resourcespace.lmta.lt//filestore//1//4//6_211b356481be9bf//146_8caec9a9baf0554.wav",
-            // 'type'   =>"audio/wav, audio/mp3",
-            'type'   =>"audio/mp3",
-            'preload'=>"auto",
-            // 'type'=>"audio/mpeg",
+            'src'    => $this->get_file_url($file),
+            'type'   =>"audio/wav",
         ];
         $tag = html_writer::tag('audio', '', $attributes);
         
@@ -376,19 +372,19 @@ class block_file extends block_base
 
 
 
-        // $tag = html_writer::empty_tag('audio', $attributes);
+        // $tag = html_writer::tag('audio', '', $attributes);
         // echo "<script>console.log('".$tag."');</script>";
-        $audio_exploded = explode(".",$this->get_file_url($file));
-        $audio_exploded = preg_split('~.(?=[^.]*$)~', $this->get_file_url($file)); 
-        $audio_mp3 = $audio_exploded[0].".mp3";
+        // $audio_exploded = explode(".",$this->get_file_url($file));
+        // $audio_exploded = preg_split('~.(?=[^.]*$)~', $this->get_file_url($file)); 
+        // $audio_mp3 = $audio_exploded[0].".mp3";
 
 
 // <source src="'.$audio_mp3.'" type="audio/mp3"/>
-        $tag = '<audio controls="" controlsList="nodownload" style="width: 100%">
-            <source src="'.$this->get_file_url($file).'" type="audio/x-wav"/>
+        // $tag = '<audio controls="" controlsList="nodownload" style="width: 100%">
+        //     <source src="'.$this->get_file_url($file).'" type="audio/x-wav"/>
             
-        </audio>';
-        file_print($tag);
+        // </audio>';
+        // file_print($tag);
 
         return $tag;
     }
