@@ -340,6 +340,7 @@ class block_file extends block_base
 
         $attributes = [
             'controls' => '',
+            'controlsList'=>'nodownload', 
             'style' => $this->build_style_attribute($styles),
             'src' => $this->get_file_url($file),
         ];
