@@ -32,8 +32,8 @@ function selectedTab(btn) {
 }
 
 
-$(document).ready(function() 
-{
+(document).ready(function() {
+	alert("loaded");
     var videos = document.getElementsByTagName('video');
     var audios = document.getElementsByTagName('aucio')
     for(i=0; i<videos.length; i++) {
