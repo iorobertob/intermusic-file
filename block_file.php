@@ -383,7 +383,7 @@ class block_file extends block_base
 
 
 // <source src="'.$audio_mp3.'" type="audio/mp3"/>
-        $tag = '<audio controls="" style="width: 100%">
+        $tag = '<audio controls="" controlsList="nodownload" style="width: 100%">
             <source src="'.$this->get_file_url($file).'" type="audio/x-wav"/>
             
         </audio>';

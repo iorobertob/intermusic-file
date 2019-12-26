@@ -22,7 +22,10 @@ class block_file_edit_form extends block_edit_form
 
     }
 
-
+    /**
+     * Sets the data on load, with the files saved for this block on to the filemanager
+     *
+     */
     function set_data($defaults) {
         file_print("SET DATA", TRUE);
 
