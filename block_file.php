@@ -323,7 +323,8 @@ class block_file extends block_base
         $attributes1 = [
             'controls' => '',
             'style' => $this->build_style_attribute($styles),
-            'src' => $this->get_file_url($file).'#view=FitH'
+            'src' => $this->get_file_url($file).'#view=FitH',
+            'onload'=>"resizeIframe(this)"
         ];
         $tag = html_writer::tag('iframe','',$attributes1);
         

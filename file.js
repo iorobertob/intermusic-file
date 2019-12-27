@@ -31,12 +31,16 @@ function selectedTab(btn) {
  	btn.style.fontWeight =  '700';
 }
 
+function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+  }
+
 
 // (document).ready(function() {
 document.addEventListener("DOMContentLoaded", function(event) { 
 	alert("loaded");
     var videos = document.getElementsByTagName('video');
-    var audios = document.getElementsByTagName('aucio')
+    var audios = document.getElementsByTagName('audio')
     for(i=0; i<videos.length; i++) {
     	videos[i].bind('contextmenu',function() { return false; });
     }
