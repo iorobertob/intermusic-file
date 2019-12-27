@@ -306,7 +306,8 @@ class block_file extends block_base
         ];
 
         if ($height !== null) {
-            $styles['min-height'] = $height;
+            // $styles['min-height'] = $height;
+            $styles['min-height'] = '100%';
         }
 
         // TODO: This section used to render a PDFjs source, but it has CORS issues... current implementation 
@@ -322,7 +323,7 @@ class block_file extends block_base
         $attributes1 = [
             'controls' => '',
             'style' => $this->build_style_attribute($styles),
-            'src' => $this->get_file_url($file).'#zoom=200'
+            'src' => $this->get_file_url($file)
         ];
         $tag = html_writer::tag('iframe','',$attributes1);
         
