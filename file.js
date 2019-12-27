@@ -32,20 +32,20 @@ function selectedTab(btn) {
 }
 
 function resizeIframe(obj) {
-	var pages = obj.contentWindow.document.querySelectorAll('.page').length;
-    obj.style.height = (obj.contentWindow.document.documentElement.scrollHeight/pages) + 'px';
+	// var pages = obj.contentWindow.document.querySelectorAll('.page').length;
+    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
   }
 
 
 // (document).ready(function() {
-document.addEventListener("DOMContentLoaded", function(event) { 
-    var videos = document.getElementsByTagName('video');
-    var audios = document.getElementsByTagName('audio')
-    for(i=0; i<videos.length; i++) {
-    	videos[i].bind('contextmenu',function() { return false; });
-    }
+// document.addEventListener("DOMContentLoaded", function(event) { 
+//     var videos = document.getElementsByTagName('video');
+//     var audios = document.getElementsByTagName('audio')
+//     for(i=0; i<videos.length; i++) {
+//     	videos[i].bind('contextmenu',function() { return false; });
+//     }
 
-    for(i=0; i<daudios.length; i++){
-    	audios[i].bind('contextmenu',function() { return false; });
-    } 
-});	
+//     for(i=0; i<daudios.length; i++){
+//     	audios[i].bind('contextmenu',function() { return false; });
+//     } 
+// });	
