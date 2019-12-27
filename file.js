@@ -32,8 +32,9 @@ function selectedTab(btn) {
 }
 
 function resizeIframe(obj) {
+	var nothing = 'nothing for now';
 	// var pages = obj.contentWindow.document.querySelectorAll('.page').length;
-    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+    // obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
   }
 
 
