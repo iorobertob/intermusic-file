@@ -32,13 +32,13 @@ function selectedTab(btn) {
 }
 
 function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+	var pages = obj.contentWindow.document.querySelectorAll('.page').length;
+    obj.style.height = (obj.contentWindow.document.documentElement.scrollHeight/pages) + 'px';
   }
 
 
 // (document).ready(function() {
 document.addEventListener("DOMContentLoaded", function(event) { 
-	alert("loaded");
     var videos = document.getElementsByTagName('video');
     var audios = document.getElementsByTagName('audio')
     for(i=0; i<videos.length; i++) {
