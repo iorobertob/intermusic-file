@@ -12,31 +12,6 @@ class block_file extends block_base
 
         $data->file = file_save_draft_area_files($data->select_file, $this->context->id, 'block_file', 'file', 0, array('subdirs' => false, 'maxfiles' => -1), '@@PLUGINFILE@@/');
 
-        // The context of the module
-        $context = $PAGE->context;
-
-        // In the Intermusic documentation collection code is the first element in the encoded filename 
-        // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
-        // 0 is for the collection string
-        // $collection_index = 0;
-        // $collection = [];
-        // $collection = $this->get_item_from_filename($context, $collection_index);
-
-
-        // if($collection !== null){
-        //     // TODO: filter for the case when names do not contain this format
-        //     // Commit to database the collection that the first part of the name indicates
-        //     $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
-            
-        //     // Findout which ID corresponds to this file in RS
-        //     $request_json = $this->get_file_fields_metadata($collection[0]);
-
-        //     try {
-        //         $DB->set_field('poster', 'rs_id', $request_json[1][0]["ref"], array('name' => $collection[1]));
-        //     } catch (Exception $e) {
-        //         file_print("Exception in Commit to DB:", true);
-        //     }
-        // }
 
         return parent::instance_config_save($data, $nolongerused);
     }
@@ -82,95 +57,6 @@ class block_file extends block_base
         }
     }
 
-    /** 
-     * Item is each one of the parts in a file name like: item_item_item.extension
-     * If filenames of files uploaded to this poster contain information separated by _ (undesrcore), this 
-     * function retreives one of those elements from the first of the files to upload. 
-     * @param Context  $context the context of the current course
-     * @param String   $item_number is the position number of the filename to get
-     * @return String  $item is the piece of string from the filename of the first file in the upload. 
-    **/
-    function get_item_from_filename($context, $item_number)
-    {
-        global $DB, $CFG, $PAGE;
-
-        $activity_module      = $DB->get_record('course_modules',array('id' =>$context         ->instanceid)); // get the module where the course is the current course
-        $poster_instance      = $DB->get_record('poster',        array('id' =>$activity_module ->instance  )); // get the name of the module instance 
-        $poster_name          = $poster_instance->name;
-        $autopopulateCheckbox = $poster_instance->autopopulate;
-        
-        // Get files array and their names, split them by '_' and return the first of those divisions. 
-        $fs              = get_file_storage();
-        $files           = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
-        $keys            = array_keys($files);
-
-        if (count($files) > 1 ){
-            $filename        = $files[$keys[1]] -> get_filename();
-            $filename_parts  = explode("_", $filename);
-            $item            = $filename_parts[$item_number];
-            $characteristics = $filename_parts[2];
-
-            $items    = [];
-            $items[0] = $item;
-            $items[1] = $poster_name;
-            return $items;
-        }
-        else {
-            return null;
-        }
-        
-    }
-
-    /**
-     * Get the fields from the Resourcespae metadata
-     */
-    function get_file_fields_metadata($string)
-    {
-        $api_result = $this->do_api_search($string);
-        return $api_result;
-    }
-
-    /**
-     * Do an API requeuest with 
-     */
-    function do_api_search($string)
-    {
-        $this->init_resourcespace();
-        // Set the private API key for the user (from the user account page) and the user we're accessing the system as.
-        $private_key = $this->api_key;
-        $user        = $this->api_user;
-        $url         = $this->resourcespace_api_url ;
-
-        // Formulate the query
-        $query="user=" . $user . "&function=do_search&param1=".$string."&param2=&param3=&param4=&param5=&param6=";
-
-        // Sign the query using the private key
-        $sign=hash("sha256",$private_key . $query);
-
-        // Make the request and output the JSON results.
-        $results=json_decode(file_get_contents($url . $query . "&sign=" . $sign));
-        $results=file_get_contents($url . $query . "&sign=" . $sign);
-        $results=json_decode(file_get_contents($url . $query . "&sign=" . $sign), TRUE);
-        
-        $result = [];
-        $result[0] = "https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign;
-        $result[1] = $results;
-
-        return $result;
-    }
-
-    /**
-     * Initialise Resourcespace API variables
-     */
-    private function init_resourcespace()
-    {
-        $this->config                = get_config('resourcespace');
-        $this->resourcespace_api_url = get_config('resourcespace', 'resourcespace_api_url');
-        $this->api_key               = get_config('resourcespace', 'api_key');
-        $this->api_user              = get_config('resourcespace', 'api_user');
-        $this->enable_help           = get_config('resourcespace', 'enable_help');
-        $this->enable_help_url       = get_config('resourcespace', 'enable_help_url');
-    }
 
     /**
      * Default function.

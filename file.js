@@ -15,7 +15,6 @@ function selectedTabMedia(btn) {
  	btn.style.fontWeight =  '700';
 }
 
-
 // Bolden characters of selected tab, lighten those of all other tabs within the same block, by parent nodes' id
 function selectedTab(btn) {
 
@@ -30,23 +29,3 @@ function selectedTab(btn) {
  	}
  	btn.style.fontWeight =  '700';
 }
-
-function resizeIframe(obj) {
-	var nothing = 'nothing for now';
-	// var pages = obj.contentWindow.document.querySelectorAll('.page').length;
-    // obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-  }
-
-
-// (document).ready(function() {
-// document.addEventListener("DOMContentLoaded", function(event) { 
-//     var videos = document.getElementsByTagName('video');
-//     var audios = document.getElementsByTagName('audio')
-//     for(i=0; i<videos.length; i++) {
-//     	videos[i].bind('contextmenu',function() { return false; });
-//     }
-
-//     for(i=0; i<daudios.length; i++){
-//     	audios[i].bind('contextmenu',function() { return false; });
-//     } 
-// });	
