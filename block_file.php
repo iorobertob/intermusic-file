@@ -18,47 +18,63 @@ class block_file extends block_base
         // In the Intermusic documentation collection code is the first element in the encoded filename 
         // https://github.com/iorobertob/intermusic/wiki/Naming-Convention
         // 0 is for the collection string
-        $collection_index = 0;
-        $collection = [];
-        $collection = $this->get_item_from_filename($context, $collection_index);
+        // $collection_index = 0;
+        // $collection = [];
+        // $collection = $this->get_item_from_filename($context, $collection_index);
 
 
-        if($collection !== null){
-            // TODO: filter for the case when names do not contain this format
-            // Commit to database the collection that the first part of the name indicates
-            $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
+        // if($collection !== null){
+        //     // TODO: filter for the case when names do not contain this format
+        //     // Commit to database the collection that the first part of the name indicates
+        //     $DB->set_field('poster', 'rs_collection', $collection[0], array('name' => $collection[1]));
             
-            // Findout which ID corresponds to this file in RS
-            $request_json = $this->get_file_fields_metadata($collection[0]);
+        //     // Findout which ID corresponds to this file in RS
+        //     $request_json = $this->get_file_fields_metadata($collection[0]);
 
-            try {
-                $DB->set_field('poster', 'rs_id', $request_json[1][0]["ref"], array('name' => $collection[1]));
-            } catch (Exception $e) {
-                file_print("Exception in Commit to DB:", true);
-            }
-        }
+        //     try {
+        //         $DB->set_field('poster', 'rs_id', $request_json[1][0]["ref"], array('name' => $collection[1]));
+        //     } catch (Exception $e) {
+        //         file_print("Exception in Commit to DB:", true);
+        //     }
+        // }
 
         return parent::instance_config_save($data, $nolongerused);
     }
 
+    /**
+     * Moodle's system function
+     *
+     */
     public function init()
     {
 
         $this->title = get_string('file', 'block_file');
     }
 
+    /**
+     * Moodle's system function
+     *
+     */
     public function applicable_formats()
     {
 
         return array('all' => true);
     }
 
+    /**
+     * Moodle's system function
+     *
+     */
     public function instance_allow_multiple()
     {
 
         return true;
     }
 
+    /**
+     * Moodle's system function
+     *
+     */
     public function specialization()
     {
         if (isset($this->config->title) && $this->config->title !== '') {
@@ -78,7 +94,6 @@ class block_file extends block_base
     {
         global $DB, $CFG, $PAGE;
 
-        // TODO: here to implement the autopopulation of metadata, from files' metadata
         $activity_module      = $DB->get_record('course_modules',array('id' =>$context         ->instanceid)); // get the module where the course is the current course
         $poster_instance      = $DB->get_record('poster',        array('id' =>$activity_module ->instance  )); // get the name of the module instance 
         $poster_name          = $poster_instance->name;
@@ -133,7 +148,6 @@ class block_file extends block_base
         $sign=hash("sha256",$private_key . $query);
 
         // Make the request and output the JSON results.
-        // $results=json_decode(file_get_contents("https://resourcespace.lmta.lt/api/?" . $query . "&sign=" . $sign));
         $results=json_decode(file_get_contents($url . $query . "&sign=" . $sign));
         $results=file_get_contents($url . $query . "&sign=" . $sign);
         $results=json_decode(file_get_contents($url . $query . "&sign=" . $sign), TRUE);
@@ -150,12 +164,12 @@ class block_file extends block_base
      */
     private function init_resourcespace()
     {
-        $this->config       = get_config('resourcespace');
+        $this->config                = get_config('resourcespace');
         $this->resourcespace_api_url = get_config('resourcespace', 'resourcespace_api_url');
-        $this->api_key      = get_config('resourcespace', 'api_key');
-        $this->api_user     = get_config('resourcespace', 'api_user');
-        $this->enable_help  = get_config('resourcespace', 'enable_help');
-        $this->enable_help_url = get_config('resourcespace', 'enable_help_url');
+        $this->api_key               = get_config('resourcespace', 'api_key');
+        $this->api_user              = get_config('resourcespace', 'api_user');
+        $this->enable_help           = get_config('resourcespace', 'enable_help');
+        $this->enable_help_url       = get_config('resourcespace', 'enable_help_url');
     }
 
     /**
