@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * lmta.utility
+ * Auxiliary print function to write to a file for debugging and logging purposes
+ */
 function file_print($txt, $overwrite = false)
 {
     global $CFG, $DB;
