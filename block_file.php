@@ -59,28 +59,13 @@ class block_file extends block_base
 
 
     /**
-     * Default function.
+     * lmta.utility
+     * Sorting algorithm for filenames according to an arbitrary "sorting array"
+     * to later display in order in tabbed view in the file plugin
      */
-    public function get_content()
+    public function sortingTabsAlgorithm($files)
     {
-        global $PAGE;
-
-        // Because we will use js functions in some of the rendered html 
-        $PAGE->requires->js('/blocks/file/file.js',true);
-
-        if ($this->content !== null) 
-        {
-            return $this->content;
-        }
-
-        $this->content = new stdClass;
-
-        $height = isset($this->config->height) && $this->config->height !== '' ? $this->config->height : null;
-
-        $fs    = get_file_storage();
-        $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
-
-//////////////////////////// SORTING TABS ALGORITHM /////////////////////////
+        //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
         $sortingArray =array(
             "SCORE",
             "TRANS",
@@ -124,7 +109,36 @@ class block_file extends block_base
                 array_push($newNames, $file->get_filename());
             }
         }
-////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
+        ////////////////////////////  \SORTING TABS ALGORITHM /////////////////////////
+
+        return array($filesSorted, $newNames);
+    }
+
+    /**
+     * Default function.
+     */
+    public function get_content()
+    {
+        global $PAGE;
+
+        // Because we will use js functions in some of the rendered html 
+        $PAGE->requires->js('/blocks/file/file.js',true);
+
+        if ($this->content !== null) 
+        {
+            return $this->content;
+        }
+
+        $this->content = new stdClass;
+
+        $height = isset($this->config->height) && $this->config->height !== '' ? $this->config->height : null;
+
+        $fs    = get_file_storage();
+        $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
+
+        $sortingResult = sortingTabsAlgorithm($files)
+        $filesSorted   = $sortingResult[0];
+        $newNames      = $sortingResult[1];
 
         $content = null;
 
@@ -210,27 +224,16 @@ class block_file extends block_base
             // $styles['min-height'] = '100%';
         }
 
-        // TODO: This section used to render a PDFjs source, but it has CORS issues... current implementation 
-        // $viewerUrl = new moodle_url('/blocks/file/pdfjs/web/viewer.html');
-        // $viewerUrl->param('file', $this->get_file_url($file));
-
-        // $attributes = [
-        //     'src' => $viewerUrl,
-        //     'style' => $this->build_style_attribute($styles),
-        // ];
-
-
         $attributes1 = [
             'controls' => '',
             'style' => $this->build_style_attribute($styles),
-            'src' => $this->get_file_url($file).'#view=FitH',
-            'onload'=>"resizeIframe(this)"
+            'src' => $this->get_file_url($file).'#view=FitH'
         ];
         $tag = html_writer::tag('iframe','',$attributes1);
         
+        // Wrap the pdf viewer in divs to enable extra scrolling
         $final_tag = "<div style='height:".$height."; overflow-y:scroll;'><div style='height:200vh'>".$tag."</div></div>";
         return $final_tag;
-        // return html_writer::tag('iframe', $this->get_content_text_default($file, $height), $attributes);
     }
 
     protected function get_content_text_video($file, $height = null)
@@ -265,32 +268,7 @@ class block_file extends block_base
             'src'    => $this->get_file_url($file),
             'type'   =>"audio/wav",
         ];
-        $tag = html_writer::tag('audio', '', $attributes);
-        
-        // $tag = $this->get_file_url($file);
-
-        // file_print(serialize($styles));
-        // file_print($this->build_style_attribute($styles));
-
-        // $tag = '<audio style="width: 90%" class="vjs-tech"  tabindex="-1" src="'.$this->get_file_url($file).'"></audio>';
-
-
-
-        // $tag = html_writer::tag('audio', '', $attributes);
-        // echo "<script>console.log('".$tag."');</script>";
-        // $audio_exploded = explode(".",$this->get_file_url($file));
-        // $audio_exploded = preg_split('~.(?=[^.]*$)~', $this->get_file_url($file)); 
-        // $audio_mp3 = $audio_exploded[0].".mp3";
-
-
-// <source src="'.$audio_mp3.'" type="audio/mp3"/>
-        // $tag = '<audio controls="" controlsList="nodownload" style="width: 100%">
-        //     <source src="'.$this->get_file_url($file).'" type="audio/x-wav"/>
-            
-        // </audio>';
-        // file_print($tag);
-
-        return $tag;
+        return html_writer::tag('audio', '', $attributes);
     }
 
     protected function get_content_text_image($file, $height = null)
@@ -306,7 +284,6 @@ class block_file extends block_base
         ];
 
         return html_writer::tag('img','', $attributes);
-        //return html_writer::empty_tag('img', $attributes);
     }
 
     protected function get_file_url($file)
