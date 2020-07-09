@@ -136,10 +136,8 @@ class block_file extends block_base
         $fs    = get_file_storage();
         $files = $fs->get_area_files($this->context->id, 'block_file', 'file', 0);
 
-        $sortingResult = sortingTabsAlgorithm($files)
-        
-        $filesSorted   = [];
-        $newNames      = [];
+        $sortingResult = sortingTabsAlgorithm($files);
+
         $filesSorted   = $sortingResult[0];
         $newNames      = $sortingResult[1];
 
