@@ -20,6 +20,6 @@ function file_print($txt, $overwrite = false)
     {
         $myfile = ((file_exists($path))? fopen($path, "a+") : fopen($path, "w+"));// or die("Unable to open and write file with: ".$txt); 
     }
-    fwrite($myfile, $txt."\n") or die('fwrite failed');
+    fwrite($myfile, $txt."\n") or die('fwrite failed to '.$path);
     fclose($myfile);
 }
