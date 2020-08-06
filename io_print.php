@@ -6,20 +6,22 @@
  */
 function file_print($txt, $overwrite = false)
 {
-    global $CFG, $DB;
+    // UNCOMMENT THIS FUNCTION TO DEBUG
 
-    $path = "$CFG->dirroot/blocks/file/log.txt";
+    // global $CFG, $DB;
 
-    $f = ((file_exists($path))? fopen($path, "a+") : fopen($path, "w+"));
+    // $path = "$CFG->dirroot/blocks/file/log.txt";
 
-    if ($overwrite)
-    {
-        $myfile = (file_exists($path)) ? fopen($path, "w+") : fopen($path, "w+");// or die("Unable to overwrite file with: ".$txt); 
-    }
-    else
-    {
-        $myfile = ((file_exists($path)) ? fopen($path, "a+") : fopen($path, "w+"));// or die("Unable to open and write file with: ".$txt); 
-    }
-    fwrite($myfile, $txt."\n");// or die('fwrite failed to '.$myfile);
-    fclose($myfile);
+    // $f = ((file_exists($path))? fopen($path, "a+") : fopen($path, "w+"));
+
+    // if ($overwrite)
+    // {
+    //     $myfile = (file_exists($path)) ? fopen($path, "w+") : fopen($path, "w+");// or die("Unable to overwrite file with: ".$txt); 
+    // }
+    // else
+    // {
+    //     $myfile = ((file_exists($path)) ? fopen($path, "a+") : fopen($path, "w+"));// or die("Unable to open and write file with: ".$txt); 
+    // }
+    // fwrite($myfile, $txt."\n");// or die('fwrite failed to '.$myfile);
+    // fclose($myfile);
 }

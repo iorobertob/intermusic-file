@@ -44,9 +44,6 @@ class backup_file_block_structure_step extends backup_block_structure_step {
      * @return backup_nested_element
      */
     protected function define_structure() {
-
-        // To know if we are including userinfo
-        // $userinfo = $this->get_setting_value('userinfo');
         
         // Define the file root element.
         $file = new backup_nested_element(  'file', 
@@ -67,7 +64,6 @@ class backup_file_block_structure_step extends backup_block_structure_step {
         $array = array("configdata" => $config_data);
 
         // Define the data source.
-        // $file->set_source_table('block_instances', array('id' => backup::VAR_BLOCKID));
         $file->set_source_sql('
             SELECT id, blockname, parentcontextid, configdata, timecreated, timemodified 
               FROM {block_instances}

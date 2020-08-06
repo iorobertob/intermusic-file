@@ -32,7 +32,6 @@ require_once($CFG->dirroot.'/blocks/file/backup/moodle2/backup_file_block_stepsl
  * Specialised backup task for the file block
  * (requires encode_content_links in some configdata attrs)
  *
- * TODO: Finish phpdocs
  */
 class backup_file_block_task extends backup_block_task {
 
@@ -49,8 +48,6 @@ class backup_file_block_task extends backup_block_task {
 
     public function get_configdata_encoded_attributes() {
         return array('text'); // We need to encode some attrs in configdata
-        // return array("title");
-        // return array();
     }
 
     static public function encode_content_links($content) {

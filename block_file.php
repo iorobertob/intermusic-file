@@ -93,7 +93,6 @@ class block_file extends block_base
                         array_push($filesSorted, $file);
                         array_push($newNames, explode( ".", $sortString[2])[0] ); // Getting rid of the extension 
                         array_push($sortedOriginalNames, $file->get_filename());
-                        // break;
                     }
                 }
                 

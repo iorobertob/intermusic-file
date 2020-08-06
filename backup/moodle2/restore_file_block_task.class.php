@@ -30,7 +30,6 @@ require_once("$CFG->dirroot/blocks/file/io_print.php");
  * Specialised restore task for the file block
  * (requires encode_content_links in some configdata attrs)
  *
- * TODO: Finish phpdocs
  */
 class restore_file_block_task extends restore_block_task {
 
@@ -90,7 +89,6 @@ class restore_file_block_decode_content extends restore_decode_content {
         file_print($this->tablename);
         $result = $DB->get_recordset_sql($sql, $params);
         file_print(serialize($result));
-        // return ($DB->get_recordset_sql($sql, $params));
         return $result;
     }
 

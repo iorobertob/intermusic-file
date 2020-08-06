@@ -47,32 +47,11 @@ class restore_file_block_structure_step extends restore_structure_step {
         global $DB;
 
         $data = (object)$data;
-        // $     = array(); // To accumulate feeds
 
         // For any reason (non multiple, dupe detected...) block not restored, return
         if (!$this->task->get_blockid()) {
             return;
         }
-
-        // Iterate over all the feed elements, creating them if needed
-        // if (isset($data->rss_client['feeds']['feed'])) {
-        //     foreach ($data->rss_client['feeds']['feed'] as $feed) {
-        //         $feed = (object)$feed;
-        //         // Look if the same feed is available by url and (shared or userid)
-        //         $select = 'url = :url AND (shared = 1 OR userid = :userid)';
-        //         $params = array('url' => $feed->url, 'userid' => $this->task->get_userid());
-        //         // The feed already exists, use it
-        //         if ($feedid = $DB->get_field_select('block_rss_client', 'id', $select, $params, IGNORE_MULTIPLE)) {
-        //             $feedsarr[] = $feedid;
-
-        //         // The feed doesn't exist, create it
-        //         } else {
-        //             $feed->userid = $this->task->get_userid();
-        //             $feedid = $DB->insert_record('block_rss_client', $feed);
-        //             $feedsarr[] = $feedid;
-        //         }
-        //     }
-        // }
 
         // Adjust the serialized configdata->rssid to the created/mapped feeds
         // Get the configdata
@@ -82,10 +61,8 @@ class restore_file_block_structure_step extends restore_structure_step {
         if (empty($config)) {
             $config = new stdClass();
         }
-        // Set array of used rss feeds
-        // $config->rssid = $feedsarr;
+
         // Serialize back the configdata
-        // require_once("$CFG->dirroot/blocks/file/io_print.php");
         file_print(" TEST :", true);
         file_print(serialize($config));
         file_print($this->task->get_blockid());
