@@ -39,6 +39,5 @@ To use, for example inside a Poster activity, add a block of the "File" type and
 
 
 
-
 ## TODOs:
 - Add general settings to easily configure the strings to match in the filenames to display in the tabs, from the plugin native settings page in the Moodle page. 
