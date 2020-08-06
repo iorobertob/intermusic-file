@@ -1,4 +1,6 @@
 ### Important: 
+ - The name of the folder of this plugin should be named 'file'.
+
  - "Filter Tabs" filter needs to be installed in Moodle so that, if more than one file is added, they will be displayed arranged in "tabs". (https://moodle.org/plugins/filter_tabs)
 
  - The tabs will display a name for the file in a format that is specially designed for the Intermusic project, but could easily be modified, and it works as it is anyway: Filenames should be separated in 3 sections, split by an underscore ' _ '. The first part corresponds to the collection ID, second to the file name with more metadata and the third contains a special type description as per Intermusic's requirements. 
@@ -29,8 +31,7 @@ This is part of a mini library of intermusic plugins to manage content specific 
 
 
 ## How to install
-The install process is the same as for other Moodle plugins, by simply including the project folder into the 'blocks' directory in the moodle files system. Very important: the name of the folder of this plugin should be named 'file'.
-
+The install process is the same as for other Moodle plugins, by simply including the project folder into the 'blocks' directory in the moodle files system. 
 ## How to use
 To use, for example inside a Poster activity, add a block of the "File" type and in its settings's file manager (filepicker) add the fiels you want to display. 
 
