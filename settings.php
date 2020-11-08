@@ -29,26 +29,26 @@ if ($ADMIN->fulltree) {
     require_once($CFG->dirroot.'/block/file/lib.php');
 
     // Introductory explanation that all the settings are defaults for the add lesson form.
-    $settings->add(new admin_setting_heading('block_file/intro', '', get_string('default_titles', 'mposter')));
+    $settings->add(new admin_setting_heading('block_file/intro', '', get_string('default_titles', 'file')));
 
-    $settings->add(new admin_setting_configtext('block_file/meta1', get_string('meta1', 'mposter')." ".get_string('meta_title','mposter'),
+    $settings->add(new admin_setting_configtext('block_file/meta1', get_string('meta1', 'file')." ".get_string('meta_title','file'),
             '', "SCORE", PARAM_TEXT));
 
-    $settings->add(new admin_setting_configtext('block_file/meta2', get_string('meta2', 'mposter')." ".get_string('meta_title','mposter'),
+    $settings->add(new admin_setting_configtext('block_file/meta2', get_string('meta2', 'file')." ".get_string('meta_title','file'),
             '', "TRANS", PARAM_TEXT));
 
-    $settings->add(new admin_setting_configtext('block_file/meta3', get_string('meta3', 'mposter')." ".get_string('meta_title','mposter'),
+    $settings->add(new admin_setting_configtext('block_file/meta3', get_string('meta3', 'file')." ".get_string('meta_title','file'),
             '', "WORD", PARAM_TEXT));
 
-    $settings->add(new admin_setting_configtext('block_file/meta4', get_string('meta4', 'mposter')." ".get_string('meta_title','mposter'),
+    $settings->add(new admin_setting_configtext('block_file/meta4', get_string('meta4', 'file')." ".get_string('meta_title','file'),
             '', "VIDEO", PARAM_TEXT));
 
-    $settings->add(new admin_setting_configtext('block_file/meta5', get_string('meta5', 'mposter')." ".get_string('meta_title','mposter'),
+    $settings->add(new admin_setting_configtext('block_file/meta5', get_string('meta5', 'file')." ".get_string('meta_title','file'),
             '', "RECIT", PARAM_TEXT));
 
-    $settings->add(new admin_setting_configtext('block_file/meta6', get_string('meta6', 'mposter')." ".get_string('meta_title','mposter'),
+    $settings->add(new admin_setting_configtext('block_file/meta6', get_string('meta6', 'file')." ".get_string('meta_title','file'),
             '', "1ST", PARAM_TEXT));
 
-    $settings->add(new admin_setting_configtext('block_file/meta7', get_string('meta7', 'mposter')." ".get_string('meta_title','mposter'),
+    $settings->add(new admin_setting_configtext('block_file/meta7', get_string('meta7', 'file')." ".get_string('meta_title','file'),
             '', "LANG", PARAM_TEXT));
 }
