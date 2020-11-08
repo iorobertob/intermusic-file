@@ -44,8 +44,7 @@ class backup_file_block_structure_step extends backup_block_structure_step {
         // Define the file root element.
         $file = new backup_nested_element(  'file', 
                                             array('id'), 
-                                            array(
-                                                'id', 
+                                            array( 
                                                 'blockname', 
                                                 'parentcontextid', 
                                                 'configdata', 
