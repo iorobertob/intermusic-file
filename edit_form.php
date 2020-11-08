@@ -19,7 +19,7 @@ class block_file_edit_form extends block_edit_form
 
         $attributes='size="20"';
         $mform->addElement('text', 'name', get_string('configheight', 'block_file'), $attributes);
-        $mform->setDefault('name', get_string('configheight', 'block_file'));
+        // $mform->setDefault('name', get_string('configheight', 'block_file'));
     }
 
     /**
