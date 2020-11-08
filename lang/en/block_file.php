@@ -34,4 +34,4 @@ $string['string3'] = "WORD";
 $string['string4'] = "VIDEO";
 $string['string5'] = "AUDIO";
 $string['string6'] = "RECIT";
-$string['string7'] = "LANG";
+$string['string7'] = "LANGU";

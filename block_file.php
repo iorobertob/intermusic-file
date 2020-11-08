@@ -102,7 +102,6 @@ class block_file extends block_base
                 if (count($sortString) >= 3){
                     // string withought extension
                     $stringToCompare = explode(".", substr($sortString[2], 0)) [0];
-                    // $stringToCompare = substr($sortString[2], 0);
  
                     if ( ($stringToCompare == $sortingArray[$x]) && ($stringToCompare != "") )
                     {

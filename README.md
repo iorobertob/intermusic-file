@@ -1,7 +1,7 @@
 ### Important: 
  - The name of the folder of this plugin should be named 'file'.
 
- - "Filter Tabs" filter needs to be installed in Moodle so that, if more than one file is added, they will be displayed arranged in "tabs". (https://moodle.org/plugins/filter_tabs)
+ - "Filter Tabs" filter needs to be installed in Moodle so that if more than one file is added, they will be displayed arranged in "tabs". (https://moodle.org/plugins/filter_tabs)
 
 
 
@@ -9,7 +9,7 @@
 File Block for Moodle
 =====================
 
-This is a File block for Moodle. It allows you to embed a single file from Moodle storage as a block in your page.
+This is a File block for Moodle. It allows to embed one or many file block in your page.
 
 The block currently supports embedding audio, video, image and PDF files. For files of other types, a link to the file will be shown.
 
