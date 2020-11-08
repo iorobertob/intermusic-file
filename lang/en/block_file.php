@@ -16,3 +16,4 @@ $string['meta6'] = 'Metadata Field #6:';
 $string['meta7'] = 'Metadata Field #7:';
 $string['meta_value']  = 'Value';
 $string['meta_title']  = 'Title';
+$string['blocksettings']= 'Block settings';
