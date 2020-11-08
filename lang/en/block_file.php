@@ -18,7 +18,7 @@ $string['meta_value']  = 'Value';
 $string['meta_title']  = 'Title';
 $string['settings']= 'Block settings';
 
-$string['tabs_header'] = "Tabs names' order."
+$string['tabs_header'] = "Tabs names' order.";
 
 $string['tab1'] = "Tab 1 string";
 $string['tab2'] = "Tab 2 string";
