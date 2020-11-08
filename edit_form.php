@@ -22,7 +22,6 @@ class block_file_edit_form extends block_edit_form
      *
      */
     function set_data($defaults) {
-        file_print("SET DATA", TRUE);
 
         $itemid = 0;
         $draftitemid = file_get_submitted_draft_itemid('config_select_file');
