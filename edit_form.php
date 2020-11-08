@@ -58,7 +58,10 @@ class block_file_edit_form extends block_edit_form
 
         file_prepare_draft_area($draftitemid, $this->block->context->id, 'block_file', 'file', $itemid, array('subdirs'=>true));
 
-        $this->block->config = new \stdClass();
+        if (!issset($this->block->config))
+            {
+                $this->block->config = new \stdClass();
+            }
         $this->block->config->select_file = $draftitemid;
 
         parent::set_data($defaults);
