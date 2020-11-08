@@ -16,7 +16,7 @@ class block_file_edit_form extends block_edit_form
         $mform->addElement('text', 'config_height', get_string('configheight', 'block_file'));
         $mform->setType('config_height', PARAM_TEXT);
 
-        $mform->addElement('header', 'tabsheader', get_string('tabas_header', 'block_file'));
+        $mform->addElement('header', 'tabsheader', get_string('tabs_header', 'block_file'));
 
         $mform->addElement('text', 'config_meta1', get_string('tab1', 'block_file'));
         $mform->setType('config_meta1', PARAM_TEXT);
