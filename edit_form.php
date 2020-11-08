@@ -20,24 +20,31 @@ class block_file_edit_form extends block_edit_form
 
         $mform->addElement('text', 'config_meta1', get_string('tab1', 'block_file'));
         $mform->setType('config_meta1', PARAM_TEXT);
+        $mform->setDefault('config_meta1', get_string('string1', 'block_file'));
 
         $mform->addElement('text', 'config_meta2', get_string('tab2', 'block_file'));
         $mform->setType('config_meta2', PARAM_TEXT);
+        $mform->setDefault('config_meta2', get_string('string2', 'block_file'));
 
         $mform->addElement('text', 'config_meta3', get_string('tab3', 'block_file'));
         $mform->setType('config_meta3', PARAM_TEXT);
+        $mform->setDefault('config_meta3', get_string('string3', 'block_file'));
 
         $mform->addElement('text', 'config_meta4', get_string('tab4', 'block_file'));
         $mform->setType('config_meta4', PARAM_TEXT);
+        $mform->setDefault('config_meta4', get_string('string4', 'block_file'));
 
         $mform->addElement('text', 'config_meta5', get_string('tab5', 'block_file'));
         $mform->setType('config_meta5', PARAM_TEXT);
+        $mform->setDefault('config_meta5', get_string('string5', 'block_file'));
 
         $mform->addElement('text', 'config_meta6', get_string('tab6', 'block_file'));
         $mform->setType('config_meta6', PARAM_TEXT);
+        $mform->setDefault('config_meta6', get_string('string6', 'block_file'));
 
         $mform->addElement('text', 'config_meta7', get_string('tab7', 'block_file'));
         $mform->setType('config_meta7', PARAM_TEXT);
+        $mform->setDefault('config_meta7', get_string('string7', 'block_file'));
     }
 
     /**
