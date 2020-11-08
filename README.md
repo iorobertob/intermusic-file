@@ -9,36 +9,45 @@
 File Block for Moodle
 =====================
 
-This is a File block for Moodle. It allows to embed one or many file block in your page.
+This is a File block for Moodle. It allows to embed one or many file block in your page. If more than one file are added they will be arranged in tabs, and the order of the tabs and their title can be set by defaults depending on the file naming format described below.
 
 The block currently supports embedding audio, video, image and PDF files. For files of other types, a link to the file will be shown.
 
-PDF preview is implemented via Mozilla's PDF.js viewer, a full build of which is supplied in the pdfjs subdirectory. Please note that PDF.js is licensed under the terms of Apache license, a copy of which is supplied in the pdfjs/LICENSE file.
-
-This is part of a mini library of intermusic plugins to manage content specific to this platform solution, but can be used independently, and it was meant to be used with Poster plugin, where it works as intended. 
+This is part of a mini library of intermusic plugins to manage content specific to this platform solution, but can be used independently, and it was meant to be used with Media Poster plugin, for which it was built. 
 
 
-## How to install
-The install process is the same as for other Moodle plugins, by simply including the project folder into the 'blocks' directory in the moodle files system. 
+## Installation 
+Standard moodle plugin process, though the admin pages or by copying this repository in a folder named **file** inside **blocks/**
 
 ## How to use
-To use, for example inside a Poster activity, add a block of the "File" type and in its settings's file manager (filepicker) add the fiels you want to display. 
+To use, for example inside a Media Poster activity, add a **File** block  and in its settings's file manager (filepicker) add the fiels you want to display. 
 
- - The tabs will display a name for the file in a format that is specially designed for the Intermusic project, but could easily be modified, and it works as it is anyway: Filenames should be separated in 3 sections, split by an underscore ' _ '. The first part corresponds to the collection ID, second to the file name with more metadata and the third contains a special type description as per Intermusic's requirements. 
+If more than one file are selected, they will be sorted in tabas corresponding to the configurable strings. For this, the file must contain such string in the last part of an *underscore* divided filename consisting of 3 sections. i.e.  **three_filename_sections.extension**
 
- - The tabs display will take the 3rd filename section (type) and try to match its first 5 letters with one of the following strings (configurable):
+If the third part of such filename matches the strings in the configuration the block, the name of the file will be substituted with such string. Otherwise, the full filename is displaye as the title of the tab. 
+
+ - The tabs will display a default name value for the file in a format that is specially designed for the Intermusic project, but could easily be modified.
+
+## Filename convention
+ Filenames should be separated in 3 sections, split by an underscore ' _ '. 
+
+ - The tabs display will take the 3rd filename section (type) and try to match it with one of the following strings (configurable):
  			"SCORE",
             "TRANS",
-            "WORD2",
+            "WORD",
             "VIDEO",
             "AUDIO",
-            "RECIT"
+            "RECIT",
+            "LANG"
     If it finds a match it will use such string as the label for the tab, otherwise it will use the raw filname. 
 
 
-- To customise the matching strings or how the labeling works, the block_file.php script can be edited at lines 66 to 101. 
+- To customise the matching strings or how the labeling works, the block_file.php script can be edited.
+
+Intermusic Project
+----------
+This module was created as part of the [Intermusic Project](https://intermusic.lmta.lt). Its functionality reflects the needs of the project, but it is also intended to work away from that context and use the metadata features more generally. 
 
 
 
-## TODOs:
-- Add general settings to easily configure the strings to match in the filenames to display in the tabs, from the plugin native settings page in the Moodle page. 
+
