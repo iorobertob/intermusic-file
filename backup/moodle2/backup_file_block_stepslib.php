@@ -39,6 +39,7 @@ class backup_file_block_structure_step extends backup_block_structure_step {
      * @return backup_nested_element
      */
     protected function define_structure() {
+        global $DB;
         
         // Define the file root element.
         $file = new backup_nested_element(  'file', 
