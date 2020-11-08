@@ -143,6 +143,7 @@ class block_file extends block_base
 
         $count = 0;
         // foreach ($files as $file) 
+        $filterOptions = new stdClass;
         foreach ($filesSorted as $file)
         {
 
@@ -151,7 +152,7 @@ class block_file extends block_base
                 continue;
             }
 
-            $filterOptions = new stdClass;
+            
             $filterOptions->noclean = true;
 
             $mimeType = $file->get_mimetype();

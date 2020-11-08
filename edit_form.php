@@ -11,15 +11,13 @@ class block_file_edit_form extends block_edit_form
         $mform->setType('config_title', PARAM_TEXT);
 
         $mform->addElement('filemanager', 'config_select_file', get_string('configfile', 'block_file'), null, array('subdirs' => false, 'maxfiles' =>-1, 'accepted_types'=>'*'));
-
         $mform->setType('config_select_file', PARAM_RAW);
+        
         $mform->addElement('text', 'config_height', get_string('configheight', 'block_file'));
         $mform->setType('config_height', PARAM_TEXT);
 
-
-        $attributes='size="20"';
-        $mform->addElement('text', 'name', get_string('configheight', 'block_file'), $attributes);
-        $mform->setType('name', PARAM_TEXT);
+        $mform->addElement('text', 'config_meta1', get_string('configheight', 'block_file'));
+        $mform->setType('config_meta1', PARAM_TEXT);
         // $mform->setDefault('name', get_string('configheight', 'block_file'));
     }
 
