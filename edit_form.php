@@ -4,7 +4,7 @@ class block_file_edit_form extends block_edit_form
 {
     protected function specific_definition($mform)
     {
-        $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
+        $mform->addElement('header', 'configheader', get_string('blocksettings', 'block_file'));
 
         $mform->addElement('text', 'config_title', get_string('configtitle', 'block_file'));
         $mform->setDefault('config_title', get_string('file', 'block_file'));
@@ -15,6 +15,11 @@ class block_file_edit_form extends block_edit_form
         $mform->setType('config_select_file', PARAM_RAW);
         $mform->addElement('text', 'config_height', get_string('configheight', 'block_file'));
         $mform->setType('config_height', PARAM_TEXT);
+
+
+        $attributes='size="20"';
+        $mform->addElement('text', 'name', get_string('configheight', 'block_file'), $attributes);
+        $mform->setDefault('name', get_string('configheight', 'block_file'));
     }
 
     /**
