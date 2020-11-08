@@ -44,10 +44,10 @@ if ($ADMIN->fulltree) {
             '', "VIDEO", PARAM_TEXT));
 
     $settings->add(new admin_setting_configtext('block_file/meta5', get_string('meta5', 'file')." ".get_string('meta_title','file'),
-            '', "RECIT", PARAM_TEXT));
+            '', "AUDIO", PARAM_TEXT));
 
     $settings->add(new admin_setting_configtext('block_file/meta6', get_string('meta6', 'file')." ".get_string('meta_title','file'),
-            '', "1ST", PARAM_TEXT));
+            '', "RECIT", PARAM_TEXT));
 
     $settings->add(new admin_setting_configtext('block_file/meta7', get_string('meta7', 'file')." ".get_string('meta_title','file'),
             '', "LANG", PARAM_TEXT));

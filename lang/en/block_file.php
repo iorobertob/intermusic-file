@@ -17,3 +17,21 @@ $string['meta7'] = 'Metadata Field #7:';
 $string['meta_value']  = 'Value';
 $string['meta_title']  = 'Title';
 $string['settings']= 'Block settings';
+
+$string['tabs_header'] = "Tabs names' order."
+
+$string['tab1'] = "Tab 1 string";
+$string['tab2'] = "Tab 2 string";
+$string['tab3'] = "Tab 3 string";
+$string['tab4'] = "Tab 1 string";
+$string['tab5'] = "Tab 5 string";
+$string['tab6'] = "Tab 6 string";
+$string['tab7'] = "Tab 7 string";
+
+$string['string1'] = "SCORE";
+$string['string2'] = "TRANS";
+$string['string3'] = "WORD";
+$string['string4'] = "VIDEO";
+$string['string5'] = "AUDIO";
+$string['string6'] = "RECIT";
+$string['string7'] = "LANG";
