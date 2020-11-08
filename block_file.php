@@ -64,14 +64,29 @@ class block_file extends block_base
     public function sortingTabsAlgorithm($files)
     {
         //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
-        $sortingArray =array(
-            $this->config->meta1,
-            $this->config->meta2,
-            $this->config->meta3,
-            $this->config->meta4,
-            $this->config->meta5,
-            $this->config->meta6,
-            $this->config->meta7,);
+        try{
+            $sortingArray =array(
+                $this->config->meta1,
+                $this->config->meta2,
+                $this->config->meta3,
+                $this->config->meta4,
+                $this->config->meta5,
+                $this->config->meta6,
+                $this->config->meta7,);
+        }
+        catch (Exception $e)
+        {
+            // Most liketly meta values are not initialised
+            $sortingArray =array(
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",);
+        }
+        
 
         $filesSorted           = [];
         $newNames              = [];
