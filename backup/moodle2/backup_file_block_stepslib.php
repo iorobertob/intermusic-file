@@ -56,8 +56,8 @@ class backup_file_block_structure_step extends backup_block_structure_step {
                                                 array('id'),
                                                 array('configdata'));
 
-        $configdata = $DB->get_field('block_instances', 'configdata', array('id' => $this->task->get_blockid()));
-        $array = array("configdata" => $configdata);
+        // $configdata = $DB->get_field('block_instances', 'configdata', array('id' => $this->task->get_blockid()));
+        // $array = array("configdata" => $configdata);
 
         // Define the data source.
         $file->set_source_sql('
