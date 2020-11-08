@@ -100,7 +100,7 @@ class block_file extends block_base
                 $sortString      = explode( "_", $file -> get_filename() );
 
                 if (count($sortString) >= 3){
-                    $stringToCompare = substr($sortString[2], 0, 5);
+                    $stringToCompare = substr($sortString[2], 0);
  
                     if ( ($stringToCompare == $sortingArray[$x]) && ($stringToCompare != "") )
                     {
