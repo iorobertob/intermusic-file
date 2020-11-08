@@ -58,7 +58,7 @@ class block_file_edit_form extends block_edit_form
 
         file_prepare_draft_area($draftitemid, $this->block->context->id, 'block_file', 'file', $itemid, array('subdirs'=>true));
 
-        if (!issset($this->block->config))
+        if (!isset($this->block->config))
             {
                 $this->block->config = new \stdClass();
             }
