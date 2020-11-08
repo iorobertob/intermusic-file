@@ -18,9 +18,8 @@
 /**
  * @package   block_file
  * @category  backup
- * @copyright 2010 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}
+ * @copyright 2010 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}   | modified   2019 Oct - Roberto Becerra <roberto.lmta@lmta.lt>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @modified  Roberto, 2019
  */
 
 
@@ -61,11 +60,6 @@ class restore_file_block_structure_step extends restore_structure_step {
         if (empty($config)) {
             $config = new stdClass();
         }
-
-        // Serialize back the configdata
-        file_print(" TEST :", true);
-        file_print(serialize($config));
-        file_print($this->task->get_blockid());
 
         $configdata = base64_encode(serialize($config));
         // Set the configdata back

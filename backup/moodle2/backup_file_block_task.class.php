@@ -17,16 +17,13 @@
 /**
  * @package    block_file
  * @subpackage backup-moodle2
- * @copyright  2003 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}
+ * @copyright  2003 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}  | modified   2019 Oct - Roberto Becerra <roberto.lmta@lmta.lt>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @modified   2019 Oct - Roberto 
  */
-
 
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot.'/blocks/file/backup/moodle2/backup_file_block_stepslib.php');
-
 
 /**
  * Specialised backup task for the file block

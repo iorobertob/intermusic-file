@@ -1,8 +1,6 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-require_once("$CFG->dirroot/blocks/file/io_print.php");
-
 class block_file extends block_base
 {
 
@@ -67,12 +65,13 @@ class block_file extends block_base
     {
         //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
         $sortingArray =array(
-            "SCORE",
-            "TRANS",
-            "WORD2",
-            "VIDEO",
-            "AUDIO",
-            "RECIT");
+            get_config('mod_mposter','meta1' ),
+            get_config('mod_mposter','meta2' ),
+            get_config('mod_mposter','meta3' ),
+            get_config('mod_mposter','meta4' ),
+            get_config('mod_mposter','meta5' ),
+            get_config('mod_mposter','meta6' ),
+            get_config('mod_mposter','meta7' ));
 
         $filesSorted           = [];
         $newNames              = [];
@@ -279,8 +278,8 @@ class block_file extends block_base
 
         $attributes = [
             'style' => $this->build_style_attribute($styles),
-            'src' => $this->get_file_url($file),
-            'alt' => $file->get_filename(),
+            'src'   => $this->get_file_url($file),
+            'alt'   => $file->get_filename(),
         ];
 
         return html_writer::tag('img','', $attributes);

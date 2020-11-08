@@ -17,15 +17,12 @@
 /**
  * @package   block_file
  * @subpackage backup-moodle2
- * @copyright 2003 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}
+ * @copyright 2003 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}  | modified   2019 Oct - Roberto Becerra <roberto.lmta@lmta.lt>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @modified   2019 Oct - Roberto 
  */
 
-// defined('MOODLE_INTERNAL') || die();
-
 require_once($CFG->dirroot . '/blocks/file/backup/moodle2/restore_file_stepslib.php'); // Because it exists (must)
-require_once("$CFG->dirroot/blocks/file/io_print.php");
+
 /**
  * Specialised restore task for the file block
  * (requires encode_content_links in some configdata attrs)
@@ -54,8 +51,6 @@ class restore_file_block_task extends restore_block_task {
 
         $contents[] = new restore_file_block_decode_content('block_instances', 'configdata', 'block_instance');
 
-        file_print('SERIALIZE');
-        file_print(serialize($contents));
         return $contents;
     }
 
@@ -85,10 +80,9 @@ class restore_file_block_decode_content extends restore_decode_content {
                    AND b.itemname = ?
                    AND t.blockname = 'file'";
         $params = array($this->restoreid, $this->mapping);
-        file_print('PARAMS');
-        file_print($this->tablename);
+
         $result = $DB->get_recordset_sql($sql, $params);
-        file_print(serialize($result));
+
         return $result;
     }
 

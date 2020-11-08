@@ -19,13 +19,8 @@
  *
  * @package     block_file
  * @category    backup
- * @copyright   2015 David Mudrak <david@moodle.com>
+ * @copyright   Original Poster by 2015 David Mudrak <david@moodle.com>, modified by Roberto Becerra, 2020 <roberto.becerra@lmta.lt>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @modified    by Roberto 
- */
-
-// defined('MOODLE_INTERNAL') || die();
-require_once("$CFG->dirroot/blocks/file/io_print.php");
 
 /**
  * Provides the definition of the backup structure
