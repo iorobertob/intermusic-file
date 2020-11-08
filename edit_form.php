@@ -4,7 +4,7 @@ class block_file_edit_form extends block_edit_form
 {
     protected function specific_definition($mform)
     {
-        $mform->addElement('header', 'configheader', get_string('configtitle', 'block_file'));
+        $mform->addElement('header', 'configheader', get_string('settings', 'block_file'));
 
         $mform->addElement('text', 'config_title', get_string('configtitle', 'block_file'));
         $mform->setDefault('config_title', get_string('file', 'block_file'));
