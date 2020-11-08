@@ -64,7 +64,7 @@ class block_file extends block_base
     public function sortingTabsAlgorithm($files)
     {
         //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
-        try{
+        if (isset($this->config)){
             $sortingArray =array(
                 $this->config->meta1,
                 $this->config->meta2,
@@ -74,7 +74,7 @@ class block_file extends block_base
                 $this->config->meta6,
                 $this->config->meta7,);
         }
-        catch (Exception $e)
+        else 
         {
             // Most liketly meta values are not initialised
             $sortingArray =array(
