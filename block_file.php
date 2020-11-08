@@ -1,8 +1,6 @@
 <?php
 defined('MOODLE_INTERNAL') || die();
 
-require_once("$CFG->dirroot/blocks/file/io_print.php");
-
 class block_file extends block_base
 {
 
@@ -66,13 +64,29 @@ class block_file extends block_base
     public function sortingTabsAlgorithm($files)
     {
         //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
-        $sortingArray =array(
-            "SCORE",
-            "TRANS",
-            "WORD2",
-            "VIDEO",
-            "AUDIO",
-            "RECIT");
+        if (isset($this->config)){
+            $sortingArray =array(
+                $this->config->meta1,
+                $this->config->meta2,
+                $this->config->meta3,
+                $this->config->meta4,
+                $this->config->meta5,
+                $this->config->meta6,
+                $this->config->meta7,);
+        }
+        else 
+        {
+            // Most liketly meta values are not initialised
+            $sortingArray =array(
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",);
+        }
+        
 
         $filesSorted           = [];
         $newNames              = [];
@@ -86,7 +100,8 @@ class block_file extends block_base
                 $sortString      = explode( "_", $file -> get_filename() );
 
                 if (count($sortString) >= 3){
-                    $stringToCompare = substr($sortString[2], 0, 5);
+                    // string withought extension
+                    $stringToCompare = explode(".", substr($sortString[2], 0)) [0];
  
                     if ( ($stringToCompare == $sortingArray[$x]) && ($stringToCompare != "") )
                     {
@@ -144,6 +159,7 @@ class block_file extends block_base
 
         $count = 0;
         // foreach ($files as $file) 
+        $filterOptions = new stdClass;
         foreach ($filesSorted as $file)
         {
 
@@ -152,7 +168,7 @@ class block_file extends block_base
                 continue;
             }
 
-            $filterOptions = new stdClass;
+            
             $filterOptions->noclean = true;
 
             $mimeType = $file->get_mimetype();
@@ -279,8 +295,8 @@ class block_file extends block_base
 
         $attributes = [
             'style' => $this->build_style_attribute($styles),
-            'src' => $this->get_file_url($file),
-            'alt' => $file->get_filename(),
+            'src'   => $this->get_file_url($file),
+            'alt'   => $file->get_filename(),
         ];
 
         return html_writer::tag('img','', $attributes);
