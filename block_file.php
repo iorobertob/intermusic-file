@@ -65,13 +65,13 @@ class block_file extends block_base
     {
         //////////////////////////// SORTING TABS ALGORITHM /////////////////////////
         $sortingArray =array(
-            $this->config->tab1,
-            $this->config->tab2,
-            $this->config->tab3,
-            $this->config->tab4,
-            $this->config->tab5,
-            $this->config->tab6,
-            $this->config->tab7,);
+            $this->config->meta1,
+            $this->config->meta2,
+            $this->config->meta3,
+            $this->config->meta4,
+            $this->config->meta5,
+            $this->config->meta6,
+            $this->config->meta7,);
 
         $filesSorted           = [];
         $newNames              = [];
