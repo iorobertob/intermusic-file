@@ -122,8 +122,8 @@ class block_file extends block_base
                 array_push($filesSorted, $file);
 
                 $temp_filename       = $file->get_filename();
-                $temp_split_filename = $explode("_", $temp_filename);
-                $last_part_without_extenstion = explode(".", $temp_split_filename[count($temp_split_filename)-1])[0];
+                $temp_split_filename = explode("_", $temp_filename);
+                $last_part_without_extenstion = explode(".", $temp_split_filename[count($temp_split_filename)-1] ) [0];
                 // Add only the last part of the "_" divided name. If there are no "_" then all the name is included
                 // and remove extension 
                 array_push($newNames, $last_part_without_extenstion );
